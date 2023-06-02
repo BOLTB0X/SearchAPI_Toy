@@ -78,7 +78,6 @@
 		BEA0A0C52A29D1540087F7CC = {
 			isa = PBXGroup;
 			children = (
-				BEA0A0FB2A29D2C10087F7CC /* SecretKey.xcconfig */,
 				BEA0A0D02A29D1540087F7CC /* SearchAPI_Toy */,
 				BEA0A0E12A29D1570087F7CC /* SearchAPI_ToyTests */,
 				BEA0A0EB2A29D1570087F7CC /* SearchAPI_ToyUITests */,
@@ -105,6 +104,7 @@
 				BEA0A0D32A29D1540087F7CC /* ContentView.swift */,
 				BEA0A0D52A29D1560087F7CC /* Assets.xcassets */,
 				BEA0A0D72A29D1560087F7CC /* Preview Content */,
+				BEA0A0FB2A29D2C10087F7CC /* SecretKey.xcconfig */,
 			);
 			path = SearchAPI_Toy;
 			sourceTree = "<group>";
