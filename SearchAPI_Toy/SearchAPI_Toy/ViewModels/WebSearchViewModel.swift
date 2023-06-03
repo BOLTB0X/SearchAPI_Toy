@@ -10,15 +10,16 @@ import Combine
 
 // MARK: - WebSearchViewModel
 class WebSearchViewModel: ObservableObject {
-    @Published var searchWeb: [Document] = []
+    @Published var searchWeb: [WebDocument] = []
     @Published var errorMessage = ""
+    @Published var inputText = ""
     
     private var cancellables: Set<AnyCancellable> = []
     
     // MARK: -
     func fetchWebSearchData(query: String) {
         // NetworkManager 매니저 이용
-        let request = NetworkManager.getRequestURL(Url: NetworkManager.webURL, query: query)
+        let request = NetworkManager.getRequestURL(Url: APIEndpoint.web.path, query: query)
         URLSession.shared.dataTaskPublisher(for: request)
             .receive(on: DispatchQueue.main) // 받는 건 메인
             .tryMap { data, response in // data와 http 반응으로 나눠보고 확인
@@ -28,10 +29,10 @@ class WebSearchViewModel: ObservableObject {
                 }
                 return data
             }
-            .decode(type: Response.self, decoder: JSONDecoder()) // 해독
+            .decode(type: WebResponse.self, decoder: JSONDecoder()) // 해독
         // HTML 이 섞여서 받아오니 이를 정규표현식으로 걸러줘야함
-            .map { response -> [Document] in
-                let processedDocuments = response.documents.map { document -> Document in
+            .map { response -> [WebDocument] in
+                let processedDocuments = response.documents.map { document -> WebDocument in
                     var processedDocument = document
                     processedDocument.title = processedDocument.title.stripHTMLTags()
                     processedDocument.contents = processedDocument.contents.stripHTMLTags()
@@ -50,6 +51,7 @@ class WebSearchViewModel: ObservableObject {
     }
 }
 
+// HTML 테그 정리
 extension String {
     func stripHTMLTags() -> String {
         let regex = try? NSRegularExpression(pattern: "<[^>]+>", options: .caseInsensitive)

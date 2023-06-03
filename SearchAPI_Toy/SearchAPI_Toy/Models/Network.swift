@@ -7,6 +7,26 @@
 
 import Foundation
 
+// MARK: - APIEndpoint
+// 사용할 URL을 열거형 이용해범
+enum APIEndpoint {
+    case web
+    case vclip
+    case image
+    
+    // 선택에 따라
+    var path: String {
+        switch self {
+        case .web:
+            return "https://dapi.kakao.com/v2/search/web"
+        case .vclip:
+            return "https://dapi.kakao.com/v2/search/vclip"
+        case .image:
+            return "https://dapi.kakao.com/v2/search/image"
+        }
+    }
+}
+
 // MARK: - NetworkManager
 // 네트워크 관련
 enum NetworkManager {
@@ -17,12 +37,7 @@ enum NetworkManager {
         }
         return apiKey
     }
-    
-    // MARK: - URL
-    static let webURL:String = "https://dapi.kakao.com/v2/search/web"
-    static let vclipURL:String = "https://dapi.kakao.com/v2/search/vclip"
-    static let imageURL:String = "https://dapi.kakao.com/v2/search/image"
-    
+        
     // MARK: - getRequestURL
     // 요청할 URL을 반환하는 메소드
     static func getRequestURL(Url:String , query: String, sortType: String? = nil, page: Int? = nil, pageSize: Int? = nil) -> URLRequest {

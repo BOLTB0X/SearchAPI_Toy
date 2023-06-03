@@ -7,21 +7,21 @@
 
 import Foundation
 
-// MARK: - Response
-struct Response: Decodable {
-    let meta: Meta?
-    let documents: [Document]
+// MARK: - WebResponse
+struct WebResponse: Decodable {
+    let meta: WebMeta?
+    let documents: [WebDocument]
 }
 
-// MARK: - Document
-struct Document: Codable, Identifiable {
+// MARK: - WebDocument
+struct WebDocument: Codable, Identifiable {
     let id = UUID()
     var datetime, contents, title: String
     let url: String
 }
 
-extension Document: Equatable {
-    static func == (lhs: Document, rhs: Document) -> Bool {
+extension WebDocument: Equatable {
+    static func == (lhs: WebDocument, rhs: WebDocument) -> Bool {
         return lhs.id == rhs.id &&
                lhs.datetime == rhs.datetime &&
                lhs.contents == rhs.contents &&
@@ -30,8 +30,8 @@ extension Document: Equatable {
     }
 }
 
-// MARK: - Meta
-struct Meta: Codable {
+// MARK: - WebMeta
+struct WebMeta: Codable {
     let totalCount, pageableCount: Int
     let isEnd: Bool
 

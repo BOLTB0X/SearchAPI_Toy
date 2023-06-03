@@ -11,9 +11,13 @@
 		BE1CB9D22A29E25B00158244 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1CB9D12A29E25B00158244 /* ContentView.swift */; };
 		BE1CB9D42A29E25E00158244 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE1CB9D32A29E25E00158244 /* Assets.xcassets */; };
 		BE1CB9D72A29E25E00158244 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE1CB9D62A29E25E00158244 /* Preview Assets.xcassets */; };
-		BE1CB9E02A29E30E00158244 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1CB9DF2A29E30E00158244 /* NetworkManager.swift */; };
+		BE1CB9E02A29E30E00158244 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1CB9DF2A29E30E00158244 /* Network.swift */; };
 		BE1CB9E62A29F5FB00158244 /* WebSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1CB9E52A29F5FB00158244 /* WebSearchViewModel.swift */; };
 		BEA94D0B2A2AF5B800784ED3 /* WebSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D0A2A2AF5B800784ED3 /* WebSearchModel.swift */; };
+		BEA94D112A2B14C500784ED3 /* ImageSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D102A2B14C500784ED3 /* ImageSearchModel.swift */; };
+		BEA94D132A2B14DD00784ED3 /* VclipSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D122A2B14DD00784ED3 /* VclipSearchModel.swift */; };
+		BEA94D152A2B1BB700784ED3 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D142A2B1BB700784ED3 /* SearchBar.swift */; };
+		BEA94D172A2B1E2500784ED3 /* WebSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D162A2B1E2500784ED3 /* WebSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,9 +28,13 @@
 		BE1CB9D62A29E25E00158244 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BE1CB9DD2A29E29200158244 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		BE1CB9DE2A29E2D700158244 /* SearchAPI-Toy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "SearchAPI-Toy-Info.plist"; sourceTree = SOURCE_ROOT; };
-		BE1CB9DF2A29E30E00158244 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		BE1CB9DF2A29E30E00158244 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		BE1CB9E52A29F5FB00158244 /* WebSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSearchViewModel.swift; sourceTree = "<group>"; };
 		BEA94D0A2A2AF5B800784ED3 /* WebSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSearchModel.swift; sourceTree = "<group>"; };
+		BEA94D102A2B14C500784ED3 /* ImageSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchModel.swift; sourceTree = "<group>"; };
+		BEA94D122A2B14DD00784ED3 /* VclipSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VclipSearchModel.swift; sourceTree = "<group>"; };
+		BEA94D142A2B1BB700784ED3 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		BEA94D162A2B1E2500784ED3 /* WebSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +91,10 @@
 		BEA94D072A2AF50000784ED3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BE1CB9DF2A29E30E00158244 /* NetworkManager.swift */,
+				BE1CB9DF2A29E30E00158244 /* Network.swift */,
 				BEA94D0A2A2AF5B800784ED3 /* WebSearchModel.swift */,
+				BEA94D102A2B14C500784ED3 /* ImageSearchModel.swift */,
+				BEA94D122A2B14DD00784ED3 /* VclipSearchModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -92,6 +102,8 @@
 		BEA94D082A2AF50D00784ED3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BEA94D142A2B1BB700784ED3 /* SearchBar.swift */,
+				BEA94D162A2B1E2500784ED3 /* WebSearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,8 +187,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEA94D0B2A2AF5B800784ED3 /* WebSearchModel.swift in Sources */,
+				BEA94D172A2B1E2500784ED3 /* WebSearchView.swift in Sources */,
+				BEA94D112A2B14C500784ED3 /* ImageSearchModel.swift in Sources */,
 				BE1CB9E62A29F5FB00158244 /* WebSearchViewModel.swift in Sources */,
-				BE1CB9E02A29E30E00158244 /* NetworkManager.swift in Sources */,
+				BE1CB9E02A29E30E00158244 /* Network.swift in Sources */,
+				BEA94D132A2B14DD00784ED3 /* VclipSearchModel.swift in Sources */,
+				BEA94D152A2B1BB700784ED3 /* SearchBar.swift in Sources */,
 				BE1CB9D22A29E25B00158244 /* ContentView.swift in Sources */,
 				BE1CB9D02A29E25B00158244 /* SearchAPI_ToyApp.swift in Sources */,
 			);
