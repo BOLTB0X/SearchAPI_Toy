@@ -20,6 +20,16 @@ struct Document: Codable, Identifiable {
     let url: String
 }
 
+extension Document: Equatable {
+    static func == (lhs: Document, rhs: Document) -> Bool {
+        return lhs.id == rhs.id &&
+               lhs.datetime == rhs.datetime &&
+               lhs.contents == rhs.contents &&
+               lhs.title == rhs.title &&
+               lhs.url == rhs.url
+    }
+}
+
 // MARK: - Meta
 struct Meta: Codable {
     let totalCount, pageableCount: Int
@@ -32,13 +42,3 @@ struct Meta: Codable {
     }
 }
 
-
-extension Document: Equatable {
-    static func == (lhs: Document, rhs: Document) -> Bool {
-        return lhs.id == rhs.id &&
-               lhs.datetime == rhs.datetime &&
-               lhs.contents == rhs.contents &&
-               lhs.title == rhs.title &&
-               lhs.url == rhs.url
-    }
-}

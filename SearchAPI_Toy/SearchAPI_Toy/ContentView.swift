@@ -21,7 +21,7 @@ struct ContentView: View {
                 }
             }
             .onAppear {
-                webViewModel.fetchWebData(query: "에스파")
+                webViewModel.fetchWebSearchData(query: "에스파")
             }
             
             // 만약 받아오는게 실패한다면
