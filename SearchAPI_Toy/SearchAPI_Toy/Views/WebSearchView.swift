@@ -26,13 +26,13 @@ struct WebSearchView: View {
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                         }
-                    }
+                    }.navigationTitle("Daum 웹문서 검색: \(webViewModel.inputText)")
                 } else {
                     Text("검색 결과가 없습니다.")
                         .foregroundColor(.secondary)
                 }
             }
-        }.navigationTitle("Daum 웹문서 검색: \(webViewModel.inputText)")
+        }
     }
 }
 
