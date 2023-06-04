@@ -11,14 +11,14 @@ struct WebSearchView: View {
     @ObservedObject var webViewModel = WebSearchViewModel()
     
     var body: some View {
-        NavigationView {
-            VStack(alignment: .center, spacing: 5) {
-                SearchBar(inputText: $webViewModel.inputText, startSearch: {
-                    webViewModel.fetchWebSearchData(query: webViewModel.inputText)
-                })
-                
-                if !webViewModel.searchWeb.isEmpty {
-                    List(webViewModel.searchWeb, id: \.title) { document in
+        ScrollView {
+            SearchBar(inputText: $webViewModel.inputText, startSearch: {
+                webViewModel.fetchWebSearchData(query: webViewModel.inputText)
+            })
+            
+            if !webViewModel.searchWeb.isEmpty {
+                LazyVStack(alignment: .leading, spacing: 10) {
+                    ForEach(webViewModel.searchWeb, id: \.title) { document in
                         VStack(alignment: .leading) {
                             Text(document.title)
                                 .font(.headline)
@@ -26,13 +26,14 @@ struct WebSearchView: View {
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                         }
-                    }.navigationTitle("Daum 웹문서 검색: \(webViewModel.inputText)")
-                } else {
-                    Text("검색 결과가 없습니다.")
-                        .foregroundColor(.secondary)
-                }
+                    }
+                }.padding()
+            } else {
+                Text("검색 결과가 없습니다.")
+                    .foregroundColor(.secondary)
             }
-        }
+        }.navigationTitle("Daum 웹문서 검색: \(webViewModel.inputText)")
+        
     }
 }
 

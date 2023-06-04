@@ -14,7 +14,10 @@ struct SearchBar: View {
     var body: some View {
         HStack {
             HStack {
-                TextField("검색 및 키워드 입력", text: $inputText)
+                Image(systemName: "magnifyingglass")
+                TextField("검색 및 키워드 입력", text: $inputText, onCommit: {
+                    startSearch() // 뷰모델의 메소드로 검색 수행
+                })
                     .foregroundColor(.primary)
                 
                 if !inputText.isEmpty {
@@ -32,11 +35,11 @@ struct SearchBar: View {
             .background(Color(.secondarySystemBackground))
             .cornerRadius(10.0)
             
-            Button(action: {
-                startSearch()
-            }) {
-                Image(systemName: "magnifyingglass.circle.fill")
-            }
+//            Button(action: {
+//                startSearch()
+//            }) {
+//                Image(systemName: "magnifyingglass.circle.fill")
+//            }
         }
         .padding(.horizontal)
     }
