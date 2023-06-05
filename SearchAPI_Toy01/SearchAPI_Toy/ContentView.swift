@@ -8,29 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var webViewModel = WebSearchViewModel()
-    
     var body: some View {
-        VStack {
-            List(webViewModel.searchWeb) { webResult in
-                VStack(alignment: .leading) {
-                    Text(webResult.title)
-                        .font(.headline)
-                    Text(webResult.contents)
-                        .font(.subheadline)
-                }
-            }
-            .onAppear {
-                webViewModel.fetchWebSearchData(query: "에스파")
-            }
-            
-            // 만약 받아오는게 실패한다면
-            if !webViewModel.errorMessage.isEmpty {
-                Text(webViewModel.errorMessage)
-                    .foregroundColor(.red)
-            }
+        NavigationView {
+            WebSearchView()
         }
-        .padding()
     }
 }
 struct ContentView_Previews: PreviewProvider {

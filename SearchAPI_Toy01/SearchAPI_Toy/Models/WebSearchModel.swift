@@ -11,7 +11,7 @@ import Combine
 // MARK: - WebResponse
 struct WebResponse: Codable {
     let meta: WebMeta?
-    let documents: [WebDocument]
+    var documents: [WebDocument]
 }
 
 // MARK: - WebDocument
@@ -50,29 +50,30 @@ final class WebSearchManger {
     static let shared: WebSearchManger = .init()
     
     // MARK: - WebDocumentPublisher
-    func WebDocumentPublisher(dataPublisher: AnyPublisher<Data, Error>) ->  AnyPublisher<[WebDocument], Error> {
-        let documentsPublisher = dataPublisher
+    func WebSearchPublisher(dataPublisher: AnyPublisher<Data, Error>) ->  AnyPublisher<WebResponse, Error> {
+        let responsePublisher = dataPublisher
         // 디코딩
             .decode(type: WebResponse.self, decoder: JSONDecoder())
         // WebSearch 형태로 결과 쪼개기
-            .map { response -> [WebDocument] in
-                let processedDocuments = response.documents.map { document -> WebDocument in
-                    var processedDocument = document
-                    processedDocument.title = processedDocument.title.stripHTMLTags()
-                    processedDocument.contents = processedDocument.contents.stripHTMLTags()
-                    return processedDocument
+            .map { response in
+                var streamedResponse = response
+                streamedResponse.documents = response.documents.map { document in
+                    var streamedDocument = document
+                    streamedDocument.title = streamedDocument.title.stripHTMLTags()
+                    streamedDocument.contents = streamedDocument.contents.stripHTMLTags()
+                    return streamedDocument // 테그 제거 완료
                 }
-                return processedDocuments
+                return streamedResponse // html 테그 띤 Response를 반환
             }
             .eraseToAnyPublisher()
-        return documentsPublisher
+        return responsePublisher
     }
 }
 
 // HTML 테그 정리
 extension String {
     func stripHTMLTags() -> String {
-        let regex = try? NSRegularExpression(pattern: "<[^>]+>", options: .caseInsensitive)
+        let regex = try? NSRegularExpression(pattern: "<[^>]+>|&quot;|<b>|</b>", options: .caseInsensitive)
         let range = NSRange(location: 0, length: self.count)
         return regex?.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: "") ?? self
     }

@@ -42,7 +42,7 @@ enum NetworkManager {
         
     // MARK: - RequestURL
     // 요청할 URL을 반환하는 메소드
-    static func RequestURL(Url:String , query: String, sortType: String? = nil, page: Int? = nil, pageSize: Int? = nil) -> URLRequest {
+    static func RequestURL(Url:String , query: String, sortType: String? = nil, page: Int? = nil, pageSize: Int? = nil) -> URLRequest? {
         guard let apiKey = NetworkManager.apiKey else {
             fatalError("API_KEY가 설정 X\n 번들 의심")
         }

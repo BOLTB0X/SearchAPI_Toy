@@ -18,13 +18,19 @@ struct WebSearchView: View {
             
             if !webViewModel.searchWeb.isEmpty {
                 LazyVStack(alignment: .leading, spacing: 10) {
-                    ForEach(webViewModel.searchWeb, id: \.title) { document in
+                    ForEach(webViewModel.searchWeb, id: \.id) { document in
                         VStack(alignment: .leading) {
+                            // TODO
                             Text(document.title)
                                 .font(.headline)
                             Text(document.contents)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
+                        }
+                        .onAppear {
+                            if !webViewModel.searchWeb.isEmpty && (document == webViewModel.searchWeb.last) {
+                                webViewModel.fetchWebSearchData(query: webViewModel.inputText)
+                            }
                         }
                     }
                 }.padding()

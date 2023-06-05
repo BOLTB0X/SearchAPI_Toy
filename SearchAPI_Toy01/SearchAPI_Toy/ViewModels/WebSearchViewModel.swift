@@ -46,7 +46,7 @@ class WebSearchViewModel: ObservableObject {
         
         // 받아온 data를 WebSearch에 맞게 끔 디코딩 및 파싱
         WebSearchManger.shared
-            .WebDocumentPublisher(dataPublisher: dataPublisher)
+            .WebSearchPublisher(dataPublisher: dataPublisher)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self = self else { return } // 옵셔널 체이닝
@@ -57,14 +57,18 @@ class WebSearchViewModel: ObservableObject {
                     print("\(error.localizedDescription)") // 에러 출력(뭔지는 알아야하기떄문)
                     self.isLoading = false // 실패한 거니
                 }
-            }, receiveValue: { [weak self] documents in
+            }, receiveValue: { [weak self] response in
                 guard let self = self else { return } // 옵셔널 체이닝
-                
+                // 이제 내가 필요한 것들을 작업
                 self.currentPage += 1
+                self.totalCount = response.meta?.totalCount ?? 0
+                self.totalPage = response.meta?.pageableCount ?? 0
+                self.endPage = self.currentPage >= self.totalCount ? true : false
                 
-                self.searchWeb.append(contentsOf: documents) // 검색결과 배열에 넣어줌
-                
-                
+//                for doc in response.documents {
+//                    self.searchWeb.append(doc)
+//                }
+                self.searchWeb.append(contentsOf: response.documents) // 검색결과 배열에 넣어줌
             })
             .store(in: &cancellables)
     }
