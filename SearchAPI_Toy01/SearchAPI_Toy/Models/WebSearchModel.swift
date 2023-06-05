@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import Combine
 
 // MARK: - WebResponse
-struct WebResponse: Decodable {
+struct WebResponse: Codable {
     let meta: WebMeta?
     let documents: [WebDocument]
 }
@@ -23,10 +24,10 @@ struct WebDocument: Codable, Identifiable {
 extension WebDocument: Equatable {
     static func == (lhs: WebDocument, rhs: WebDocument) -> Bool {
         return lhs.id == rhs.id &&
-               lhs.datetime == rhs.datetime &&
-               lhs.contents == rhs.contents &&
-               lhs.title == rhs.title &&
-               lhs.url == rhs.url
+        lhs.datetime == rhs.datetime &&
+        lhs.contents == rhs.contents &&
+        lhs.title == rhs.title &&
+        lhs.url == rhs.url
     }
 }
 
@@ -34,7 +35,7 @@ extension WebDocument: Equatable {
 struct WebMeta: Codable {
     let totalCount, pageableCount: Int
     let isEnd: Bool
-
+    
     enum CodingKeys: String, CodingKey {
         case totalCount = "total_count"
         case pageableCount = "pageable_count"
@@ -49,7 +50,30 @@ final class WebSearchManger {
     static let shared: WebSearchManger = .init()
     
     // MARK: - WebDocumentPublisher
-//    static func WebDocumentPublisher() -> WebDocument {
-//        
-//    }
+    func WebDocumentPublisher(dataPublisher: AnyPublisher<Data, Error>) ->  AnyPublisher<[WebDocument], Error> {
+        let documentsPublisher = dataPublisher
+        // 디코딩
+            .decode(type: WebResponse.self, decoder: JSONDecoder())
+        // WebSearch 형태로 결과 쪼개기
+            .map { response -> [WebDocument] in
+                let processedDocuments = response.documents.map { document -> WebDocument in
+                    var processedDocument = document
+                    processedDocument.title = processedDocument.title.stripHTMLTags()
+                    processedDocument.contents = processedDocument.contents.stripHTMLTags()
+                    return processedDocument
+                }
+                return processedDocuments
+            }
+            .eraseToAnyPublisher()
+        return documentsPublisher
+    }
+}
+
+// HTML 테그 정리
+extension String {
+    func stripHTMLTags() -> String {
+        let regex = try? NSRegularExpression(pattern: "<[^>]+>", options: .caseInsensitive)
+        let range = NSRange(location: 0, length: self.count)
+        return regex?.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: "") ?? self
+    }
 }
