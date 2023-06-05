@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 // MARK: - ImageResponse
 struct ImageResponse: Codable {
@@ -16,14 +17,30 @@ struct ImageResponse: Codable {
 // MARK: - ImageDocument
 struct ImageDocument: Codable, Identifiable {
     let id = UUID()
-    var datetime: String
-    let collection: String
-    let thumbnailURL: String
-    let imageURL: String
-    let width: Int
-    let height: Int
-    let displaySitename: String
+    let collection: Collection
+    let datetime, displaySitename: String
     let docURL: String
+    let height: Int
+    let imageURL: String
+    let thumbnailURL: String
+    let width: Int
+    
+    enum Collection: String, Codable {
+        case blog = "blog"
+        case cafe = "cafe"
+        case etc = "etc"
+        case news = "news"
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case collection, datetime
+        case displaySitename = "display_sitename"
+        case docURL = "doc_url"
+        case height
+        case imageURL = "image_url"
+        case thumbnailURL = "thumbnail_url"
+        case width
+    }
 }
 
 extension ImageDocument: Equatable {
@@ -49,5 +66,19 @@ struct ImageMeta: Codable {
         case totalCount = "total_count"
         case pageableCount = "pageable_count"
         case isEnd = "is_end"
+    }
+}
+
+// MARK: - ImageSearchManager
+final class ImageSearchManager {
+    static let shared: ImageSearchManager = .init() // 싱글톤
+    
+    // MARK: - ImageSearchPublisher
+    func ImageSearchPublisher(dataPublisher: AnyPublisher<Data, Error>) -> AnyPublisher<ImageResponse, Error> {
+        let responsePublisher = dataPublisher
+        // 디코딩
+            .decode(type: ImageResponse.self, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
+        return responsePublisher
     }
 }

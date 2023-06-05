@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 // MARK: - VclipResponse
 struct VclipResponse: Codable {
@@ -16,21 +17,25 @@ struct VclipResponse: Codable {
 // MARK: - VclipDocument
 struct VclipDocument: Codable, Identifiable {
     let id = UUID()
-    var datetime: String
-    let title: String
-    let playTime: Int
-    let thumbnailURL: String
-    let url: String
     let author: String
-}
+    let datetime: String
+    let playTime: Int
+    let thumbnail: String
+    let title: String
+    let url: String
 
-extension VclipDocument: Equatable {
+    enum CodingKeys: String, CodingKey {
+        case author, datetime
+        case playTime = "play_time"
+        case thumbnail, title, url
+    }
+    
     static func == (lhs: VclipDocument, rhs: VclipDocument) -> Bool {
         return lhs.id == rhs.id &&
                lhs.datetime == rhs.datetime &&
                lhs.title == rhs.title &&
                lhs.playTime == rhs.playTime &&
-               lhs.thumbnailURL == rhs.thumbnailURL &&
+               lhs.thumbnail == rhs.thumbnail &&
                lhs.url == rhs.url &&
                lhs.author == rhs.author
     }
@@ -48,3 +53,15 @@ struct VclipMeta: Codable {
     }
 }
 
+// MARK: - VclipSearchManager
+final class VclipSearchManager {
+    static let shared:VclipSearchManager = .init()
+    
+    // MARK: - VclipSearchPublisher
+    func VclipSearchPublisher(dataPublisher: AnyPublisher<Data, Error>) -> AnyPublisher<VclipResponse, Error> {
+        let responsePublisher = dataPublisher
+            .decode(type: VclipResponse.self, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
+        return responsePublisher
+    }
+}

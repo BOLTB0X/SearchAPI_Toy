@@ -14,16 +14,29 @@ enum APIEndpoint {
     case web
     case vclip
     case image
+    case cafe
+    case book
+    case blog
     
     // 선택에 따라
     var path: String {
         switch self {
         case .web:
             return "https://dapi.kakao.com/v2/search/web"
+        
         case .vclip:
             return "https://dapi.kakao.com/v2/search/vclip"
         case .image:
             return "https://dapi.kakao.com/v2/search/image"
+       
+        case .cafe:
+            return "https://dapi.kakao.com/v2/search/cafe"
+        
+        case .book:
+            return "https://dapi.kakao.com/v3/search/book"
+        
+        case .blog:
+            return "https://dapi.kakao.com/v2/search/blog"
         }
     }
 }
