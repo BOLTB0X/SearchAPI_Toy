@@ -20,6 +20,8 @@
 		BEA94D172A2B1E2500784ED3 /* WebSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D162A2B1E2500784ED3 /* WebSearchView.swift */; };
 		BEA94D192A3006F600784ED3 /* ImageSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D182A3006F600784ED3 /* ImageSearchViewModel.swift */; };
 		BEA94D1B2A300E0900784ED3 /* ImageSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D1A2A300E0900784ED3 /* ImageSearchView.swift */; };
+		BEA94D1D2A30224100784ED3 /* VclipSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D1C2A30224100784ED3 /* VclipSearchViewModel.swift */; };
+		BEA94D1F2A30253800784ED3 /* VclipSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D1E2A30253800784ED3 /* VclipSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		BEA94D162A2B1E2500784ED3 /* WebSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSearchView.swift; sourceTree = "<group>"; };
 		BEA94D182A3006F600784ED3 /* ImageSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchViewModel.swift; sourceTree = "<group>"; };
 		BEA94D1A2A300E0900784ED3 /* ImageSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchView.swift; sourceTree = "<group>"; };
+		BEA94D1C2A30224100784ED3 /* VclipSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VclipSearchViewModel.swift; sourceTree = "<group>"; };
+		BEA94D1E2A30253800784ED3 /* VclipSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VclipSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 				BEA94D142A2B1BB700784ED3 /* SearchBar.swift */,
 				BEA94D162A2B1E2500784ED3 /* WebSearchView.swift */,
 				BEA94D1A2A300E0900784ED3 /* ImageSearchView.swift */,
+				BEA94D1E2A30253800784ED3 /* VclipSearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 			children = (
 				BE1CB9E52A29F5FB00158244 /* WebSearchViewModel.swift */,
 				BEA94D182A3006F600784ED3 /* ImageSearchViewModel.swift */,
+				BEA94D1C2A30224100784ED3 /* VclipSearchViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -193,7 +199,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEA94D0B2A2AF5B800784ED3 /* WebSearchModel.swift in Sources */,
+				BEA94D1D2A30224100784ED3 /* VclipSearchViewModel.swift in Sources */,
 				BEA94D172A2B1E2500784ED3 /* WebSearchView.swift in Sources */,
+				BEA94D1F2A30253800784ED3 /* VclipSearchView.swift in Sources */,
 				BEA94D112A2B14C500784ED3 /* ImageSearchModel.swift in Sources */,
 				BE1CB9E62A29F5FB00158244 /* WebSearchViewModel.swift in Sources */,
 				BEA94D192A3006F600784ED3 /* ImageSearchViewModel.swift in Sources */,

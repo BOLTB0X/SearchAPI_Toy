@@ -18,19 +18,25 @@ struct ImageSearchView: View {
                 })
                 
                 if !imageViewModel.searchImage.isEmpty {
-                    LazyVStack(alignment: .leading, spacing: 10) {
+                    LazyVStack(alignment: .center, spacing: 20) {
                         ForEach(imageViewModel.searchImage, id: \.id) { document in
                             
-                            AsyncImage(url: URL(string: document.thumbnailURL)) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            } placeholder: {
-                                ProgressView()
-                                    .scaleEffect(5.0)
+                            VStack {
+                                AsyncImage(url: URL(string: document.thumbnailURL)) { image in
+                                    image
+                                        .resizable()
+                                        .frame(width: 200, height: 100)
+                                        .aspectRatio(contentMode: .fit)
+                                } placeholder: {
+                                    ProgressView()
+                                        .scaleEffect(3.0)
+                                }
+                            }                            .onAppear {
+                                if !imageViewModel.searchImage.isEmpty && (document == imageViewModel.searchImage.last) {
+                                    imageViewModel.fetchImageSearchData(query: imageViewModel.inputText)
+                                }
                             }
-                            //                                .frame(width: CGFloat(document.width), height: CGFloat(document.height))
-                        }
+                        }.padding()
                     }
                 }
             }
