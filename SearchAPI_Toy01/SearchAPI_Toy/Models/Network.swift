@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 // MARK: - APIEndpoint
-// 사용할 URL을 열거형 이용해범
+// 사용할 URL을 열거형 이용해봄
 enum APIEndpoint {
     case web
     case vclip
@@ -26,6 +26,7 @@ enum APIEndpoint {
         
         case .vclip:
             return "https://dapi.kakao.com/v2/search/vclip"
+        
         case .image:
             return "https://dapi.kakao.com/v2/search/image"
        
@@ -93,7 +94,7 @@ enum NetworkManager {
     
     // MARK: - DataPublisher
     // URLRequest를 파라미터로 디코딩 되지 않은 data를 반환하는 메소드
-    static func DataPublisher(forRequest: URLRequest) -> AnyPublisher<Data, Error> {
+    static func DataPublisher(forRequest: URLRequest) -> AnyPublisher<Data, Error>? {
         URLSession.shared
             .dataTaskPublisher(for: forRequest)
             .receive(on: DispatchQueue.main) // 받는 것 메인

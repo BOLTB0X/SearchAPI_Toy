@@ -18,6 +18,8 @@
 		BEA94D132A2B14DD00784ED3 /* VclipSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D122A2B14DD00784ED3 /* VclipSearchModel.swift */; };
 		BEA94D152A2B1BB700784ED3 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D142A2B1BB700784ED3 /* SearchBar.swift */; };
 		BEA94D172A2B1E2500784ED3 /* WebSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D162A2B1E2500784ED3 /* WebSearchView.swift */; };
+		BEA94D192A3006F600784ED3 /* ImageSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D182A3006F600784ED3 /* ImageSearchViewModel.swift */; };
+		BEA94D1B2A300E0900784ED3 /* ImageSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D1A2A300E0900784ED3 /* ImageSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		BEA94D122A2B14DD00784ED3 /* VclipSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VclipSearchModel.swift; sourceTree = "<group>"; };
 		BEA94D142A2B1BB700784ED3 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		BEA94D162A2B1E2500784ED3 /* WebSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSearchView.swift; sourceTree = "<group>"; };
+		BEA94D182A3006F600784ED3 /* ImageSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchViewModel.swift; sourceTree = "<group>"; };
+		BEA94D1A2A300E0900784ED3 /* ImageSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 			children = (
 				BEA94D142A2B1BB700784ED3 /* SearchBar.swift */,
 				BEA94D162A2B1E2500784ED3 /* WebSearchView.swift */,
+				BEA94D1A2A300E0900784ED3 /* ImageSearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				BE1CB9E52A29F5FB00158244 /* WebSearchViewModel.swift */,
+				BEA94D182A3006F600784ED3 /* ImageSearchViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -190,9 +196,11 @@
 				BEA94D172A2B1E2500784ED3 /* WebSearchView.swift in Sources */,
 				BEA94D112A2B14C500784ED3 /* ImageSearchModel.swift in Sources */,
 				BE1CB9E62A29F5FB00158244 /* WebSearchViewModel.swift in Sources */,
+				BEA94D192A3006F600784ED3 /* ImageSearchViewModel.swift in Sources */,
 				BE1CB9E02A29E30E00158244 /* Network.swift in Sources */,
 				BEA94D132A2B14DD00784ED3 /* VclipSearchModel.swift in Sources */,
 				BEA94D152A2B1BB700784ED3 /* SearchBar.swift in Sources */,
+				BEA94D1B2A300E0900784ED3 /* ImageSearchView.swift in Sources */,
 				BE1CB9D22A29E25B00158244 /* ContentView.swift in Sources */,
 				BE1CB9D02A29E25B00158244 /* SearchAPI_ToyApp.swift in Sources */,
 			);
