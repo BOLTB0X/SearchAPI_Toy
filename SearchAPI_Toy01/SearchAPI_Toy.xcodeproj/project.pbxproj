@@ -22,6 +22,9 @@
 		BEA94D1B2A300E0900784ED3 /* ImageSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D1A2A300E0900784ED3 /* ImageSearchView.swift */; };
 		BEA94D1D2A30224100784ED3 /* VclipSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D1C2A30224100784ED3 /* VclipSearchViewModel.swift */; };
 		BEA94D1F2A30253800784ED3 /* VclipSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D1E2A30253800784ED3 /* VclipSearchView.swift */; };
+		BEA94D212A31611D00784ED3 /* CafeSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D202A31611D00784ED3 /* CafeSearchModel.swift */; };
+		BEA94D232A31658B00784ED3 /* BlogSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D222A31658B00784ED3 /* BlogSearchModel.swift */; };
+		BEA94D252A3167AA00784ED3 /* BookSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D242A3167AA00784ED3 /* BookSearchModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,9 @@
 		BEA94D1A2A300E0900784ED3 /* ImageSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchView.swift; sourceTree = "<group>"; };
 		BEA94D1C2A30224100784ED3 /* VclipSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VclipSearchViewModel.swift; sourceTree = "<group>"; };
 		BEA94D1E2A30253800784ED3 /* VclipSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VclipSearchView.swift; sourceTree = "<group>"; };
+		BEA94D202A31611D00784ED3 /* CafeSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeSearchModel.swift; sourceTree = "<group>"; };
+		BEA94D222A31658B00784ED3 /* BlogSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogSearchModel.swift; sourceTree = "<group>"; };
+		BEA94D242A3167AA00784ED3 /* BookSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,9 @@
 				BEA94D0A2A2AF5B800784ED3 /* WebSearchModel.swift */,
 				BEA94D102A2B14C500784ED3 /* ImageSearchModel.swift */,
 				BEA94D122A2B14DD00784ED3 /* VclipSearchModel.swift */,
+				BEA94D202A31611D00784ED3 /* CafeSearchModel.swift */,
+				BEA94D222A31658B00784ED3 /* BlogSearchModel.swift */,
+				BEA94D242A3167AA00784ED3 /* BookSearchModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -199,6 +208,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEA94D0B2A2AF5B800784ED3 /* WebSearchModel.swift in Sources */,
+				BEA94D232A31658B00784ED3 /* BlogSearchModel.swift in Sources */,
+				BEA94D252A3167AA00784ED3 /* BookSearchModel.swift in Sources */,
 				BEA94D1D2A30224100784ED3 /* VclipSearchViewModel.swift in Sources */,
 				BEA94D172A2B1E2500784ED3 /* WebSearchView.swift in Sources */,
 				BEA94D1F2A30253800784ED3 /* VclipSearchView.swift in Sources */,
@@ -208,6 +219,7 @@
 				BE1CB9E02A29E30E00158244 /* Network.swift in Sources */,
 				BEA94D132A2B14DD00784ED3 /* VclipSearchModel.swift in Sources */,
 				BEA94D152A2B1BB700784ED3 /* SearchBar.swift in Sources */,
+				BEA94D212A31611D00784ED3 /* CafeSearchModel.swift in Sources */,
 				BEA94D1B2A300E0900784ED3 /* ImageSearchView.swift in Sources */,
 				BE1CB9D22A29E25B00158244 /* ContentView.swift in Sources */,
 				BE1CB9D02A29E25B00158244 /* SearchAPI_ToyApp.swift in Sources */,

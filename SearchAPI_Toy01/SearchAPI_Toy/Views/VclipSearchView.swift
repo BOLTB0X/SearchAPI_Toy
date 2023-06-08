@@ -23,16 +23,12 @@ struct VclipSearchView: View {
                         ForEach(vclipViewModel.searchVclip, id: \.id) { document in
                             
                             VStack {
-                                VideoPlayer(player: AVPlayer(url: URL(string: document.url)!)) {
-                                    VStack {
-                                        Text("\(document.title)")
-                                            .font(.headline)
-                                        Spacer()
-                                    }
-                                }
+                                Text("\(document.title)")
+                                    .font(.headline)
+                                Spacer()
                             }
-                        }.padding()
-                    }
+                        }
+                    }.padding()
                 }
             }
         }
