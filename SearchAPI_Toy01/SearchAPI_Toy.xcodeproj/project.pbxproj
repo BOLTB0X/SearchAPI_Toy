@@ -106,6 +106,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		BEA785A52A31C08F006D409D /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				BEA94D282A31A06A00784ED3 /* WebCeilView.swift */,
+				BEA94D162A2B1E2500784ED3 /* WebSearchView.swift */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
 		BEA94D072A2AF50000784ED3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,9 +133,8 @@
 		BEA94D082A2AF50D00784ED3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BEA785A52A31C08F006D409D /* Web */,
 				BEA94D142A2B1BB700784ED3 /* SearchBar.swift */,
-				BEA94D282A31A06A00784ED3 /* WebCeilView.swift */,
-				BEA94D162A2B1E2500784ED3 /* WebSearchView.swift */,
 				BEA94D1A2A300E0900784ED3 /* ImageSearchView.swift */,
 				BEA94D1E2A30253800784ED3 /* VclipSearchView.swift */,
 			);

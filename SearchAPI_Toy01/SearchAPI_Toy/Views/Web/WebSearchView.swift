@@ -14,7 +14,9 @@ struct WebSearchView: View {
         NavigationView {
             VStack {
                 SearchBar(inputText: $webViewModel.inputText, startSearch: {
-                    webViewModel.fetchWebSearchData(query: webViewModel.inputText)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        webViewModel.fetchWebSearchData(query: webViewModel.inputText)
+                    }
                 })
                 // 초기 화면
                 if !webViewModel.isTry {
@@ -29,17 +31,24 @@ struct WebSearchView: View {
                                             webViewModel.checkFetchMore(document: document)
                                         }
                                 }
-                                
                                 .padding(5)
                             }
                         }
-                        Text("\(webViewModel.inputText) 검색 관련 총 게시물: \(webViewModel.totalCount)")
+                        Text("\(webViewModel.inputText)  관련 총 게시물: \(webViewModel.totalCount)")
                     } else {
                         Text("검색 결과가 없습니다.")
                             .foregroundColor(.secondary)
                     }
                 }
             }
+            .overlay(
+                Group {
+                    // 현재 로딩 중이면?
+                    if webViewModel.isLoading {
+                        ProgressView() // 로딩 뷰
+                    }
+                }
+            )
         }
     }
 }
