@@ -11,14 +11,15 @@ import Combine
 // MARK: - ImageResponse
 struct ImageResponse: Codable {
     let meta: ImageMeta?
-    let documents: [ImageDocument]
+    var documents: [ImageDocument]
 }
 
 // MARK: - ImageDocument
 struct ImageDocument: Codable, Identifiable {
     let id = UUID()
     let collection: Collection
-    let datetime, displaySitename: String
+    var datetime: String
+    let displaySitename: String
     let docURL: String
     let height: Int
     let imageURL: String
@@ -78,6 +79,15 @@ final class ImageSearchManager {
         let responsePublisher = dataPublisher
         // 디코딩
             .decode(type: ImageResponse.self, decoder: JSONDecoder())
+            .map { response in
+                var streamedResponse = response
+                streamedResponse.documents = response.documents.map { document in
+                    var streamedDocument = document
+                    streamedDocument.datetime = streamedDocument.datetime.fomatDateTime()!
+                    return streamedDocument
+                }
+                return streamedResponse
+            }
             .eraseToAnyPublisher()
         return responsePublisher
     }

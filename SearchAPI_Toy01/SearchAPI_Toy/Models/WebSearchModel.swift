@@ -61,7 +61,8 @@ final class WebSearchManger {
                     var streamedDocument = document
                     streamedDocument.title = streamedDocument.title.stripHTMLTags()
                     streamedDocument.contents = streamedDocument.contents.stripHTMLTags()
-                    return streamedDocument // 테그 제거 완료
+                    streamedDocument.datetime = streamedDocument.datetime.fomatDateTime()!
+                    return streamedDocument // 테그 제거, 날짜 표기 변경 완료
                 }
                 return streamedResponse // html 테그 띤 Response를 반환
             }
@@ -70,11 +71,3 @@ final class WebSearchManger {
     }
 }
 
-// HTML 테그 정리
-extension String {
-    func stripHTMLTags() -> String {
-        let regex = try? NSRegularExpression(pattern: "<[^>]+>|&quot;|<b>|</b>", options: .caseInsensitive)
-        let range = NSRange(location: 0, length: self.count)
-        return regex?.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: "") ?? self
-    }
-}

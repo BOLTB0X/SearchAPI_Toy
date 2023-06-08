@@ -56,7 +56,7 @@ enum NetworkManager {
         
     // MARK: - RequestURL
     // 요청할 URL을 반환하는 메소드
-    static func RequestURL(Url:String , query: String, sortType: String? = nil, page: Int? = nil, pageSize: Int? = nil) -> URLRequest? {
+    static func RequestURL(Url:String , query: String, sortType: String? = nil, page: Int? = nil, pageSize: Int? = nil, targetField: String? = nil) -> URLRequest? {
         guard let apiKey = NetworkManager.apiKey else {
             fatalError("API_KEY가 설정 X\n 번들 의심")
         }
@@ -77,6 +77,10 @@ enum NetworkManager {
         }
         if let size = pageSize {
             components.queryItems?.append(URLQueryItem(name: "size", value: String(size)))
+        }
+        
+        if let target = targetField {
+            components.queryItems?.append(URLQueryItem(name: "target", value: String(target)))
         }
         
         // 마지막 체크

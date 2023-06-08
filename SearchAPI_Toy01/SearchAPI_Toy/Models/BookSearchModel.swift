@@ -30,7 +30,7 @@ struct BookDocument: Codable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case authors, contents, datetime, isbn, price, publisher
         case salePrice = "sale_price"
-        case status, thumbnail, title, translators, url
+        case status, thumbnail, title, url
     }
 }
 
@@ -63,15 +63,15 @@ struct BookMeta: Codable {
     }
 }
 
-// MARK: - BookSearchManger
-final class BookSearchManger {
-    // 싱글톤 적용
-    static let shared: BookSearchManger = .init()
+// MARK: - BookSearchManager
+final class BookSearchManager {
+    // Singleton
+    static let shared: BookSearchManager = .init()
     
     // MARK: - WebDocumentPublisher
-    func BookSearchPublisher(dataPublisher: AnyPublisher<Data, Error>) ->  AnyPublisher<BookResponse, Error> {
+    func bookSearchPublisher(dataPublisher: AnyPublisher<Data, Error>) ->  AnyPublisher<BookResponse, Error> {
         let responsePublisher = dataPublisher
-        // 디코딩
+            // Decoding
             .decode(type: BookResponse.self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
         return responsePublisher

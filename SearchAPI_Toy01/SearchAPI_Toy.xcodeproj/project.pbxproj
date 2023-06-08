@@ -25,6 +25,8 @@
 		BEA94D212A31611D00784ED3 /* CafeSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D202A31611D00784ED3 /* CafeSearchModel.swift */; };
 		BEA94D232A31658B00784ED3 /* BlogSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D222A31658B00784ED3 /* BlogSearchModel.swift */; };
 		BEA94D252A3167AA00784ED3 /* BookSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D242A3167AA00784ED3 /* BookSearchModel.swift */; };
+		BEA94D272A31904B00784ED3 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D262A31904B00784ED3 /* Extension+String.swift */; };
+		BEA94D292A31A06A00784ED3 /* WebCeilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D282A31A06A00784ED3 /* WebCeilView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		BEA94D202A31611D00784ED3 /* CafeSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeSearchModel.swift; sourceTree = "<group>"; };
 		BEA94D222A31658B00784ED3 /* BlogSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogSearchModel.swift; sourceTree = "<group>"; };
 		BEA94D242A3167AA00784ED3 /* BookSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchModel.swift; sourceTree = "<group>"; };
+		BEA94D262A31904B00784ED3 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
+		BEA94D282A31A06A00784ED3 /* WebCeilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebCeilView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				BE1CB9DF2A29E30E00158244 /* Network.swift */,
+				BEA94D262A31904B00784ED3 /* Extension+String.swift */,
 				BEA94D0A2A2AF5B800784ED3 /* WebSearchModel.swift */,
 				BEA94D102A2B14C500784ED3 /* ImageSearchModel.swift */,
 				BEA94D122A2B14DD00784ED3 /* VclipSearchModel.swift */,
@@ -120,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				BEA94D142A2B1BB700784ED3 /* SearchBar.swift */,
+				BEA94D282A31A06A00784ED3 /* WebCeilView.swift */,
 				BEA94D162A2B1E2500784ED3 /* WebSearchView.swift */,
 				BEA94D1A2A300E0900784ED3 /* ImageSearchView.swift */,
 				BEA94D1E2A30253800784ED3 /* VclipSearchView.swift */,
@@ -210,10 +216,12 @@
 				BEA94D0B2A2AF5B800784ED3 /* WebSearchModel.swift in Sources */,
 				BEA94D232A31658B00784ED3 /* BlogSearchModel.swift in Sources */,
 				BEA94D252A3167AA00784ED3 /* BookSearchModel.swift in Sources */,
+				BEA94D272A31904B00784ED3 /* Extension+String.swift in Sources */,
 				BEA94D1D2A30224100784ED3 /* VclipSearchViewModel.swift in Sources */,
 				BEA94D172A2B1E2500784ED3 /* WebSearchView.swift in Sources */,
 				BEA94D1F2A30253800784ED3 /* VclipSearchView.swift in Sources */,
 				BEA94D112A2B14C500784ED3 /* ImageSearchModel.swift in Sources */,
+				BEA94D292A31A06A00784ED3 /* WebCeilView.swift in Sources */,
 				BE1CB9E62A29F5FB00158244 /* WebSearchViewModel.swift in Sources */,
 				BEA94D192A3006F600784ED3 /* ImageSearchViewModel.swift in Sources */,
 				BE1CB9E02A29E30E00158244 /* Network.swift in Sources */,

@@ -17,7 +17,8 @@ class WebSearchViewModel: ObservableObject {
     @Published var endPage:Bool = false // 마지막인 경우
     @Published var isLoading:Bool = false // 현재 로딩 중임을 나타낼
     
-    private var totalCount:Int = -1 // 가져올 총 데이터의 갯수
+    var totalCount:Int = -1 // 가져올 총 데이터의 갯수
+    var isTry:Bool = false // 한번이라도 실행 했는지 체크
     private var totalPage:Int = -1 // 가져올 총 페이지 갯수
     private var cancellables: Set<AnyCancellable> = []
     
@@ -34,6 +35,7 @@ class WebSearchViewModel: ObservableObject {
         
         // 가져오기 시작
         isLoading = true
+        isTry = true
         
         // NetworkManager 매니저 이용하여 URLRequest를 받아옴
         guard let request = NetworkManager.RequestURL(Url: APIEndpoint.web.path, query: query) else {
@@ -75,6 +77,17 @@ class WebSearchViewModel: ObservableObject {
                 self.searchWeb.append(contentsOf: response.documents) // 검색결과 배열에 넣어줌
             })
             .store(in: &cancellables)
+    }
+    
+    // MARK: - checkFetchMore
+    // data를 더 가져올지 판단하는 메소드
+    func checkFetchMore(document: WebDocument) {
+        // 비어있지 않고 현재 document가 마지막이면
+        if !searchWeb.isEmpty && document == searchWeb.last {
+            fetchWebSearchData(query: inputText) // 호출
+            return
+        }
+        return
     }
 }
 

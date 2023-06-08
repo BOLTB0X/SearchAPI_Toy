@@ -34,14 +34,8 @@ struct SearchBar: View {
             .foregroundColor(.secondary)
             .background(Color(.secondarySystemBackground))
             .cornerRadius(10.0)
-            
-//            Button(action: {
-//                startSearch()
-//            }) {
-//                Image(systemName: "magnifyingglass.circle.fill")
-//            }
         }
-        .padding(.horizontal)
+        .padding(.horizontal) // 양 옆 간격 조정
     }
 }
 
