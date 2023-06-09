@@ -14,9 +14,8 @@ struct WebSearchView: View {
         NavigationView {
             VStack {
                 SearchBar(inputText: $webViewModel.inputText, startSearch: {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        webViewModel.fetchWebSearchData(query: webViewModel.inputText)
-                    }
+                    webViewModel.fetchWebSearchData(query: webViewModel.inputText)
+                    
                 })
                 // 초기 화면
                 if !webViewModel.isTry {
@@ -43,9 +42,17 @@ struct WebSearchView: View {
             }
             .overlay(
                 Group {
+
                     // 현재 로딩 중이면?
                     if webViewModel.isLoading {
-                        ProgressView() // 로딩 뷰
+                        VStack(alignment: .center ,spacing: 15) {
+                            Text("\(webViewModel.inputText) 검색 중...")
+                                .padding()
+                            ProgressView(value: webViewModel.loadingProgress, total: 100) // 로딩 뷰
+                                .progressViewStyle(CircularProgressViewStyle(tint: .red))
+                                       .padding()
+                        }.frame(width: 200, height: 200)
+        
                     }
                 }
             )

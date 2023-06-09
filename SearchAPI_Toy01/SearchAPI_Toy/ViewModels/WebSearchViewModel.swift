@@ -16,10 +16,12 @@ class WebSearchViewModel: ObservableObject {
     @Published var currentPage:Int = 0 // 현재 페이지 카운트
     @Published var endPage:Bool = false // 마지막인 경우
     @Published var isLoading:Bool = false // 현재 로딩 중임을 나타낼
+    @Published var loadingProgress:Double = 0.0 // 로딩 진행률
     
     var totalCount:Int = -1 // 가져올 총 데이터의 갯수
     var isTry:Bool = false // 한번이라도 실행 했는지 체크
     private var totalPage:Int = -1 // 가져올 총 페이지 갯수
+
     private var cancellables: Set<AnyCancellable> = []
     
     init() {}
@@ -50,33 +52,38 @@ class WebSearchViewModel: ObservableObject {
             return
         }
         
-        // 받아온 data를 WebSearch에 맞게 끔 디코딩 및 파싱
-        WebSearchManger.shared
-            .WebSearchPublisher(dataPublisher: dataPublisher)
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { [weak self] completion in
-                guard let self = self else { return } // 옵셔널 체이닝
-                switch completion {
-                case .finished: // 마쳤을 경우
-                    self.isLoading = false // 로딩이 끝났으면 false로 설정
-                case .failure(let error):
-                    print("\(error.localizedDescription)") // 에러 출력(뭔지는 알아야하기떄문)
-                    self.isLoading = false // 실패한 거니
-                }
-            }, receiveValue: { [weak self] response in
-                guard let self = self else { return } // 옵셔널 체이닝
-                // 이제 내가 필요한 것들을 작업
-                self.currentPage += 1
-                self.totalCount = response.meta?.totalCount ?? 0
-                self.totalPage = response.meta?.pageableCount ?? 0
-                self.endPage = self.currentPage >= self.totalCount ? true : false
-                
-//                for doc in response.documents {
-//                    self.searchWeb.append(doc)
-//                }
-                self.searchWeb.append(contentsOf: response.documents) // 검색결과 배열에 넣어줌
-            })
-            .store(in: &cancellables)
+        //
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            // 받아온 data를 WebSearch에 맞게 끔 디코딩 및 파싱
+            WebSearchManger.shared
+                .WebSearchPublisher(dataPublisher: dataPublisher)
+//                .receive(on: DispatchQueue.main) // 어차피 DispatchQueue.main.asyncAfter을 사용하므로
+                .sink(receiveCompletion: { [weak self] completion in
+                    guard let self = self else { return } // 옵셔널 체이닝
+                    switch completion {
+                    case .finished: // 마쳤을 경우
+                        self.isLoading = false // 로딩이 끝났으면 false로 설정
+                        self.loadingProgress = 100.0 // 로딩 되었으니
+                    case .failure(let error):
+                        print("\(error.localizedDescription)") // 에러 출력(뭔지는 알아야하기떄문)
+                        self.isLoading = false // 실패한 거니
+                        self.loadingProgress = 0.0
+                    }
+                }, receiveValue: { [weak self] response in
+                    guard let self = self else { return } // 옵셔널 체이닝
+                    // 이제 내가 필요한 것들을 작업
+                    self.currentPage += 1
+                    self.totalCount = response.meta?.totalCount ?? 0
+                    self.totalPage = response.meta?.pageableCount ?? 0
+                    self.endPage = self.currentPage >= self.totalCount ? true : false
+                    
+                    //                for doc in response.documents {
+                    //                    self.searchWeb.append(doc)
+                    //                }
+                    self.searchWeb.append(contentsOf: response.documents) // 검색결과 배열에 넣어줌
+                })
+                .store(in: &self.cancellables)
+        }
     }
     
     // MARK: - checkFetchMore
