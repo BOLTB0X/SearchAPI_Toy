@@ -15,7 +15,7 @@ struct ImageResponse: Codable {
 }
 
 // MARK: - ImageDocument
-struct ImageDocument: Codable, Identifiable {
+struct ImageDocument: Codable, Identifiable, Hashable {
     let id = UUID()
     let collection: Collection
     var datetime: String

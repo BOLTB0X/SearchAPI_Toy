@@ -34,7 +34,7 @@ struct WebSearchView: View {
                                 .padding(5)
                             }
                         }
-                        Text("\(webViewModel.inputText)  관련 총 게시물: \(webViewModel.totalCount)")
+                        Text(" 총 게시물: \(webViewModel.searchWeb.count)/\(webViewModel.totalCount)")
                     }
                     Spacer()
                 }
