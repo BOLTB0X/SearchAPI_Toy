@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - SearchBar
+// 공용으로 쓸 검색 창
 struct SearchBar: View {
     @Binding var inputText: String // 입력 받을 텍스트
     var startSearch: () -> Void // 검색 버튼 클릭하면 동작할 클로저

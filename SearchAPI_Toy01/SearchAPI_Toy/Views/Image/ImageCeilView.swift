@@ -9,30 +9,38 @@ import SwiftUI
 
 struct ImageCeilView: View {
     let document: ImageDocument
-    @State private var imageLoading: Bool = true
+    @State private var imageLoading: Bool = true // 로딩 중인지 판단 용도
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading) {
             AsyncImage(url: URL(string: document.thumbnailURL)) { image in
                 image
                     .resizable()
-                    .frame(width: 200, height: 100)
                     .aspectRatio(contentMode: .fit)
+                    .onAppear {
+                        imageLoading = false // 가리기 취소
+                    }
                 
-                //imageLoading = false // 로딩이 완료되었으니
             } placeholder: {
                 Image("free-icon-gallery")
                     .resizable()
-                    .frame(width: 200, height: 100)
                     .aspectRatio(contentMode: .fit)
-                
-                //imageLoading = true
+                    .onAppear {
+                        imageLoading = true // 가리기
+                    }
+                    .redacted(reason: .placeholder)
             }
             
             if imageLoading {
                 Text("Loading...")
+                    .redacted(reason: .placeholder)
+                Text("Loading...")
+                    .redacted(reason: .placeholder)
             } else {
                 Text("출처: \(document.displaySitename.isEmpty ? "???" : document.displaySitename)")
+                    .bold()
+                    .lineLimit(1)
+                Text("게시일: \(document.datetime.isEmpty ? "???" : document.datetime)")
                     .bold()
                     .lineLimit(1)
             }
@@ -41,8 +49,3 @@ struct ImageCeilView: View {
     
 }
 
-//struct ImageCeilView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ImageCeilView()
-//    }
-//}

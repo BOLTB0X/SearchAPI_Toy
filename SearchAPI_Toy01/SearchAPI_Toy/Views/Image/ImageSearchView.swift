@@ -23,12 +23,23 @@ struct ImageSearchView: View {
                     Spacer()
                 } else {
                     if !imageViewModel.searchImage.isEmpty {
-                        ImageCollectionView(searchImage: imageViewModel.searchImage)
-        
+                        ImageCollectionView(imgViewModel: imageViewModel)
+                        Text("총 게시물: \(imageViewModel.searchImage.count)/\(imageViewModel.totalCount)")
+                    } else {
+                        if !imageViewModel.isLoading {
+                            Text("\(imageViewModel.inputText)에 대해 검색 결과가 없습니다.")
                         }
                     }
+                    
+                    Spacer()
                 }
             }
+            .overlay { // 로딩 상태 표시를 위해
+                    if imageViewModel.isLoading {
+                        LoadingState(progress: $imageViewModel.loadingProgress)
+                    }
+            }
+        }
     }
 }
 

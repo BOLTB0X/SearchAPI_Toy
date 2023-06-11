@@ -34,7 +34,7 @@ struct WebSearchView: View {
                                 .padding(5)
                             }
                         }
-                        Text(" 총 게시물: \(webViewModel.searchWeb.count)/\(webViewModel.totalCount)")
+                        Text("총 게시물: \(webViewModel.searchWeb.count)/\(webViewModel.totalCount)")
                     }
                     Spacer()
                 }
@@ -43,14 +43,7 @@ struct WebSearchView: View {
                 Group {
                     // 현재 로딩 중이면?
                     if webViewModel.isLoading {
-                        VStack(alignment: .center ,spacing: 15) {
-                            Text("Loading...")
-                                .font(.system(size: 30, weight: .bold))
-                                .padding()
-                            ProgressView(value: webViewModel.loadingProgress, total: 100) // 로딩 뷰
-                                .progressViewStyle(CircularProgressViewStyle(tint: .blue))
-                                .scaleEffect(3.0)
-                        }
+                        LoadingState(progress: $webViewModel.loadingProgress)
                         
                     }
                 }

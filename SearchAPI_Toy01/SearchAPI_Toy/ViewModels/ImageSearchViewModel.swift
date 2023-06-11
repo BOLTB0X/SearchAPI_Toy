@@ -30,6 +30,7 @@ class ImageSearchViewModel: ObservableObject {
     init() { }
     
     // MARK: - fetchImageSearchData
+    // 다른 뷰모델과 동일한 데이터를 가져오는 메소드
     func fetchImageSearchData(query: String) {
         guard !endPage else {
             print("마지막 페이지")

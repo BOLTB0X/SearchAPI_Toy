@@ -113,4 +113,5 @@ enum NetworkManager {
             }
             .eraseToAnyPublisher() // 지금까지의 데이터 스트림이 어떠했던 최종적인 형태의 Publisher를 리턴
     }
+    
 }
