@@ -6,27 +6,18 @@
 
 ## TODO
 
-동영상 View 정리
+게시물 불러올 때 api 파라미터 다 써보기
 <br/>
 
-게시물 불러올 때 api 파라미터 다 써보기
+하단 탭바 구성
+<br/>
+
+네비게이션 구성
 <br/>
 
 ## 기록
 
-6/12
-<br/>
-
-- collection view 성공
-  <br/>
-
-- 로딩 상태 화면을 겹치게 보이게
-  <br/>
-
-- 로딩 중일때 리스트 셀 블락처리
-  <br/>
-
-![이미지_스크롤](https://github.com/BOLTB0X/Network-programming/assets/83914919/a1ae924b-9c59-4bfa-8836-569c0b97abbe)
+TODO
 <br/>
 
 ## 참고

@@ -26,7 +26,7 @@ struct WebSearchView: View {
                         ScrollView {
                             LazyVStack(alignment: .leading, spacing: 10) {
                                 ForEach(webViewModel.searchWeb, id: \.id) { document in
-                                    WebCeilView(webCeil: document)
+                                    WebCellView(webCell: document)
                                         .onAppear { // 더 불러올지 체크
                                             webViewModel.checkFetchMore(document: document)
                                         }

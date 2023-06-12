@@ -18,7 +18,7 @@ struct ImageCollectionView: View {
         ScrollView {
             LazyVGrid(columns: gridItemLayout, spacing: 10) {
                 ForEach(imgViewModel.searchImage, id: \.self) { document in
-                    ImageCeilView(document:  document)
+                    ImageCellView(document:  document)
                         .onAppear() {
                             // 더 불러오는 지
                             imgViewModel.checkFetchMore(document: document)

@@ -11,14 +11,14 @@ import Combine
 // MARK: - VclipResponse
 struct VclipResponse: Codable {
     let meta: VclipMeta?
-    let documents: [VclipDocument]
+    var documents: [VclipDocument]
 }
 
 // MARK: - VclipDocument
 struct VclipDocument: Codable, Identifiable {
     let id = UUID()
     let author: String
-    let datetime: String
+    var datetime: String
     let playTime: Int
     let thumbnail: String
     let title: String
@@ -29,7 +29,9 @@ struct VclipDocument: Codable, Identifiable {
         case playTime = "play_time"
         case thumbnail, title, url
     }
-    
+}
+
+extension VclipDocument: Equatable {
     static func == (lhs: VclipDocument, rhs: VclipDocument) -> Bool {
         return lhs.id == rhs.id &&
                lhs.datetime == rhs.datetime &&
@@ -61,6 +63,15 @@ final class VclipSearchManager {
     func VclipSearchPublisher(dataPublisher: AnyPublisher<Data, Error>) -> AnyPublisher<VclipResponse, Error> {
         let responsePublisher = dataPublisher
             .decode(type: VclipResponse.self, decoder: JSONDecoder())
+            .map { response in
+                var streamedResponse = response
+                streamedResponse.documents = response.documents.map { document in
+                    var streamedDocument = document
+                    streamedDocument.datetime = streamedDocument.datetime.fomatDateTime()!
+                    return streamedDocument
+                }
+                return streamedResponse
+            }
             .eraseToAnyPublisher()
         return responsePublisher
     }

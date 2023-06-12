@@ -18,6 +18,10 @@ struct ContentView: View {
                 NavigationLink(destination: ImageSearchView()) {
                     Text("이미지 검색")
                 }
+                
+                NavigationLink(destination: VclipSearchView()) {
+                    Text("동영상 검색")
+                }
             }
         }
     }
