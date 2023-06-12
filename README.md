@@ -23,7 +23,7 @@
 **6/12**
 <br/>
 
-<img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%98%81%EC%83%81%EA%B2%80%EC%83%89_1.gif?raw=true" width="200" height="500"/> <img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%98%81%EC%83%81%EA%B2%80%EC%83%89_2.gif?raw=true" width="200" height="500"/>
+<img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%98%81%EC%83%81%EA%B2%80%EC%83%89_1.gif?raw=true" width="250" height="500"/> <img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%98%81%EC%83%81%EA%B2%80%EC%83%89_2.gif?raw=true" width="250" height="500"/>
 <br/>
 
 - 동영상 뷰 구성
