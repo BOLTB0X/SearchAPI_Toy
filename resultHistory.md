@@ -6,17 +6,29 @@
 6/1
 <br/>
 
-![fetchSuccess](https://github.com/BOLTB0X/SearchAPI_Toy/assets/83914919/04840976-6eca-465e-8173-ed1e5b969393)
+<img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/fetchSuccess.gif?raw=true" width="200" height="500"/>
 <br/>
 
 6/4
 <br/>
 
-![SearchSuccess](https://github.com/BOLTB0X/SearchAPI_Toy/assets/83914919/e7f2be03-754a-409e-9320-4ffacc94b9e4)
+<img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/SearchSuccess.gif?raw=true" width="200" height="500"/>
 <br/>
 
 6/9
 <br/>
 
-![검색로딩](https://github.com/BOLTB0X/Network-programming/assets/83914919/a67d4f5c-1005-4af9-ab18-201ebfa39293)
+<img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%9D%B4%EB%AF%B8%EC%A7%80_1%EC%B0%A8.gif?raw=true" width="200" height="500"/> <img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B2%80%EC%83%89%EB%A1%9C%EB%94%A9.gif?raw=true" width="200" height="500"/>
 <br/>
+
+6/11
+<br/>
+
+<img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%9D%B4%EB%AF%B8%EC%A7%80_%EC%8A%A4%ED%81%AC%EB%A1%A4.gif?raw=true width="200" height="500"/>
+<br/>
+
+- collection 뷰 구성
+  <br/>
+
+- 로딩중일때 블락 처리
+  <br/>

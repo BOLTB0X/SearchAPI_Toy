@@ -17,18 +17,37 @@
 
 ## 기록
 
-TODO
+[지난 기록들](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/resultHistory.md)
+<br/>
+
+**6/12**
+<br/>
+
+<img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%98%81%EC%83%81%EA%B2%80%EC%83%89_1.gif?raw=true" width="200" height="500"/> <img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%98%81%EC%83%81%EA%B2%80%EC%83%89_2.gif?raw=true" width="200" height="500"/>
+<br/>
+
+- 동영상 뷰 구성
+  <br/>
+
+- 원본 링크 적용
+  <br/>
+
+- 로딩중일때 블락 처리
+  <br/>
+
 <br/>
 
 ## 참고
 
 - API 관련
+  <br/>
   [api 호출 방법](https://donghoon.io/blog/swift_image_search/)
   <br/>
 
   [apo 호출 관련](https://rldd.tistory.com/215)
 
 - 무한 스크롤 관련
+  <br/>
   [V8tr/InfiniteListSwiftU](https://github.com/V8tr/InfiniteListSwiftUI)
   <br/>
 
@@ -38,6 +57,7 @@ TODO
 <br/>
 
 - SwiftUI 관련
+  <br/>
   [ProgressView 관련](https://seons-dev.tistory.com/entry/SwiftUI-ProgressView-작업-진행률)
   <br/>
 
