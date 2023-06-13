@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct ImageCollectionView: View {
     // 하위뷰이므로
     @StateObject var imgViewModel = ImageSearchViewModel()
@@ -15,17 +14,18 @@ struct ImageCollectionView: View {
     
     var body: some View {
         // 스크롤 뷰 구성
-        ScrollView {
-            LazyVGrid(columns: gridItemLayout, spacing: 10) {
-                ForEach(imgViewModel.searchImage, id: \.self) { document in
-                    ImageCellView(document:  document)
-                        .onAppear() {
-                            // 더 불러오는 지
-                            imgViewModel.checkFetchMore(document: document)
-                        }
+            ScrollView {
+                LazyVGrid(columns: gridItemLayout, spacing: 10) {
+                    ForEach(imgViewModel.searchImage, id: \.self) { document in
+                        ImageCellView(document:  document)
+                            .onAppear() {
+                                // 더 불러오는 지
+                                imgViewModel.checkFetchMore(document: document)
+                            }
+                            // 팝업 부분
+                    }
+                    .padding(5)
                 }
-                .padding(5)
-            }
         }
     }
 }

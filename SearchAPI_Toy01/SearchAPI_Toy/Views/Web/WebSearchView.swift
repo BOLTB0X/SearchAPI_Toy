@@ -34,6 +34,14 @@ struct WebSearchView: View {
                                 .padding(5)
                             }
                         }
+                        .background(
+                            Group {
+                                if webViewModel.isLoading {
+                                    Color.primary.opacity(0.2)
+                                        .edgesIgnoringSafeArea(.all)
+                                }
+                            }
+                        )
                         Text("총 게시물: \(webViewModel.searchWeb.count)/\(webViewModel.totalCount)")
                     }
                     Spacer()

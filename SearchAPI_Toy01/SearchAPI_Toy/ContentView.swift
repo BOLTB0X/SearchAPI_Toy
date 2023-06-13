@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             TabView {
-                WebMainView()
+                WebSearchView()
                     .tabItem {
                         Image(systemName: "doc.text")
                         Text("웹문서 검색")

@@ -10,6 +10,7 @@ import SwiftUI
 struct ImageCellView: View {
     let document: ImageDocument
     @State private var imageLoading: Bool = true // 로딩 중인지 판단 용도
+    @State private var showPopup = false // 팝업창 띄울지
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -29,6 +30,9 @@ struct ImageCellView: View {
                         imageLoading = true // 가리기
                     }
                     .redacted(reason: .placeholder)
+            }
+            .onTapGesture { // 버튼으로 만들기 귀찮아서
+                showPopup.toggle()
             }
             
             if imageLoading {
@@ -52,8 +56,22 @@ struct ImageCellView: View {
                     .foregroundColor(.secondary)
                     .lineLimit(1)
             }
+        }// MARK: - 디테일로 이동
+        .popupNavigationView(horizontalPadding: 40, show: $showPopup) {
+            ImageDetailView(document: document)
+                .navigationTitle("상세 정보")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button("닫기") {
+                            withAnimation {
+                                showPopup.toggle()
+                            }
+                        }
+                    }
+                }
+            
         }
     }
-    
 }
 
