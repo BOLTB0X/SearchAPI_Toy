@@ -48,7 +48,6 @@ struct VclipSearchView: View {
             Group {
                 if vclipViewModel.isLoading {
                     LoadingState(progress: $vclipViewModel.loadingProgress)
-                    
                 }
             }
         )

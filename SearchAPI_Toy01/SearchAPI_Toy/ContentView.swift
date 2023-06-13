@@ -10,18 +10,24 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            VStack {
-                NavigationLink(destination: WebSearchView()) {
-                    Text("웹문서 검색")
-                }
+            TabView {
+                WebMainView()
+                    .tabItem {
+                        Image(systemName: "doc.text")
+                        Text("웹문서 검색")
+                    }
                 
-                NavigationLink(destination: ImageSearchView()) {
-                    Text("이미지 검색")
-                }
+                ImageSearchView()
+                    .tabItem {
+                        Image(systemName: "photo")
+                        Text("이미지 검색")
+                    }
                 
-                NavigationLink(destination: VclipSearchView()) {
-                    Text("동영상 검색")
-                }
+                VclipSearchView()
+                    .tabItem {
+                        Image(systemName: "video.square")
+                        Text("동영상 검색")
+                    }
             }
         }
     }

@@ -17,6 +17,8 @@ struct LoadingState: View {
             Text("Loading...")
                 .font(.system(size: 30, weight: .bold))
                 .padding()
+                .rotationEffect(.degrees(progress * 3.6)) // 회전 애니메이션
+            
             ProgressView(value: progress, total: 100) // 로딩 뷰
                 .progressViewStyle(CircularProgressViewStyle(tint: .blue))
                 .scaleEffect(3.0)

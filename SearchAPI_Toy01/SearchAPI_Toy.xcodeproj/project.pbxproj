@@ -17,6 +17,7 @@
 		BEA0D67F2A359E89004E3E9E /* ImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA0D67E2A359E89004E3E9E /* ImageCollectionView.swift */; };
 		BEA0D6812A35A774004E3E9E /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA0D6802A35A774004E3E9E /* LoadingState.swift */; };
 		BEA789552A369794008C0CA9 /* VclipCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA789542A369794008C0CA9 /* VclipCellView.swift */; };
+		BEA789A42A3804C0008C0CA9 /* WebMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA789A32A3804C0008C0CA9 /* WebMainView.swift */; };
 		BEA94D0B2A2AF5B800784ED3 /* WebSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D0A2A2AF5B800784ED3 /* WebSearchModel.swift */; };
 		BEA94D112A2B14C500784ED3 /* ImageSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D102A2B14C500784ED3 /* ImageSearchModel.swift */; };
 		BEA94D132A2B14DD00784ED3 /* VclipSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA94D122A2B14DD00784ED3 /* VclipSearchModel.swift */; };
@@ -47,6 +48,7 @@
 		BEA0D67E2A359E89004E3E9E /* ImageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionView.swift; sourceTree = "<group>"; };
 		BEA0D6802A35A774004E3E9E /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
 		BEA789542A369794008C0CA9 /* VclipCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VclipCellView.swift; sourceTree = "<group>"; };
+		BEA789A32A3804C0008C0CA9 /* WebMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebMainView.swift; sourceTree = "<group>"; };
 		BEA94D0A2A2AF5B800784ED3 /* WebSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSearchModel.swift; sourceTree = "<group>"; };
 		BEA94D102A2B14C500784ED3 /* ImageSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchModel.swift; sourceTree = "<group>"; };
 		BEA94D122A2B14DD00784ED3 /* VclipSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VclipSearchModel.swift; sourceTree = "<group>"; };
@@ -127,8 +129,9 @@
 		BEA785A52A31C08F006D409D /* Web */ = {
 			isa = PBXGroup;
 			children = (
-				BEA94D282A31A06A00784ED3 /* WebCellView.swift */,
+				BEA789A32A3804C0008C0CA9 /* WebMainView.swift */,
 				BEA94D162A2B1E2500784ED3 /* WebSearchView.swift */,
+				BEA94D282A31A06A00784ED3 /* WebCellView.swift */,
 			);
 			path = Web;
 			sourceTree = "<group>";
@@ -163,8 +166,8 @@
 				BEA94D142A2B1BB700784ED3 /* SearchBar.swift */,
 				BEA0D6802A35A774004E3E9E /* LoadingState.swift */,
 				BEA785A52A31C08F006D409D /* Web */,
-				BEA789532A36972D008C0CA9 /* Vclip */,
 				BEA0D6792A3440CF004E3E9E /* Image */,
+				BEA789532A36972D008C0CA9 /* Vclip */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				BE1CB9E62A29F5FB00158244 /* WebSearchViewModel.swift in Sources */,
 				BEA94D192A3006F600784ED3 /* ImageSearchViewModel.swift in Sources */,
 				BE1CB9E02A29E30E00158244 /* Network.swift in Sources */,
+				BEA789A42A3804C0008C0CA9 /* WebMainView.swift in Sources */,
 				BEA94D132A2B14DD00784ED3 /* VclipSearchModel.swift in Sources */,
 				BEA0D67F2A359E89004E3E9E /* ImageCollectionView.swift in Sources */,
 				BEA0D6812A35A774004E3E9E /* LoadingState.swift in Sources */,
