@@ -6,7 +6,7 @@
 <br/>
 
 ~~조금씩 조금씩~~
-<br//>
+<br/>
 
 카카오의 Open API 중 [Daum 검색](https://developers.kakao.com/docs/latest/ko/daum-search/dev-guide)를 통한 Toy Project
 <br/>
