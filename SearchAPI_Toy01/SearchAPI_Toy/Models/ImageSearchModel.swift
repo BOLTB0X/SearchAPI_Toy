@@ -17,14 +17,14 @@ struct ImageResponse: Codable {
 // MARK: - ImageDocument
 struct ImageDocument: Codable, Identifiable, Hashable {
     let id = UUID()
-    let collection: Collection
+    var collection: Collection
     var datetime: String
-    let displaySitename: String
-    let docURL: String
-    let height: Int
-    let imageURL: String
-    let thumbnailURL: String
-    let width: Int
+    var displaySitename: String
+    var docURL: String
+    var height: Int
+    var imageURL: String
+    var thumbnailURL: String
+    var width: Int
     
     enum Collection: String, Codable {
         case blog = "blog"
@@ -41,6 +41,13 @@ struct ImageDocument: Codable, Identifiable, Hashable {
         case imageURL = "image_url"
         case thumbnailURL = "thumbnail_url"
         case width
+    }
+    
+    // MARK: - getDummyData
+    static func getDummyData() -> ImageDocument {
+        // 더미
+        let dummy = ImageDocument(collection: .blog, datetime: "", displaySitename: "", docURL: "", height: 0, imageURL: "", thumbnailURL: "", width: 0)
+        return dummy
     }
 }
 

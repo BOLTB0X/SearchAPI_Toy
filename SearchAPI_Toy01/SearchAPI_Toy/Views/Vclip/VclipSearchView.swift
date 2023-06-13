@@ -19,6 +19,13 @@ struct VclipSearchView: View {
                 
                 // 초기 화면
                 if !vclipViewModel.isTry {
+                    Spacer()
+                    HStack(alignment: .center, spacing: 15) {
+                        Image(systemName: "video.square")                            .resizable()
+                            .frame(width: 30, height: 30)
+                        Text("동영상 검색")
+                            .font(.system(size: 25, weight: .bold))
+                    }
                     Text("검색어를 입력해주세요")
                     Spacer()
                 } else {

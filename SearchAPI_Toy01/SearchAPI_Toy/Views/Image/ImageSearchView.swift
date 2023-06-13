@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ImageSearchView: View {
     @ObservedObject var imageViewModel = ImageSearchViewModel()
-    
+    @State private var imgClick = Bool() // 셀의 이미지를 클릭했는지
+
     var body: some View {
         NavigationView {
             VStack {
@@ -19,11 +20,20 @@ struct ImageSearchView: View {
                 
                 // 초기 화면
                 if !imageViewModel.isTry {
+                    Spacer()
+                    HStack(alignment: .center, spacing: 15) {
+                        Image(systemName: "photo")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                        Text("이미지 검색")
+                            .font(.system(size: 25, weight: .bold))
+                    }
                     Text("검색어를 입력해주세요")
                     Spacer()
                 } else {
                     if !imageViewModel.searchImage.isEmpty {
-                        ImageCollectionView(imgViewModel: imageViewModel)
+                        // 바인딩 추가
+                        ImageCollectionView(imgViewModel: imageViewModel, showPopup: $imgClick)
                         Text("총 게시물: \(imageViewModel.searchImage.count)/\(imageViewModel.totalCount)")
                     } else {
                         if !imageViewModel.isLoading {
@@ -40,6 +50,23 @@ struct ImageSearchView: View {
                     }
             }
         }
+        // MARK: - 상세 팝업 뷰
+        .popupNavigationView(horizontalPadding: 40, show: $imgClick) {
+            ImageDetailView(document: imageViewModel.imgDetail)
+                .navigationTitle("상세 정보")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button("닫기") {
+                            withAnimation {
+                                imgClick.toggle()
+                            }
+                        }
+                    }
+                }
+            
+        }
+        // 팝업 부분
     }
 }
 

@@ -19,6 +19,13 @@ struct WebSearchView: View {
                 })
                 // 초기 화면
                 if !webViewModel.isTry {
+                    Spacer()
+                    HStack(alignment: .center, spacing: 15) {
+                        Image(systemName: "doc.text")                    .resizable()
+                            .frame(width: 30, height: 30)
+                        Text("웹문서 검색")
+                            .font(.system(size: 25, weight: .bold))
+                    }
                     Text("검색어를 입력해주세요")
                     Spacer()
                 } else { // 검색을 시도 했을 시

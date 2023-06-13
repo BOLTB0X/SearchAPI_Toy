@@ -12,6 +12,7 @@ import Combine
 class ImageSearchViewModel: ObservableObject {
     @Published var searchImage: [ImageDocument] = [] // 검색된 문서를 담아둘 배열
     @Published var inputText = "" // 검색어를 입력받는 변수
+    @Published var imgDetail: ImageDocument = ImageDocument.getDummyData() // 이미지 상세 정보
     
     // 무한 스크롤 관련
     @Published var currentPage:Int = 0 // 현재 페이지 카운트
@@ -79,6 +80,21 @@ class ImageSearchViewModel: ObservableObject {
             fetchImageSearchData(query: inputText)
             return
         }
+        return
+    }
+    
+    // MARK: - updateImageDetail
+    // 이미지 상세 정보 업데이트
+    // 팝업으로 띄우기 위해 뷰모델에 메소드를 팜
+    func updateImageDetail(document: ImageDocument) {
+        imgDetail.collection = document.collection
+        imgDetail.datetime = document.datetime
+        imgDetail.displaySitename = document.displaySitename
+        imgDetail.docURL = document.docURL
+        imgDetail.height = document.height
+        imgDetail.imageURL = document.imageURL
+        imgDetail.thumbnailURL = document.thumbnailURL
+        imgDetail.width = document.width
         return
     }
     
