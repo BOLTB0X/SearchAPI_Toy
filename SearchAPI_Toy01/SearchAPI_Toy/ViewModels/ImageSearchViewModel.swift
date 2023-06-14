@@ -12,7 +12,9 @@ import Combine
 class ImageSearchViewModel: ObservableObject {
     @Published var searchImage: [ImageDocument] = [] // 검색된 문서를 담아둘 배열
     @Published var inputText = "" // 검색어를 입력받는 변수
+    
     @Published var imgDetail: ImageDocument = ImageDocument.getDummyData() // 이미지 상세 정보
+    @Published var searchParam: SearchParameter = SearchParameter.getDummyData()
     
     // 무한 스크롤 관련
     @Published var currentPage:Int = 0 // 현재 페이지 카운트
@@ -38,14 +40,16 @@ class ImageSearchViewModel: ObservableObject {
             return
         }
         
-        checkQuery(query: query) // 검색어가 그대로인지 확인
+        // 추가
+        searchParam.query = query // 검색어 업데이트
+        checkQuery(query: searchParam.query) // 검색어가 그대로인지 확인
         
         // start
         isLoading = true
         isTry = true
         
         // NetworkManager 매니저 이용하여 URLRequest를 받아옴
-        guard let request = NetworkManager.RequestURL(Url: APIEndpoint.image.path, query: query) else {
+        guard let request = NetworkManager.RequestURL(Url: APIEndpoint.image.path, searchParam: searchParam) else {
             print("URLRequest 생성 실패")
             isLoading = false // false로 변경
             return

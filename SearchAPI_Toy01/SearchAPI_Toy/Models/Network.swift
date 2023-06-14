@@ -23,22 +23,47 @@ enum APIEndpoint {
         switch self {
         case .web:
             return "https://dapi.kakao.com/v2/search/web"
-        
+            
         case .vclip:
             return "https://dapi.kakao.com/v2/search/vclip"
-        
+            
         case .image:
             return "https://dapi.kakao.com/v2/search/image"
-       
+            
         case .cafe:
             return "https://dapi.kakao.com/v2/search/cafe"
-        
+            
         case .book:
             return "https://dapi.kakao.com/v3/search/book"
-        
+            
         case .blog:
             return "https://dapi.kakao.com/v2/search/blog"
         }
+    }
+}
+
+// MARK: - SearchParameter
+// 검색할때 쓰는 파라티머
+struct SearchParameter {
+    var query:String
+    var sort:String?
+    var page:Int?
+    var size:Int?
+    var targetField:String? // book 전용
+    
+    init(query: String, sort: String? = nil, page: Int? = nil, size: Int? = nil, targetField: String? = nil) {
+        self.query = query
+        self.sort = sort
+        self.page = page
+        self.size = size
+        self.targetField = targetField
+    }
+    
+    // MARK: - getDummyData
+    static func getDummyData() -> SearchParameter {
+        // 더미
+        let dummy = SearchParameter(query: "")
+        return dummy
     }
 }
 
@@ -54,34 +79,37 @@ enum NetworkManager {
         return apiKey
     }
     
-        
     // MARK: - RequestURL
     // 요청할 URL을 반환하는 메소드
-    static func RequestURL(Url:String , query: String, sortType: String? = nil, page: Int? = nil, pageSize: Int? = nil, targetField: String? = nil) -> URLRequest? {
+    // 파라미터 수정
+    static func RequestURL(Url:String, searchParam: SearchParameter) -> URLRequest? {
         guard let apiKey = NetworkManager.apiKey else {
             fatalError("API_KEY가 설정 X\n 번들 의심")
         }
         
         let url = URL(string: Url)!
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
-        // 쿼리(검색어)는 필수
+        
+        // 검색어는 필수
         components.queryItems = [
-            URLQueryItem(name: "query", value: query)
+            URLQueryItem(name: "query", value: searchParam.query)
         ]
         
         // 선택사항인 요청 파라미터
-        if let sort = sortType {
+        if let sort = searchParam.sort {
             components.queryItems?.append(URLQueryItem(name: "sort", value: sort))
         }
-        if let page = page {
+        
+        if let page = searchParam.page {
             components.queryItems?.append(URLQueryItem(name: "page", value: String(page)))
         }
-        if let size = pageSize {
+        
+        if let size = searchParam.size {
             components.queryItems?.append(URLQueryItem(name: "size", value: String(size)))
         }
         
-        if let target = targetField {
-            components.queryItems?.append(URLQueryItem(name: "target", value: String(target)))
+        if let target = searchParam.targetField {
+            components.queryItems?.append(URLQueryItem(name: "target", value: target))
         }
         
         // 마지막 체크
@@ -103,7 +131,7 @@ enum NetworkManager {
         URLSession.shared
             .dataTaskPublisher(for: forRequest)
             .receive(on: DispatchQueue.main) // 받는 것 메인
-            // 요청했은니 데이터와 에러를 나눠 확인
+        // 요청했은니 데이터와 에러를 나눠 확인
             .tryMap { data, response in
                 // HTTPURLResponse이고 상태코드가 200이여만 함
                 guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {

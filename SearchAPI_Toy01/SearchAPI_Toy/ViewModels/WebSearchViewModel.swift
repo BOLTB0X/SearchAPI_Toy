@@ -14,6 +14,8 @@ class WebSearchViewModel: ObservableObject {
     @Published var searchWeb: [WebDocument] = [] // 검색된 문서를 띄울 배열
     @Published var inputText = "" // 검색어를 입력받는 변수
     
+    @Published var searchParam: SearchParameter = SearchParameter.getDummyData()
+    
     @Published var currentPage:Int = 0 // 현재 페이지 카운트
     @Published var endPage:Bool = false // 마지막인 경우
     @Published var isLoading:Bool = false // 현재 로딩 중임을 나타낼
@@ -38,19 +40,20 @@ class WebSearchViewModel: ObservableObject {
             return
         }
         
-        // 검색어 체크
-        checkQuery(query: query)
+        searchParam.query = query // 검색어 업데이트
+        checkQuery(query: searchParam.query) // 검색어가 그대로인지 확인
         
         // 가져오기 시작
         isLoading = true
         isTry = true
         
         // NetworkManager 매니저 이용하여 URLRequest를 받아옴
-        guard let request = NetworkManager.RequestURL(Url: APIEndpoint.web.path, query: query) else {
+        guard let request = NetworkManager.RequestURL(Url: APIEndpoint.web.path, searchParam: searchParam) else {
             print("URLRequest 생성 실패")
             isLoading = false
             return
         }
+        
         // URLRequest를 통해 data를 받아옴
         guard let dataPublisher = NetworkManager.DataPublisher(forRequest: request) else {
             print("통신 에러")
@@ -125,10 +128,6 @@ class WebSearchViewModel: ObservableObject {
         self.totalPage = response.meta?.pageableCount ?? 0
         self.loadingProgress += 50.0
         self.endPage = self.currentPage >= self.totalCount ? true : false
-        
-        //                for doc in response.documents {
-        //                    self.searchWeb.append(doc)
-        //                }
         self.searchWeb.append(contentsOf: response.documents) // 검색결과 배열에 넣어줌
     }
 }

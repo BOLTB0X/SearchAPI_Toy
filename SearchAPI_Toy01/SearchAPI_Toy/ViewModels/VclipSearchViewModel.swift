@@ -12,6 +12,8 @@ import Combine
 class VclipSearchViewModel: ObservableObject {
     @Published var searchVclip: [VclipDocument] = []
     @Published var inputText = "" // 검색어를 입력받는 변수
+    @Published var searchParam: SearchParameter = SearchParameter.getDummyData()
+
     
     // 무한 스크롤 관련
     @Published var currentPage:Int = 0
@@ -35,14 +37,16 @@ class VclipSearchViewModel: ObservableObject {
             print("마지막 페이지")
             return
         }
-        checkQuery(query: query) // 검색어가 그대로인지 확인
+        
+        searchParam.query = query // 검색어 업데이트
+        checkQuery(query: searchParam.query) // 검색어가 그대로인지 확인
 
         // start
         isLoading = true
         isTry = true
         
         // NetworkManager 매니저 이용하여 URLRequest를 받아옴
-        guard let request = NetworkManager.RequestURL(Url: APIEndpoint.vclip.path, query: query) else {
+        guard let request = NetworkManager.RequestURL(Url: APIEndpoint.vclip.path, searchParam: searchParam) else {
             print("URLRequest 생성 실패")
             isLoading = false // false로 변경
             return

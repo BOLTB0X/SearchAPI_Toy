@@ -56,3 +56,11 @@
 
 - 뷰 익스텐션 추가
   <br/>
+
+## 6/14
+
+<img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/TabView%20%EC%88%98%EC%A0%952.gif?raw=true" width="250" height="500"/> <img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%9B%B9%EB%AC%B8%EC%84%9C%20%EA%B2%80%EC%83%89%EC%8B%9C%20%EB%B0%B0%EA%B2%BD%20%ED%88%AC%EB%AA%85%ED%95%98%EA%B2%8C%20%EC%A0%84%ED%99%98.gif?raw=true" width="250" height="500"/>
+<br/>
+
+<img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%9D%B4%EB%AF%B8%EC%A7%80_%EC%83%81%EC%84%B8%ED%8C%9D%EC%97%851.gif?raw=true" width="250" height="500"/> <img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%9D%B4%EB%AF%B8%EC%A7%80_%EC%83%81%EC%84%B8%ED%8C%9D%EC%97%852.gif?raw=true" width="250" height="500"/>
+<br/>

@@ -12,11 +12,22 @@ struct WebSearchView: View {
     
     var body: some View {
         NavigationView {
+            // MARK: - 검색어 관련
             VStack {
+                // 검색 바
                 SearchBar(inputText: $webViewModel.inputText, startSearch: {
                     webViewModel.fetchWebSearchData(query: webViewModel.inputText)
                     
                 })
+                // 검색 조건
+                HStack {
+                    SearchPicker(sortType: $webViewModel.searchParam.sort, pageType: $webViewModel.searchParam.page, sizeType: $webViewModel.searchParam.size)
+                        
+                    Spacer()
+                }
+                
+                Divider() // 구분선
+                
                 // 초기 화면
                 if !webViewModel.isTry {
                     Spacer()
@@ -49,6 +60,9 @@ struct WebSearchView: View {
                                 }
                             }
                         )
+                        
+                        Divider() // 구분선
+                        
                         Text("총 게시물: \(webViewModel.searchWeb.count)/\(webViewModel.totalCount)")
                     }
                     Spacer()
