@@ -64,3 +64,12 @@
 
 <img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%9D%B4%EB%AF%B8%EC%A7%80_%EC%83%81%EC%84%B8%ED%8C%9D%EC%97%851.gif?raw=true" width="250" height="500"/> <img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%9D%B4%EB%AF%B8%EC%A7%80_%EC%83%81%EC%84%B8%ED%8C%9D%EC%97%852.gif?raw=true" width="250" height="500"/>
 <br/>
+
+- Tabview 수정
+  <br/>
+
+- 웹문서 검색 로딩시 여백 투명한 회색 적용
+  <br/>
+
+- 이미지 클릭시 상세 뷰 팝업창 띄우기 완성
+  <br/>
