@@ -17,6 +17,14 @@ struct ImageSearchView: View {
                 SearchBar(inputText: $imageViewModel.inputText,
                           startSearch: { imageViewModel.fetchImageSearchData(query: imageViewModel.inputText)
                 })
+                // 검색 조건
+                HStack {
+                    SearchPicker(sortType: $imageViewModel.searchParam.sort, pageType: $imageViewModel.searchParam.page, sizeType: $imageViewModel.searchParam.size)
+                        
+                    Spacer()
+                }
+                
+                Divider() // 구분선
                 
                 // 초기 화면
                 if !imageViewModel.isTry {

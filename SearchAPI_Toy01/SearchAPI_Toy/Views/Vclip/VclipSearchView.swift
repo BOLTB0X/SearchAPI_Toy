@@ -17,6 +17,15 @@ struct VclipSearchView: View {
                           startSearch: { vclipViewModel.fetchVclipSearchData(query: vclipViewModel.inputText)
                 })
                 
+                // 검색 조건
+                HStack {
+                    SearchPicker(sortType: $vclipViewModel.searchParam.sort, pageType: $vclipViewModel.searchParam.page, sizeType: $vclipViewModel.searchParam.size)
+                        
+                    Spacer()
+                }
+                
+                Divider() // 구분선
+                
                 // 초기 화면
                 if !vclipViewModel.isTry {
                     Spacer()
