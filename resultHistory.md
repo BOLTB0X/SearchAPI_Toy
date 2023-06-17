@@ -73,3 +73,15 @@
 
 - 이미지 클릭시 상세 뷰 팝업창 띄우기 완성
   <br/>
+
+## 6/16
+
+<br/>
+<img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B2%80%EC%83%89Picker.gif?raw=true" width="250" height="500"/> <img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%20%EC%A0%81%EC%9A%A9_%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0%20%EB%AF%B8%EC%A0%81%EC%9A%A9.gif?raw=true" width="250" height="500"/> <img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%20%EC%A0%81%EC%9A%A9_%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0%20%EC%A0%81%EC%9A%A9.gif?raw=true" width="250" height="500"/>
+<br/>
+
+- Picker 적용
+  <br/>
+
+- 검색 파라미터 중 옵션인 것들을 Picker와 바인딩
+  <br/>

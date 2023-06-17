@@ -30,15 +30,19 @@
 [지난 기록들](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/resultHistory.md)
 <br/>
 
-**6/14**
-<br/>
-<img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B2%80%EC%83%89Picker.gif?raw=true" width="250" height="500"/> <img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%20%EC%A0%81%EC%9A%A9_%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0%20%EB%AF%B8%EC%A0%81%EC%9A%A9.gif?raw=true" width="250" height="500"/> <img src="https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%20%EC%A0%81%EC%9A%A9_%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0%20%EC%A0%81%EC%9A%A9.gif?raw=true" width="250" height="500"/>
+**6/17**
 <br/>
 
-- Picker 적용
+![시뮬레이터 녹화](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/Webview%20%EC%A0%81%EC%9A%A9.gif?raw=true)
+<br/>
+
+~~시뮬레이터 녹화 기능이 있는지 지금 알았다~~
+<br/>
+
+- Link에서 WebView 변경
   <br/>
 
-- 검색 파라미터 중 옵션인 것들을 Picker와 바인딩
+- 일단 검색 조건 이미지, 동영상도 적용
   <br/>
 
 ## 참고
