@@ -13,7 +13,7 @@ struct WebCellView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             // 제목 클릭시 원본 링크로
-            Link(destination: URL(string: webCell.url)!, label: {
+            NavigationLink(destination: WebView(urlToLoad: webCell.url), label: {
                 // 제목
                 Text(webCell.title)
                     .font(.system(size: 25, weight: .bold))

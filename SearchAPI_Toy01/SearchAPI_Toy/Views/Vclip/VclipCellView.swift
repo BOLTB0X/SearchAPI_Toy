@@ -73,6 +73,12 @@ struct VclipCellView: View {
                                 .font(.system(size: 10, weight: .light))
                                 .foregroundColor(.secondary)
                                 .lineLimit(1)
+                            
+                            NavigationLink(destination: WebView(urlToLoad: document.url), label: {
+                                // 제목
+                                Text("원본 보기")
+                                    .font(.subheadline)
+                            })
                         }
                         Spacer()
                     }

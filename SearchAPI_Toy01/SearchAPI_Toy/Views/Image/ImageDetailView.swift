@@ -26,8 +26,13 @@ struct ImageDetailView: View {
             VStack(alignment: .leading) {
                 Text("출처: \(document.displaySitename)")
                     .font(.subheadline)
-                Text("출처 URL: \(document.docURL)")
-                    .font(.subheadline)
+                
+                NavigationLink(destination: WebView(urlToLoad: document.docURL), label: {
+                    // 제목
+                    Text("원본 보기")
+                        .font(.subheadline)
+                })
+                
                 Text("원본 크기: \(document.width) X \(document.height)")
                     .font(.subheadline)
             }
