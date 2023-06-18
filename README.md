@@ -16,13 +16,10 @@
 
 ## TODO
 
-1. 게시물 불러올 때 api 파라미터 다 써보기
+1. 애니메이션 효과 추가(loading, 검색창 애니메이션 효과)
    <br/>
 
-2. WebKit 추가
-   <br/>
-
-3. 애니메이션 효과 추가
+2. 카카오 맵
    <br/>
 
 ## 기록
@@ -48,25 +45,35 @@
 ## 참고
 
 - API 관련
-  -- [api 호출 방법](https://donghoon.io/blog/swift_image_search/)
 
-  -- [apo 호출 관련](https://rldd.tistory.com/215)
+  - [api 호출 방법](https://donghoon.io/blog/swift_image_search/) +[api 호출 관련](https://rldd.tistory.com/215)
 
 - 무한 스크롤 관련
-  -- [V8tr/InfiniteListSwiftU](https://github.com/V8tr/InfiniteListSwiftUI)
 
-  -- [codekodo.tistory](https://codekodo.tistory.com/207)
+  - [V8tr/InfiniteListSwiftU](https://github.com/V8tr/InfiniteListSwiftUI)
+
+  - [codekodo.tistory](https://codekodo.tistory.com/207)
 
 - 팝업 관련
-  -- [custom PopUp](https://github.com/SnowLukin/CustomPopUp)
+
+  - [custom PopUp](https://github.com/SnowLukin/CustomPopUp)
+
+- 애니메이션
+
+  - [KeatoonMask](https://github.com/KeatoonMask/SwiftUI-Animation/tree/master)
+
+  - [기본 애니메이션](https://80000coding.oopy.io/bfcbea75-767f-4a9a-87c3-0883a97115bc)
 
 - SwiftUI 관련
-  -- [ProgressView 관련](https://seons-dev.tistory.com/entry/SwiftUI-ProgressView-작업-진행률)
 
-  -- [Redacted 관련](https://seons-dev.tistory.com/entry/SwiftUI-Redacted)
+  - [ProgressView 관련](https://seons-dev.tistory.com/entry/SwiftUI-ProgressView-작업-진행률)
 
-  -- [weak self 관련](https://ios-development.tistory.com/926)
+  - [Redacted 관련](https://seons-dev.tistory.com/entry/SwiftUI-Redacted)
 
-  -- [tabView 관련](https://seons-dev.tistory.com/entry/SwiftUI-TabView)
+  - [weak self 관련](https://ios-development.tistory.com/926)
 
-  -- [Picker 관련](https://www.hohyeonmoon.com/blog/swiftui-tutorial-picker/)
+  - [tabView 관련](https://seons-dev.tistory.com/entry/SwiftUI-TabView)
+
+  - [Picker 관련](https://www.hohyeonmoon.com/blog/swiftui-tutorial-picker/)
+
+  - [WebView](https://seons-dev.tistory.com/entry/SwiftUI-WebView-%EC%83%9D%EC%84%B1%EC%BD%94%EB%93%9C)
