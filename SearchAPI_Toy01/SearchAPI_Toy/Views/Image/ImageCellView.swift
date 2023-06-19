@@ -17,6 +17,7 @@ struct ImageCellView: View {
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .cornerRadius(8)
                     .onAppear {
                         imageLoading = false // 가리기 취소
                     }
@@ -25,6 +26,7 @@ struct ImageCellView: View {
                 Image("free-icon-gallery")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .cornerRadius(8)
                     .onAppear {
                         imageLoading = true // 가리기
                     }
@@ -34,19 +36,21 @@ struct ImageCellView: View {
             if imageLoading {
                 Text("Loading...")
                     .redacted(reason: .placeholder)
-                    .font(.system(size: 25, weight: .bold))
+                    .font(.system(size: 20, weight: .bold))
                     .lineLimit(1)
                     .redacted(reason: .placeholder)
+                
                 Text("Loading...")
                     .lineLimit(1)
                     .font(.subheadline)
                     .redacted(reason: .placeholder)
-                    .redacted(reason: .placeholder)
+                
             } else {
                 Text("\(document.displaySitename.isEmpty ? "???" : document.displaySitename)")
-                    .font(.system(size: 25, weight: .bold))
+                    .font(.system(size: 20, weight: .bold))
                     .bold()
                     .lineLimit(1)
+                
                 Text("\(document.datetime.isEmpty ? "???" : document.datetime)")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
