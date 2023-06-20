@@ -15,7 +15,7 @@ class CoreDataManager {
     private init() { }
     
     // MARK: - searchContainer
-    private lazy var searchContainer: NSPersistentContainer = {
+    lazy var searchContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "SearchModel")
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {

@@ -37,7 +37,7 @@ struct SearchBar: View {
             .background(Color(.secondarySystemBackground))
             .cornerRadius(10.0)
         }
-        .padding(.horizontal) // 양 옆 간격 조정
+        //.padding(.horizontal) // 양 옆 간격 조정
     }
 }
 
