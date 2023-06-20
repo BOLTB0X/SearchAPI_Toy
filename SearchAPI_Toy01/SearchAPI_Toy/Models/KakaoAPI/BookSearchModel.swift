@@ -18,7 +18,8 @@ struct BookResponse: Codable {
 struct BookDocument: Codable, Identifiable {
     let id = UUID()
     let authors: [String]
-    let contents, datetime, isbn: String
+    let contents, isbn: String
+    var datetime: String
     let price: Int
     let publisher: String
     let salePrice: Int
@@ -73,6 +74,15 @@ final class BookSearchManager {
         let responsePublisher = dataPublisher
             // Decoding
             .decode(type: BookResponse.self, decoder: JSONDecoder())
+            .map { response in
+                var streamedResponse = response
+                streamedResponse.documents = response.documents.map { document in
+                    var streamedDocument = document
+                    streamedDocument.datetime = streamedDocument.datetime.fomatDateTime()!
+                    return streamedDocument
+                }
+                return streamedResponse
+            }
             .eraseToAnyPublisher()
         return responsePublisher
     }

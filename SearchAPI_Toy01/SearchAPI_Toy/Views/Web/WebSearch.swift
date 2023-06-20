@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WebSearchView: View {
+struct WebSearch: View {
     @ObservedObject var webViewModel = WebSearchViewModel()
     
     var body: some View {
@@ -44,7 +44,7 @@ struct WebSearchView: View {
                         ScrollView {
                             LazyVStack(alignment: .leading, spacing: 10) {
                                 ForEach(webViewModel.searchWeb, id: \.id) { document in
-                                    WebCellView(webCell: document)
+                                    WebCell(webCell: document)
                                         .onAppear { // 더 불러올지 체크
                                             webViewModel.checkFetchMore(document: document)
                                         }
@@ -83,6 +83,6 @@ struct WebSearchView: View {
 
 struct WebSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        WebSearchView()
+        WebSearch()
     }
 }

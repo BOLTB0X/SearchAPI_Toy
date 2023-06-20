@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ImageCollectionView: View {
+struct ImageCollection: View {
     // 하위뷰이므로
     @StateObject var imgViewModel = ImageSearchViewModel()
     @Binding var showPopup: Bool // 팝업창 띄울지
@@ -18,7 +18,7 @@ struct ImageCollectionView: View {
             ScrollView {
                 LazyVGrid(columns: gridItemLayout, spacing: 10) {
                     ForEach(imgViewModel.searchImage, id: \.self) { document in
-                        ImageCellView(document:  document)
+                        ImageCell(document:  document)
                             .onAppear() {
                                 // 더 불러오는 지
                                 imgViewModel.checkFetchMore(document: document)

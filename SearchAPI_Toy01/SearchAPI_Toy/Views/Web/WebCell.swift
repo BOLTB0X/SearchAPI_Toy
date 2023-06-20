@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WebCellView: View {
+struct WebCell: View {
     let webCell: WebDocument
     
     var body: some View {

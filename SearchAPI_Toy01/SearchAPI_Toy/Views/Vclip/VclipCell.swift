@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct VclipCellView: View {
+struct VclipCell: View {
     let document: VclipDocument
     @State private var imageLoading: Bool = true // 로딩 중인지 판단 용도
     

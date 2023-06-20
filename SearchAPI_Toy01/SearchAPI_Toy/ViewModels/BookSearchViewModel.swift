@@ -1,58 +1,55 @@
 //
-//  WebViewModel.swift
+//  BookSearchViewModel.swift
 //  SearchAPI_Toy
 //
-//  Created by KyungHeon Lee on 2023/06/02.
+//  Created by KyungHeon Lee on 2023/06/19.
 //
 
 import Foundation
 import Combine
 
-// MARK: - WebSearchViewModel
-class WebSearchViewModel: ObservableObject {
-    // MARK: - 프로퍼티
-    @Published var searchWeb: [WebDocument] = [] // 검색된 문서를 띄울 배열
+// MARK: - BookSearchViewModel
+class BookSearchViewModel: ObservableObject {
+    @Published var searchBook: [BookDocument] = [] // 검색된 문서를 담아둘 배열
     @Published var inputText = "" // 검색어를 입력받는 변수
     
+    //@Published var imgDetail: BookDocument = BookDocument.getDummyData() // 이미지 상세 정보
     @Published var searchParam: SearchParameter = SearchParameter.getDummyData()
     
+    // 무한 스크롤 관련
     @Published var currentPage:Int = 0 // 현재 페이지 카운트
     @Published var endPage:Bool = false // 마지막인 경우
     @Published var isLoading:Bool = false // 현재 로딩 중임을 나타낼
+    
     @Published var loadingProgress:Double = 0.0 // 로딩 진행률
     
     var totalCount:Int = -1 // 가져올 총 데이터의 갯수
-    var isTry:Bool = false // 한번이라도 실행 했는지 체크
+    var isTry:Bool = false // 한번이라도 실행했는지
     
-    private var preQuery: String = "" // 검색어 체크를 위한
+    private var preQuery: String = "" // 검색어 체크용
     private var totalPage:Int = -1 // 가져올 총 페이지 갯수
-
     private var cancellables: Set<AnyCancellable> = []
     
-    init() {}
+    init() { }
     
-    // MARK: - fetchWebSearchData
-    // 뷰모델에서 검색어에 관련된 WebSearchData를 가져오는 메소드
-    func fetchWebSearchData(query: String) {
-        // 가져오기 시작
-        isLoading = true
-        // 마지막까지 갔는지 체크
+    // MARK: - fetchBookSearchData
+    func fetchBookSearchData(query: String) {
         guard !endPage else {
-            print("다 가져옴")
+            print("마지막 페이지")
             return
         }
         
         searchParam.query = query // 검색어 업데이트
         checkQuery(query: searchParam.query) // 검색어가 그대로인지 확인
-        
-        let date = Date() // 검색 찍은 시점에 Date
-        CoreDataManager.shared.saveSearchHistory(query: query, date: date) // 코어데이터에 넣어줌
+
+        // start
+        isLoading = true
         isTry = true
         
         // NetworkManager 매니저 이용하여 URLRequest를 받아옴
-        guard let request = NetworkManager.RequestURL(Url: APIEndpoint.web.path, searchParam: searchParam) else {
+        guard let request = NetworkManager.RequestURL(Url: APIEndpoint.book.path, searchParam: searchParam) else {
             print("URLRequest 생성 실패")
-            isLoading = false
+            isLoading = false // false로 변경
             return
         }
         
@@ -65,25 +62,23 @@ class WebSearchViewModel: ObservableObject {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
             guard let self = self else { return }
-            // 받아온 data를 WebSearch에 맞게 끔 디코딩 및 파싱
-            WebSearchManger.shared
-                .WebSearchPublisher(dataPublisher: dataPublisher)
-//                .receive(on: DispatchQueue.main) // 어차피 DispatchQueue.main.asyncAfter을 사용하므로
+            BookSearchManager.shared
+                .bookSearchPublisher(dataPublisher: dataPublisher)
                 .sink(receiveCompletion: { [weak self] completion in
-                    self?.webOnReceive(completion)
+                    self?.bookOnReeive(completion)
                 }, receiveValue: { [weak self] response in
-                    self?.webOnReceive(response)
+                    self?.bookOnReeive(response)
                 })
                 .store(in: &self.cancellables)
         }
     }
     
     // MARK: - checkFetchMore
-    // data를 더 가져올지 판단하는 메소드
-    func checkFetchMore(document: WebDocument) {
-        // 비어있지 않고 현재 document가 마지막이면
-        if !searchWeb.isEmpty && document == searchWeb.last {
-            fetchWebSearchData(query: inputText) // 호출
+    func checkFetchMore(document: BookDocument) {
+        // 현재 document가 마지막이면
+        if !searchBook.isEmpty &&
+            document == searchBook.last {
+            fetchBookSearchData(query: inputText)
             return
         }
         return
@@ -101,17 +96,15 @@ class WebSearchViewModel: ObservableObject {
             self.totalCount = -1
             self.totalPage = -1
             self.endPage = false
-            self.searchWeb = []
+            self.searchBook = []
         }
         
         return
     }
     
-    // MARK: - WebOnReceive
-    //  기존에 [weak self]를 이용했던 것은 실행 중인 비동기 작업이 취소되었을 때 해당 클로저의 실행을 중단시키기 위함
-    
+    // MARK: - bookOnReeive
     // 성공, 실패 등을 나눔
-    private func webOnReceive(_ completion: Subscribers.Completion<Error>) {
+    private func bookOnReeive(_ completion: Subscribers.Completion<Error>) {
         switch completion {
         case .finished: // 마쳤을 경우
             self.isLoading = false // 로딩이 끝났으면 false로 설정
@@ -123,14 +116,15 @@ class WebSearchViewModel: ObservableObject {
         }
     }
     
-    private func webOnReceive(_ response: WebResponse) {
+    private func bookOnReeive(_ response: BookResponse) {
         // 이제 내가 필요한 것들을 작업
         self.currentPage += 1
-        self.totalCount = response.meta?.totalCount ?? 0
-        self.totalPage = response.meta?.pageableCount ?? 0
+        self.totalCount = response.meta.totalCount
+        self.totalPage = response.meta.pageableCount
         self.loadingProgress += 50.0
         self.endPage = self.currentPage >= self.totalCount ? true : false
-        self.searchWeb.append(contentsOf: response.documents) // 검색결과 배열에 넣어줌
+        
+        self.searchBook.append(contentsOf: response.documents) // 검색결과 배열에 넣어줌
     }
-}
 
+}

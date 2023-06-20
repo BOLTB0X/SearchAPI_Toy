@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct VclipSearchView: View {
+struct VclipSearch: View {
     @ObservedObject var vclipViewModel = VclipSearchViewModel()
     
     var body: some View {
@@ -42,7 +42,7 @@ struct VclipSearchView: View {
                         ScrollView {
                             LazyVStack(alignment: .leading, spacing: 10) {
                                 ForEach(vclipViewModel.searchVclip, id: \.id) { document in
-                                    VclipCellView(document: document)
+                                    VclipCell(document: document)
                                         .onAppear {
                                             vclipViewModel.checkFetchMore(document: document)
                                         }
@@ -72,6 +72,6 @@ struct VclipSearchView: View {
 
 struct VclipSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        VclipSearchView()
+        VclipSearch()
     }
 }

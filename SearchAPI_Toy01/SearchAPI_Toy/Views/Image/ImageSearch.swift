@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ImageSearchView: View {
+struct ImageSearch: View {
     @ObservedObject var imageViewModel = ImageSearchViewModel()
     @State private var imgClick = Bool() // 셀의 이미지를 클릭했는지
 
@@ -41,7 +41,7 @@ struct ImageSearchView: View {
                 } else {
                     if !imageViewModel.searchImage.isEmpty {
                         // 바인딩 추가
-                        ImageCollectionView(imgViewModel: imageViewModel, showPopup: $imgClick)
+                        ImageCollection(imgViewModel: imageViewModel, showPopup: $imgClick)
                         Text("총 게시물: \(imageViewModel.searchImage.count)/\(imageViewModel.totalCount)")
                     } else {
                         if !imageViewModel.isLoading {
@@ -60,7 +60,7 @@ struct ImageSearchView: View {
         }
         // MARK: - 상세 팝업 뷰
         .popupNavigationView(horizontalPadding: 40, show: $imgClick) {
-            ImageDetailView(document: imageViewModel.imgDetail)
+            ImageDetail(document: imageViewModel.imgDetail)
                 .navigationTitle("상세 정보")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
@@ -80,6 +80,6 @@ struct ImageSearchView: View {
 
 struct ImageSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageSearchView()
+        ImageSearch()
     }
 }

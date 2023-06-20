@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ImageDetailView: View {
+struct ImageDetail: View {
     let document: ImageDocument
     
     var body: some View {

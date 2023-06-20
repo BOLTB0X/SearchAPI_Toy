@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ImageCellView: View {
+struct ImageCell: View {
     let document: ImageDocument
     @State private var imageLoading: Bool = true // 로딩 중인지 판단 용도
     
