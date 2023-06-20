@@ -19,7 +19,7 @@
 1. 애니메이션 효과 추가(loading, 검색창 애니메이션 효과)
    <br/>
 
-2. 카카오 맵
+2. 검색창 커스텀
    <br/>
 
 ## 기록
@@ -27,19 +27,18 @@
 [지난 기록들](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/resultHistory.md)
 <br/>
 
-**6/17**
+**6/20**
 <br/>
 
-![시뮬레이터 녹화](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/Webview%20%EC%A0%81%EC%9A%A9.gif?raw=true)
+![검색창1](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%9E%84%EC%8B%9C_%EA%B2%80%EC%83%89%ED%99%94%EB%A9%B41.gif?raw=true) ![검색창2](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%9E%84%EC%8B%9C_%EA%B2%80%EC%83%89%ED%99%94%EB%A9%B42.gif?raw=true) ![검색창3](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%9E%84%EC%8B%9C_%EA%B2%80%EC%83%89%ED%99%94%EB%A9%B43.gif?raw=true)
 <br/>
-
 ~~시뮬레이터 녹화 기능이 있는지 지금 알았다~~
 <br/>
 
-- Link에서 WebView 변경
+- 서치바 수정
   <br/>
 
-- 일단 검색 조건 이미지, 동영상도 적용
+- 일단 임시로 검색 기록 나타냄
   <br/>
 
 ## 참고
@@ -77,3 +76,15 @@
   - [Picker 관련](https://www.hohyeonmoon.com/blog/swiftui-tutorial-picker/)
 
   - [WebView](https://seons-dev.tistory.com/entry/SwiftUI-WebView-%EC%83%9D%EC%84%B1%EC%BD%94%EB%93%9C)
+
+  - [검색 뷰 관련](https://www.hackingwithswift.com/quick-start/swiftui/how-to-add-a-search-bar-to-filter-your-data)
+
+- CoreData
+
+  - [avanderlee](https://www.avanderlee.com/swift/persistent-history-tracking-core-data/)
+
+  - [입문](https://velog.io/@nala/iOS-SwiftUI%EC%97%90%EC%84%9C-CoreData-%EC%8D%A8%EB%B3%B4%EA%B8%B0)
+
+  - [김종권의 iOS](https://ios-development.tistory.com/1162)
+
+  - [참고 티스토리](https://growingsaja.tistory.com/791)

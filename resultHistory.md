@@ -85,3 +85,17 @@
 
 - 검색 파라미터 중 옵션인 것들을 Picker와 바인딩
   <br/>
+
+## 6/17
+
+![시뮬레이터 녹화](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/Webview%20%EC%A0%81%EC%9A%A9.gif?raw=true)
+<br/>
+
+~~시뮬레이터 녹화 기능이 있는지 지금 알았다~~
+<br/>
+
+- Link에서 WebView 변경
+  <br/>
+
+- 일단 검색 조건 이미지, 동영상도 적용
+  <br/>
