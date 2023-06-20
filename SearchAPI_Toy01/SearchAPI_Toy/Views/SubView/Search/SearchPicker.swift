@@ -23,10 +23,10 @@ struct SearchPicker: View {
     let sizeArr = [10, 20, 30, 40] // 보여질 문서 수
     
     var body: some View {
-        HStack {
+        HStack(spacing: 15) {
             Text("검색 조건: ")
             
-            Picker("정렬 기준", selection: $selectedIdx1) {
+            Picker("정렬", selection: $selectedIdx1) {
                 ForEach(sortedArr.indices, id: \.self) { i in
                     Text(sortedArr[i])
                 }
@@ -39,7 +39,7 @@ struct SearchPicker: View {
                 sortType = sortedArr[idx] == "acc" ? "accuracy" : "recency"
             }
             
-            Picker("페이지 수", selection: $selectedIdx2) {
+            Picker("페이지", selection: $selectedIdx2) {
                 ForEach(pagesArr.indices, id: \.self) { i in
                     Text("\(pagesArr[i])")
                         .foregroundColor(.black)
@@ -52,7 +52,7 @@ struct SearchPicker: View {
                 pageType = pagesArr[idx]
             }
             
-            Picker("보여질 수", selection: $selectedIdx3) {
+            Picker("크기", selection: $selectedIdx3) {
                 ForEach(sizeArr.indices, id: \.self) { i in
                     Text("\(sizeArr[i])")
                         .foregroundColor(.black)
@@ -65,6 +65,6 @@ struct SearchPicker: View {
                 sizeType = sizeArr[idx]
             }
         }
-        .padding(.horizontal) // 양 옆 간격 조정
+                .padding(.horizontal) // 양 옆 간격 조정
     }
 }

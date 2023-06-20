@@ -9,27 +9,22 @@ import SwiftUI
 
 struct WebSearch: View {
     @ObservedObject var webViewModel = WebSearchViewModel()
+    @State private var barClick: Bool = false
     
     var body: some View {
         NavigationView {
             // MARK: - 검색어 관련
             VStack {
-                // 검색 바
-                SearchBar(inputText: $webViewModel.inputText, startSearch: {
+                
+                SearchBar(btnClick: $barClick ,inputText: $webViewModel.inputText, startSearch: {
                     webViewModel.fetchWebSearchData(query: webViewModel.inputText)
-                    
                 })
-                // 검색 조건
-                HStack {
-                    SearchPicker(sortType: $webViewModel.searchParam.sort, pageType: $webViewModel.searchParam.page, sizeType: $webViewModel.searchParam.size)
-                        
-                    Spacer()
+                
+                if barClick {
+                    SearchSub(inputText: $webViewModel.inputText, searchParam: $webViewModel.searchParam)
                 }
-                
-                Divider() // 구분선
-                
                 // 초기 화면
-                if !webViewModel.isTry {
+                else if !barClick && !webViewModel.isTry {
                     Spacer()
                     HStack(alignment: .center, spacing: 15) {
                         Image(systemName: "doc.text")                    .resizable()
@@ -39,7 +34,7 @@ struct WebSearch: View {
                     }
                     Text("검색어를 입력해주세요")
                     Spacer()
-                } else { // 검색을 시도 했을 시
+                } else if !barClick && webViewModel.isTry { // 검색을 시도 했을 시
                     if !webViewModel.searchWeb.isEmpty {
                         ScrollView {
                             LazyVStack(alignment: .leading, spacing: 10) {

@@ -28,7 +28,4 @@ class SearchHistoryViewModel: ObservableObject {
             print("불러오기 실패")
         }
     }
-    
-    // MARK: -
-    // 코어 data에 뭐가 추가 되었는지 확인용 메소드
 }

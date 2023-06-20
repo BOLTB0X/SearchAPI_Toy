@@ -9,11 +9,12 @@ import SwiftUI
 
 struct VclipSearch: View {
     @ObservedObject var vclipViewModel = VclipSearchViewModel()
+    @State private var barClick: Bool = false
     
     var body: some View {
         NavigationView {
             VStack {
-                SearchBar(inputText: $vclipViewModel.inputText,
+                SearchBar(btnClick: $barClick ,inputText: $vclipViewModel.inputText,
                           startSearch: { vclipViewModel.fetchVclipSearchData(query: vclipViewModel.inputText)
                 })
                 

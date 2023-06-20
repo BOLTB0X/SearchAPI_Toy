@@ -9,12 +9,14 @@ import SwiftUI
 
 struct ImageSearch: View {
     @ObservedObject var imageViewModel = ImageSearchViewModel()
+    
+    @State private var barClick: Bool = false
     @State private var imgClick = Bool() // 셀의 이미지를 클릭했는지
 
     var body: some View {
         NavigationView {
             VStack {
-                SearchBar(inputText: $imageViewModel.inputText,
+                SearchBar(btnClick: $barClick ,inputText: $imageViewModel.inputText,
                           startSearch: { imageViewModel.fetchImageSearchData(query: imageViewModel.inputText)
                 })
                 // 검색 조건

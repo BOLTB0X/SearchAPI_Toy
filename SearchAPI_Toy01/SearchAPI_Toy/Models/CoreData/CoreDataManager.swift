@@ -40,4 +40,17 @@ class CoreDataManager {
             print("실패: \(error)")
         }
     }
+    
+    // MARK: - deleteSearchHistoy
+    // 검색 기록 삭제
+    func deleteSearchHistory(searchHistory: SearchHistory) {
+        let context = searchContainer.viewContext
+        context.delete(searchHistory)
+        
+        do {
+            try context.save()
+        } catch {
+            print("삭제 실패: \(error)")
+        }
+    }
 }

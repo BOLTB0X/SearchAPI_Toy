@@ -45,8 +45,8 @@ class WebSearchViewModel: ObservableObject {
         searchParam.query = query // 검색어 업데이트
         checkQuery(query: searchParam.query) // 검색어가 그대로인지 확인
         
-        let date = Date() // 검색 찍은 시점에 Date
-        CoreDataManager.shared.saveSearchHistory(query: query, date: date) // 코어데이터에 넣어줌
+//        let date = Date() // 검색 찍은 시점에 Date
+//        CoreDataManager.shared.saveSearchHistory(query: query, date: date) // 코어데이터에 넣어줌
         isTry = true
         
         // NetworkManager 매니저 이용하여 URLRequest를 받아옴
