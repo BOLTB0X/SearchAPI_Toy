@@ -99,3 +99,14 @@
 
 - 일단 검색 조건 이미지, 동영상도 적용
   <br/>
+
+## 6/20
+
+![검색창1](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%9E%84%EC%8B%9C_%EA%B2%80%EC%83%89%ED%99%94%EB%A9%B41.gif?raw=true) ![검색창2](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%9E%84%EC%8B%9C_%EA%B2%80%EC%83%89%ED%99%94%EB%A9%B42.gif?raw=true) ![검색창3](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%9E%84%EC%8B%9C_%EA%B2%80%EC%83%89%ED%99%94%EB%A9%B43.gif?raw=true)
+<br/>
+
+- 서치바 수정
+  <br/>
+
+- 일단 임시로 검색 기록 나타냄
+  <br/>

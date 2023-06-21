@@ -27,10 +27,13 @@
 [지난 기록들](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/resultHistory.md)
 <br/>
 
-**6/20**
+**6/21**
 <br/>
 
-![검색창1](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%9E%84%EC%8B%9C_%EA%B2%80%EC%83%89%ED%99%94%EB%A9%B41.gif?raw=true) ![검색창2](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%9E%84%EC%8B%9C_%EA%B2%80%EC%83%89%ED%99%94%EB%A9%B42.gif?raw=true) ![검색창3](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%9E%84%EC%8B%9C_%EA%B2%80%EC%83%89%ED%99%94%EB%A9%B43.gif?raw=true)
+![런치스크린](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EB%9F%B0%EC%B9%98%EC%8A%A4%ED%81%AC%EB%A6%B0.gif?raw=true)
+<br/>
+
+![검색창1](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EC%9E%84%EC%8B%9C_%EA%B2%80%EC%83%89%ED%99%94%EB%A9%B42.gif?raw=true) ![검색창2](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B2%80%EC%83%89view%20%EB%B3%80%EA%B2%BD2.gif?raw=true)
 <br/>
 ~~시뮬레이터 녹화 기능이 있는지 지금 알았다~~
 <br/>
@@ -78,6 +81,8 @@
   - [WebView](https://seons-dev.tistory.com/entry/SwiftUI-WebView-%EC%83%9D%EC%84%B1%EC%BD%94%EB%93%9C)
 
   - [검색 뷰 관련](https://www.hackingwithswift.com/quick-start/swiftui/how-to-add-a-search-bar-to-filter-your-data)
+
+  - [런치스크린](https://velog.io/@jyw3927/SwiftUI-Launch-Screen-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-Gradient-Animation)
 
 - CoreData
 
