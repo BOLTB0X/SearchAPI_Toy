@@ -16,20 +16,16 @@ struct ImageSearch: View {
     var body: some View {
         NavigationView {
             VStack {
+                // MARK: - 검색
                 SearchBar(btnClick: $barClick ,inputText: $imageViewModel.inputText,
                           startSearch: { imageViewModel.fetchImageSearchData(query: imageViewModel.inputText)
                 })
-                // 검색 조건
-                HStack {
-                    SearchPicker(sortType: $imageViewModel.searchParam.sort, pageType: $imageViewModel.searchParam.page, sizeType: $imageViewModel.searchParam.size)
-                        
-                    Spacer()
+                if barClick {
+                    SearchSub(inputText: $imageViewModel.inputText, searchParam: $imageViewModel.searchParam)
                 }
                 
-                Divider() // 구분선
-                
-                // 초기 화면
-                if !imageViewModel.isTry {
+                // MARK: - 초기 화면
+                else if !barClick && !imageViewModel.isTry {
                     Spacer()
                     HStack(alignment: .center, spacing: 15) {
                         Image(systemName: "photo")
@@ -40,12 +36,14 @@ struct ImageSearch: View {
                     }
                     Text("검색어를 입력해주세요")
                     Spacer()
-                } else {
+                    
+                // MARK: - 결과 화면
+                } else if !barClick && imageViewModel.isTry {
                     if !imageViewModel.searchImage.isEmpty {
                         // 바인딩 추가
                         ImageCollection(imgViewModel: imageViewModel, showPopup: $imgClick)
                         Text("총 게시물: \(imageViewModel.searchImage.count)/\(imageViewModel.totalCount)")
-                    } else {
+                    } else { // 결과가 없을때
                         if !imageViewModel.isLoading {
                             Text("\(imageViewModel.inputText)에 대해 검색 결과가 없습니다.")
                         }
@@ -74,9 +72,7 @@ struct ImageSearch: View {
                         }
                     }
                 }
-            
         }
-        // 팝업 부분
     }
 }
 

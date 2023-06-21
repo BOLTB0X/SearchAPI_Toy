@@ -23,7 +23,7 @@ struct WebSearch: View {
                 if barClick {
                     SearchSub(inputText: $webViewModel.inputText, searchParam: $webViewModel.searchParam)
                 }
-                // 초기 화면
+                // MARK: - 초기 화면
                 else if !barClick && !webViewModel.isTry {
                     Spacer()
                     HStack(alignment: .center, spacing: 15) {
@@ -34,8 +34,11 @@ struct WebSearch: View {
                     }
                     Text("검색어를 입력해주세요")
                     Spacer()
+                    
+                // MARK: - 결과 화면
                 } else if !barClick && webViewModel.isTry { // 검색을 시도 했을 시
                     if !webViewModel.searchWeb.isEmpty {
+                        // 검색 결과
                         ScrollView {
                             LazyVStack(alignment: .leading, spacing: 10) {
                                 ForEach(webViewModel.searchWeb, id: \.id) { document in
@@ -47,7 +50,7 @@ struct WebSearch: View {
                                 .padding(5)
                             }
                         }
-                        .background(
+                        .background( // 로딩할떄 배경
                             Group {
                                 if webViewModel.isLoading {
                                     Color.primary.opacity(0.2)
@@ -59,6 +62,11 @@ struct WebSearch: View {
                         Divider() // 구분선
                         
                         Text("총 게시물: \(webViewModel.searchWeb.count)/\(webViewModel.totalCount)")
+                    } else {
+                        if !webViewModel.isLoading {
+                            Spacer()
+                            Text("\(webViewModel.inputText)에 대해 검색 결과가 없습니다.")
+                        }
                     }
                     Spacer()
                 }

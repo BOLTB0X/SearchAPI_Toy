@@ -14,21 +14,17 @@ struct VclipSearch: View {
     var body: some View {
         NavigationView {
             VStack {
+                // MARK: - 검색창
                 SearchBar(btnClick: $barClick ,inputText: $vclipViewModel.inputText,
                           startSearch: { vclipViewModel.fetchVclipSearchData(query: vclipViewModel.inputText)
                 })
                 
-                // 검색 조건
-                HStack {
-                    SearchPicker(sortType: $vclipViewModel.searchParam.sort, pageType: $vclipViewModel.searchParam.page, sizeType: $vclipViewModel.searchParam.size)
-                        
-                    Spacer()
+                if barClick {
+                    SearchSub(inputText: $vclipViewModel.inputText, searchParam: $vclipViewModel.searchParam)
                 }
                 
-                Divider() // 구분선
-                
-                // 초기 화면
-                if !vclipViewModel.isTry {
+                // MARK: - 초기 화면
+                else if !barClick && !vclipViewModel.isTry {
                     Spacer()
                     HStack(alignment: .center, spacing: 15) {
                         Image(systemName: "video.square")                            .resizable()
@@ -38,8 +34,10 @@ struct VclipSearch: View {
                     }
                     Text("검색어를 입력해주세요")
                     Spacer()
+                
+                // MARK: - 검색 결과
                 } else {
-                    if !vclipViewModel.searchVclip.isEmpty {
+                    if !barClick && !vclipViewModel.searchVclip.isEmpty {
                         ScrollView {
                             LazyVStack(alignment: .leading, spacing: 10) {
                                 ForEach(vclipViewModel.searchVclip, id: \.id) { document in

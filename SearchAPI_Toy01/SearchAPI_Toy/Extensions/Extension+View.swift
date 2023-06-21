@@ -34,3 +34,18 @@ extension View {
             }
     }
 }
+
+extension ContentView {
+    var LaunchScreenView: some View {
+        ZStack(alignment: .center) {
+            LinearGradient(gradient: Gradient(colors: [Color(.blue), Color(.gray)]),
+                                        startPoint: .top, endPoint: .bottom)
+                        .edgesIgnoringSafeArea(.all)
+            
+            Image(systemName: "d.circle.fill")
+                .resizable()
+                .foregroundColor(.blue)
+                .frame(width: 200, height: 200)
+        }
+    }
+}
