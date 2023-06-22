@@ -14,7 +14,7 @@ struct ContentView: View {
         ZStack {
             Main()
             
-            if isLoading {
+            if isLoading { // 로딩 중일때 띄울거
                 LaunchScreenView
             }
         }

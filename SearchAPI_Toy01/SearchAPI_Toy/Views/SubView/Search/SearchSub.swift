@@ -36,15 +36,19 @@ struct SearchSub: View {
                             
                             Spacer()
                             Button(action: {
-                                CoreDataManager.shared.deleteSearchHistory(searchHistory: history)
+                                withAnimation {
+                                    searchHistory.searchHistory.removeAll(where: { $0.id == history.id })
+                                    CoreDataManager.shared.deleteSearchHistory(searchHistory: history)
+                                }
                             }) {
                                 Image(systemName: "x.circle")
                                     .resizable()
                                     .foregroundColor(.blue)
                                     .frame(width: 15, height: 15)
                             }
-
-                            
+                            //.buttonStyle(PlainButtonStyle())
+                            .transition(.slide) // 옆으로 가게끔
+                            .animation(.easeIn)
                         }
                     }
                 }

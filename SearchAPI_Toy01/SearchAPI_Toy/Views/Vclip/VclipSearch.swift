@@ -39,7 +39,7 @@ struct VclipSearch: View {
                 } else {
                     if !barClick && !vclipViewModel.searchVclip.isEmpty {
                         ScrollView {
-                            LazyVStack(alignment: .leading, spacing: 10) {
+                            VStack(alignment: .leading, spacing: 10) {
                                 ForEach(vclipViewModel.searchVclip, id: \.id) { document in
                                     VclipCell(document: document)
                                         .onAppear {
