@@ -49,9 +49,9 @@ struct BlogMeta: Codable {
 }
 
 // MARK: - BlogSearchManger
-final class BlogSearchManger {
+final class BlogSearchManager {
     // 싱글톤 적용
-    static let shared: BlogSearchManger = .init()
+    static let shared: BlogSearchManager = .init()
     
     // MARK: - BlogDocumentPublisher
     func BlogSearchPublisher(dataPublisher: AnyPublisher<Data, Error>) ->  AnyPublisher<BlogResponse, Error> {
