@@ -35,6 +35,7 @@ struct SearchSub: View {
                                 }
                             
                             Spacer()
+                            
                             Button(action: {
                                 withAnimation {
                                     searchHistory.searchHistory.removeAll(where: { $0.id == history.id })
@@ -46,9 +47,7 @@ struct SearchSub: View {
                                     .foregroundColor(.blue)
                                     .frame(width: 15, height: 15)
                             }
-                            //.buttonStyle(PlainButtonStyle())
-                            .transition(.slide) // 옆으로 가게끔
-                            .animation(.easeIn)
+                            
                         }
                     }
                 }
