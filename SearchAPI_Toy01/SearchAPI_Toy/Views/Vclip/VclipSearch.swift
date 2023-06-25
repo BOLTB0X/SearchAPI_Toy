@@ -36,10 +36,10 @@ struct VclipSearch: View {
                     Spacer()
                 
                 // MARK: - 검색 결과
-                } else {
-                    if !barClick && !vclipViewModel.searchVclip.isEmpty {
+                } else if !barClick && vclipViewModel.isTry {
+                    if !vclipViewModel.searchVclip.isEmpty {
                         ScrollView {
-                            VStack(alignment: .leading, spacing: 10) {
+                            LazyVStack(alignment: .leading, spacing: 10) {
                                 ForEach(vclipViewModel.searchVclip, id: \.id) { document in
                                     VclipCell(document: document)
                                         .onAppear {
@@ -49,6 +49,9 @@ struct VclipSearch: View {
                             }
                             .padding(5)
                         }
+                        
+                        Divider() // 구분선
+                        
                         Text("총 게시물: \(vclipViewModel.searchVclip.count)/\(vclipViewModel.totalCount)")
                     }  else {
                         if !vclipViewModel.isLoading {
