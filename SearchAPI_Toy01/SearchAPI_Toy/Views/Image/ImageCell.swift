@@ -43,8 +43,7 @@ struct ImageCell: View {
                     .lineLimit(1)
                     .font(.subheadline)
                     .redacted(reason: .placeholder)
-            }
-            else {
+            } else {
                 Text("\(document.displaySitename.isEmpty ? "???" : document.displaySitename)")
                     .font(.system(size: 20, weight: .bold))
                     .bold()
@@ -58,3 +57,4 @@ struct ImageCell: View {
         }
     }
 }
+

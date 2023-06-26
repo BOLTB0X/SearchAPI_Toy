@@ -40,9 +40,9 @@ struct BookSearch: View {
                 } else {
                     if !barClick && !bookViewModel.searchBook.isEmpty {
                         ScrollView {
-                            VStack(alignment: .leading, spacing: 10) {
+                            LazyVStack(alignment: .leading, spacing: 10) {
                                 ForEach(bookViewModel.searchBook, id: \.id) { document in
-                                    Text(document.title)
+                                    CardView(title: document.title, cate: document.status, imgURL: document.thumbnail, date: document.publisher)
                                         .onAppear {
                                             bookViewModel.checkFetchMore(document: document)
                                         }

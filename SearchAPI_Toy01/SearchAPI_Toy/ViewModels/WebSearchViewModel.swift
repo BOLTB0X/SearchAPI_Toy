@@ -16,7 +16,7 @@ class WebSearchViewModel: ObservableObject {
     
     @Published var searchParam: SearchParameter = SearchParameter.getDummyData()
     
-    @Published var currentPage:Int = 0 // 현재 페이지 카운트
+    @Published var currentPage:Int = 1 // 현재 페이지 카운트
     @Published var endPage:Bool = false // 마지막인 경우
     @Published var isLoading:Bool = false // 현재 로딩 중임을 나타낼
     @Published var loadingProgress:Double = 0.0 // 로딩 진행률
@@ -36,18 +36,12 @@ class WebSearchViewModel: ObservableObject {
     func fetchWebSearchData(query: String) {
         // 가져오기 시작
         isLoading = true
-        // 마지막까지 갔는지 체크
-        guard !endPage else {
-            print("다 가져옴")
-            return
-        }
         
         searchParam.query = query // 검색어 업데이트
-        checkQuery(query: searchParam.query) // 검색어가 그대로인지 확인
         
-//        let date = Date() // 검색 찍은 시점에 Date
-//        CoreDataManager.shared.saveSearchHistory(query: query, date: date) // 코어데이터에 넣어줌
+        checkQuery(query: searchParam.query) // 검색어가 그대로인지 확인
         isTry = true
+        searchParam.page = self.currentPage
         
         // NetworkManager 매니저 이용하여 URLRequest를 받아옴
         guard let request = NetworkManager.RequestURL(Url: APIEndpoint.web.path, searchParam: searchParam) else {
@@ -78,12 +72,54 @@ class WebSearchViewModel: ObservableObject {
         }
     }
     
+    // MARK: - FetchDataAtScroll
+    // 스크롤로 데이터를 내릴대 호출
+    func FetchDataAtScroll() {
+        isLoading = true
+        
+        // 마지막까지 갔는지 체크
+        guard !endPage else {
+            print("다 가져옴")
+            return
+        }
+        
+        searchParam.page = self.currentPage + 1
+        
+        // URLRequest를 통해 data를 받아옴
+        // NetworkManager 매니저 이용하여 URLRequest를 받아옴
+        guard let request = NetworkManager.RequestURL(Url: APIEndpoint.web.path, searchParam: searchParam) else {
+            print("URLRequest 생성 실패")
+            isLoading = false
+            return
+        }
+        
+        // URLRequest를 통해 data를 받아옴
+        guard let dataPublisher = NetworkManager.DataPublisher(forRequest: request) else {
+            print("통신 에러")
+            isLoading = false
+            return
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            guard let self = self else { return }
+            // 받아온 data를 WebSearch에 맞게 끔 디코딩 및 파싱
+            WebSearchManger.shared
+                .WebSearchPublisher(dataPublisher: dataPublisher)
+                .sink(receiveCompletion: { [weak self] completion in
+                    self?.webOnReceive(completion)
+                }, receiveValue: { [weak self] response in
+                    self?.webOnReceive(response)
+                })
+                .store(in: &self.cancellables)
+        }
+    }
+    
     // MARK: - checkFetchMore
     // data를 더 가져올지 판단하는 메소드
     func checkFetchMore(document: WebDocument) {
         // 비어있지 않고 현재 document가 마지막이면
         if !searchWeb.isEmpty && document == searchWeb.last {
-            fetchWebSearchData(query: inputText) // 호출
+            FetchDataAtScroll() // 호출
             return
         }
         return
@@ -91,20 +127,22 @@ class WebSearchViewModel: ObservableObject {
     
     // MARK: - checkQuery
     // 검색어가 변했는지 체크
-    private func checkQuery(query: String) {
+    private func checkQuery(query: String) -> Bool {
         // 교체 되었다면
         if query != preQuery {
-            preQuery = query // 검색어 교체
+            searchParam.query = query
             
             // 기존 가져왔던 data들을 다 비워져야 함
-            self.currentPage = 0
+            self.currentPage = 1
             self.totalCount = -1
             self.totalPage = -1
             self.endPage = false
             self.searchWeb = []
+            return true
         }
         
-        return
+        preQuery = query // 검색어 교체
+        return false
     }
     
     // MARK: - WebOnReceive

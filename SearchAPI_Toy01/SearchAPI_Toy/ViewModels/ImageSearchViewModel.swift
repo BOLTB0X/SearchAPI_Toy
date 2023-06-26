@@ -81,7 +81,7 @@ class ImageSearchViewModel: ObservableObject {
         // 현재 document가 마지막이면
         if !searchImage.isEmpty &&
             document == searchImage.last {
-            fetchImageSearchData(query: inputText)
+            fetchImageSearchData(query: searchParam.query)
             return
         }
         return

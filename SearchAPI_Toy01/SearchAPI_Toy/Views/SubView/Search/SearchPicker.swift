@@ -19,8 +19,8 @@ struct SearchPicker: View {
     @Binding var sizeType:Int?
     
     let sortedArr = ["acc", "rec"] // 정렬 기준
-    let pagesArr = [1, 5, 10, 15] // 페이지 수
-    let sizeArr = [10, 20, 30, 40] // 보여질 문서 수
+    //let pagesArr = [1, 5, 10, 15] // 페이지 수
+    let sizeArr = [20, 25, 30, 35] // 보여질 문서 수
     
     var body: some View {
         HStack(spacing: 15) {
@@ -39,18 +39,18 @@ struct SearchPicker: View {
                 sortType = sortedArr[idx] == "acc" ? "accuracy" : "recency"
             }
             
-            Picker("페이지", selection: $selectedIdx2) {
-                ForEach(pagesArr.indices, id: \.self) { i in
-                    Text("\(pagesArr[i])")
-                        .foregroundColor(.black)
-                }
-            }
-            .pickerStyle(.menu)
-            .background(Color(.systemGray6))
-            .cornerRadius(15)
-            .onChange(of: selectedIdx2) { idx in
-                pageType = pagesArr[idx]
-            }
+//            Picker("페이지", selection: $selectedIdx2) {
+//                ForEach(pagesArr.indices, id: \.self) { i in
+//                    Text("\(pagesArr[i])")
+//                        .foregroundColor(.black)
+//                }
+//            }
+//            .pickerStyle(.menu)
+//            .background(Color(.systemGray6))
+//            .cornerRadius(15)
+//            .onChange(of: selectedIdx2) { idx in
+//                pageType = pagesArr[idx]
+//            }
             
             Picker("크기", selection: $selectedIdx3) {
                 ForEach(sizeArr.indices, id: \.self) { i in
@@ -65,6 +65,6 @@ struct SearchPicker: View {
                 sizeType = sizeArr[idx]
             }
         }
-                .padding(.horizontal) // 양 옆 간격 조정
+        .padding(.horizontal)
     }
 }

@@ -62,7 +62,7 @@ struct SearchParameter {
     // MARK: - getDummyData
     static func getDummyData() -> SearchParameter {
         // 더미
-        let dummy = SearchParameter(query: "")
+        let dummy = SearchParameter(query: "", page: 1)
         return dummy
     }
 }
@@ -79,52 +79,93 @@ enum NetworkManager {
         return apiKey
     }
     
+    // MARK: - nextURL
+    // 추가로 데이터를 불어올 때 이용할 URL
+    static var nextURL: URL?
+    
     // MARK: - RequestURL
     // 요청할 URL을 반환하는 메소드
     // 파라미터 수정
-    static func RequestURL(Url:String, searchParam: SearchParameter) -> URLRequest? {
+    static func RequestURL(Url: String, searchParam: SearchParameter) -> URLRequest? {
         guard let apiKey = NetworkManager.apiKey else {
             fatalError("API_KEY가 설정 X\n 번들 의심")
         }
-        
-        let url = URL(string: Url)!
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
-        
+
+        var requestURL: URL
+        if let nextURL = nextURL {
+            requestURL = nextURL
+        } else {
+            requestURL = URL(string: Url)!
+        }
+
+        var components = URLComponents(url: requestURL, resolvingAgainstBaseURL: true)!
+
         // 검색어는 필수
         components.queryItems = [
             URLQueryItem(name: "query", value: searchParam.query)
         ]
-        
+
         // 선택사항인 요청 파라미터
         if let sort = searchParam.sort {
             components.queryItems?.append(URLQueryItem(name: "sort", value: sort))
         }
-        
+
         if let page = searchParam.page {
             components.queryItems?.append(URLQueryItem(name: "page", value: String(page)))
         }
-        
+
         if let size = searchParam.size {
             components.queryItems?.append(URLQueryItem(name: "size", value: String(size)))
         }
-        
+
         if let target = searchParam.targetField {
             components.queryItems?.append(URLQueryItem(name: "target", value: target))
         }
-        
+
         // 마지막 체크
-        guard let requestURL = components.url else {
+        guard let finalURL = components.url else {
             fatalError("잘못된 URL")
         }
-        
+
+        // 더 불러올지를 대비에 넣어줌
+        self.nextURL = finalURL
+
         // 이제 API 인증 후 요청
-        var retURL = URLRequest(url: requestURL)
+        var retURL = URLRequest(url: finalURL)
+        retURL.setValue("KakaoAK \(apiKey)", forHTTPHeaderField: "Authorization")
+        retURL.httpMethod = "GET"
+
+        return retURL
+    }
+    
+    // MARK: - RequestSameURL
+    // 같은 URL을 호출할 때 이용
+    static func RequestSameURL(nextPage: Int) -> URLRequest? {
+        guard let apiKey = NetworkManager.apiKey else {
+            fatalError("API_KEY가 설정되지 않았습니다. 번들을 확인해주세요.")
+        }
+        
+        guard let nextURL = nextURL else {
+            return nil
+        }
+        
+        var components = URLComponents(url: nextURL, resolvingAgainstBaseURL: true)
+        
+        // 쿼리 파라미터에 nextPage 추가
+        components?.queryItems?.append(URLQueryItem(name: "page", value: String(nextPage)))
+        
+        guard let updatedURL = components?.url else {
+            return nil
+        }
+        
+        var retURL = URLRequest(url: updatedURL)
         retURL.setValue("KakaoAK \(apiKey)", forHTTPHeaderField: "Authorization")
         retURL.httpMethod = "GET"
         
         return retURL
     }
-    
+
+
     // MARK: - DataPublisher
     // URLRequest를 파라미터로 디코딩 되지 않은 data를 반환하는 메소드
     static func DataPublisher(forRequest: URLRequest) -> AnyPublisher<Data, Error>? {
@@ -141,5 +182,4 @@ enum NetworkManager {
             }
             .eraseToAnyPublisher() // 지금까지의 데이터 스트림이 어떠했던 최종적인 형태의 Publisher를 리턴
     }
-    
 }

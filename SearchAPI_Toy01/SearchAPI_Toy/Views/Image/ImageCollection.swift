@@ -18,6 +18,7 @@ struct ImageCollection: View {
             ScrollView {
                 LazyVGrid(columns: gridItemLayout, spacing: 10) {
                     ForEach(imgViewModel.searchImage, id: \.self) { document in
+                        //CardView(title: document.displaySitename, cate: String(document.collection.rawValue), imgURL: document.thumbnailURL, date: document.datetime)
                         ImageCell(document:  document)
                             .onAppear() {
                                 // 더 불러오는 지

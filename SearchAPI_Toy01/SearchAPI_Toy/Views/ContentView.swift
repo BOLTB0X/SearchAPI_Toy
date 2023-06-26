@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             Main()
-            
+         
             if isLoading { // 로딩 중일때 띄울거
                 LaunchScreenView
             }
