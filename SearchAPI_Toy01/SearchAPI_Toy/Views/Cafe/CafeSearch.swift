@@ -39,9 +39,9 @@ struct CafeSearch: View {
                 } else {
                     if !barClick && !cafeViewModel.searchCafes.isEmpty {
                         ScrollView {
-                            VStack(alignment: .leading, spacing: 10) {
+                            LazyVStack(alignment: .leading, spacing: 10) {
                                 ForEach(cafeViewModel.searchCafes, id: \.id) { document in
-                                    Text(document.title)
+                                    CardView(title: document.title, cate: document.cafename, imgURL: document.thumbnail, date: document.datetime)
                                         .onAppear {
                                             cafeViewModel.checkFetchMore(document: document)
                                         }

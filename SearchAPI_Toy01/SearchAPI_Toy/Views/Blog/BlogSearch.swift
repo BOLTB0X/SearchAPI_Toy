@@ -39,9 +39,9 @@ struct BlogSearch: View {
                 } else {
                     if !barClick && !blogViewModel.searchBlogs.isEmpty {
                         ScrollView {
-                            VStack(alignment: .leading, spacing: 10) {
+                            LazyVStack(alignment: .leading, spacing: 10) {
                                 ForEach(blogViewModel.searchBlogs, id: \.id) { document in
-                                    Text(document.title)
+                                    CardView(title: document.title, cate: document.blogname, imgURL: document.thumbnail, date: document.datetime)
                                         .onAppear {
                                             blogViewModel.checkFetchMore(document: document)
                                         }

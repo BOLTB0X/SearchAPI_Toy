@@ -16,7 +16,7 @@ class VclipSearchViewModel: ObservableObject {
 
     
     // 무한 스크롤 관련
-    @Published var currentPage:Int = 0
+    @Published var currentPage:Int = 1
     @Published var endPage:Bool = false
     @Published var isLoading:Bool = false
     
@@ -44,6 +44,7 @@ class VclipSearchViewModel: ObservableObject {
         // start
         isLoading = true
         isTry = true
+        searchParam.page = self.currentPage
         
         // NetworkManager 매니저 이용하여 URLRequest를 받아옴
         guard let request = NetworkManager.RequestURL(Url: APIEndpoint.vclip.path, searchParam: searchParam) else {
@@ -72,12 +73,53 @@ class VclipSearchViewModel: ObservableObject {
         }
     }
     
+    // MARK: - FetchDataAtScroll
+    // 스크롤로 데이터를 내릴대 호출
+    func FetchDataAtScroll() {
+        isLoading = true
+        
+        // 마지막까지 갔는지 체크
+        guard !endPage else {
+            print("다 가져옴")
+            return
+        }
+        
+        searchParam.page = self.currentPage + 1
+        
+        // URLRequest를 통해 data를 받아옴
+        // NetworkManager 매니저 이용하여 URLRequest를 받아옴
+        guard let request = NetworkManager.RequestURL(Url: APIEndpoint.vclip.path, searchParam: searchParam) else {
+            print("URLRequest 생성 실패")
+            isLoading = false
+            return
+        }
+        
+        // URLRequest를 통해 data를 받아옴
+        guard let dataPublisher = NetworkManager.DataPublisher(forRequest: request) else {
+            print("통신 에러")
+            isLoading = false
+            return
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            guard let self = self else { return }
+            VclipSearchManager.shared
+                .VclipSearchPublisher(dataPublisher: dataPublisher)
+                .sink(receiveCompletion: { [weak self] completion in
+                    self?.VclipOnReeive(completion)
+                }, receiveValue: { [weak self] response in
+                    self?.VclipOnReeive(response)
+                })
+                .store(in: &self.cancellables)
+        }
+    }
+    
     // MARK: - checkFetchMore
     func checkFetchMore(document: VclipDocument) {
         // 현재 document가 마지막이면
         if !searchVclip.isEmpty &&
             document == searchVclip.last {
-            fetchVclipSearchData(query: inputText)
+            FetchDataAtScroll()
             return
         }
         return
@@ -91,7 +133,7 @@ class VclipSearchViewModel: ObservableObject {
             preQuery = query // 검색어 교체
             
             // 기존 가져왔던 data들을 다 비워져야 함
-            self.currentPage = 0
+            self.currentPage = 1
             self.totalCount = -1
             self.totalPage = -1
             self.endPage = false

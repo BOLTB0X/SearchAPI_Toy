@@ -17,7 +17,7 @@ class ImageSearchViewModel: ObservableObject {
     @Published var searchParam: SearchParameter = SearchParameter.getDummyData()
     
     // 무한 스크롤 관련
-    @Published var currentPage:Int = 0 // 현재 페이지 카운트
+    @Published var currentPage:Int = 1 // 현재 페이지 카운트
     @Published var endPage:Bool = false // 마지막인 경우
     @Published var isLoading:Bool = false // 현재 로딩 중임을 나타낼
     
@@ -35,6 +35,9 @@ class ImageSearchViewModel: ObservableObject {
     // MARK: - fetchImageSearchData
     // 다른 뷰모델과 동일한 데이터를 가져오는 메소드
     func fetchImageSearchData(query: String) {
+        // start
+        isLoading = true
+        
         guard !endPage else {
             print("마지막 페이지")
             return
@@ -43,11 +46,9 @@ class ImageSearchViewModel: ObservableObject {
         // 추가
         searchParam.query = query // 검색어 업데이트
         checkQuery(query: searchParam.query) // 검색어가 그대로인지 확인
-        
-        // start
-        isLoading = true
         isTry = true
-        
+        searchParam.page = self.currentPage
+
         // NetworkManager 매니저 이용하여 URLRequest를 받아옴
         guard let request = NetworkManager.RequestURL(Url: APIEndpoint.image.path, searchParam: searchParam) else {
             print("URLRequest 생성 실패")
@@ -75,13 +76,54 @@ class ImageSearchViewModel: ObservableObject {
         }
     }
     
+    // MARK: - FetchDataAtScroll
+    // 스크롤로 데이터를 내릴대 호출
+    func FetchDataAtScroll() {
+        isLoading = true
+        
+        // 마지막까지 갔는지 체크
+        guard !endPage else {
+            print("다 가져옴")
+            return
+        }
+        
+        searchParam.page = self.currentPage + 1
+        
+        // URLRequest를 통해 data를 받아옴
+        // NetworkManager 매니저 이용하여 URLRequest를 받아옴
+        guard let request = NetworkManager.RequestURL(Url: APIEndpoint.image.path, searchParam: searchParam) else {
+            print("URLRequest 생성 실패")
+            isLoading = false
+            return
+        }
+        
+        // URLRequest를 통해 data를 받아옴
+        guard let dataPublisher = NetworkManager.DataPublisher(forRequest: request) else {
+            print("통신 에러")
+            isLoading = false
+            return
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            guard let self = self else { return }
+            ImageSearchManager.shared
+                .ImageSearchPublisher(dataPublisher: dataPublisher)
+                .sink(receiveCompletion: { [weak self] completion in
+                    self?.ImageOnReeive(completion)
+                }, receiveValue: { [weak self] response in
+                    self?.ImageOnReeive(response)
+                })
+                .store(in: &self.cancellables)
+        }
+    }
+    
     // MARK: - checkFetchMore
     // data를 더 가져올지 판단
     func checkFetchMore(document: ImageDocument) {
         // 현재 document가 마지막이면
         if !searchImage.isEmpty &&
             document == searchImage.last {
-            fetchImageSearchData(query: searchParam.query)
+            FetchDataAtScroll()
             return
         }
         return
@@ -110,7 +152,7 @@ class ImageSearchViewModel: ObservableObject {
             preQuery = query // 검색어 교체
             
             // 기존 가져왔던 data들을 다 비워져야 함
-            self.currentPage = 0
+            self.currentPage = 1
             self.totalCount = -1
             self.totalPage = -1
             self.endPage = false

@@ -287,11 +287,11 @@
 		BEA94D092A2AF53200784ED3 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				BE3E661C2A4170580015C5A0 /* SearchHistoryViewModel.swift */,
 				BE1CB9E52A29F5FB00158244 /* WebSearchViewModel.swift */,
 				BEA94D182A3006F600784ED3 /* ImageSearchViewModel.swift */,
 				BEA94D1C2A30224100784ED3 /* VclipSearchViewModel.swift */,
 				BE3E660A2A4094A80015C5A0 /* BookSearchViewModel.swift */,
-				BE3E661C2A4170580015C5A0 /* SearchHistoryViewModel.swift */,
 				BEA96C392A442330006B3225 /* CafeSearchViewModel.swift */,
 				BEA96C3B2A4424BC006B3225 /* BlogSearchViewModel.swift */,
 			);
