@@ -29,10 +29,12 @@ struct SearchSub: View {
                 Section(header: Text("검색 기록")) {
                     ForEach(searchHistory.searchHistory, id:\.id) { history in
                         HStack {
-                            Text(history.query ?? "")
-                                .onTapGesture {
-                                    self.inputText = history.query!
-                                }
+                            Button(action: {
+                                self.inputText = history.query!
+                            }) {
+                                Text(history.query ?? "")
+                            }
+
                             
                             Spacer()
                             
@@ -47,7 +49,8 @@ struct SearchSub: View {
                                     .foregroundColor(.blue)
                                     .frame(width: 15, height: 15)
                             }
-                            
+                            // 기존 DefaultButtonStyle으로 하면 이미지 버튼이 포함된 셀을 클릭하면 리스트셀 내 버튼을 클릭하지 않아도 클릭했다고 인식해버리므로 버튼 스타일 변경
+                            .buttonStyle(BorderlessButtonStyle())
                         }
                     }
                 }
