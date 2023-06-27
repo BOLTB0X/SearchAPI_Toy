@@ -36,19 +36,21 @@ struct BookSearch: View {
                     Text("검색어를 입력해주세요")
                     Spacer()
                     
-                // MARK: - 검색결과
+                    // MARK: - 검색결과
                 } else {
                     if !barClick && !bookViewModel.searchBook.isEmpty {
                         ScrollView {
                             LazyVStack(alignment: .leading, spacing: 10) {
                                 ForEach(bookViewModel.searchBook, id: \.id) { document in
-                                    CardView(title: document.title, cate: document.status, imgURL: document.thumbnail, date: document.publisher)
-                                        .onAppear {
-                                            bookViewModel.checkFetchMore(document: document)
-                                        }
+                                    NavigationLink(destination: WebView(urlToLoad: document.url), label: {
+                                        CardView(title: document.title, cate: document.status, imgURL: document.thumbnail, date: document.publisher)
+                                    })
+                                    .onAppear {
+                                        bookViewModel.checkFetchMore(document: document)
+                                    }
                                 }
                             }
-                            .padding(5)
+                            .padding(10)
                         }
                         Text("총 게시물: \(bookViewModel.searchBook.count)/\(bookViewModel.totalCount)")
                     } else {

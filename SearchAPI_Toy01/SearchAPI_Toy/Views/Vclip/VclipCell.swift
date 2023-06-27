@@ -14,16 +14,14 @@ struct VclipCell: View {
     var body: some View {
         HStack {
             AsyncImage(url: URL(string: document.thumbnail)) { image in
-                Link(destination: URL(string: document.url)!, label: {
-                    image
-                        .resizable()
-                        .frame(width: 180, height: 100)
-                        .aspectRatio(contentMode: .fit)
-                        .cornerRadius(8)
-                        .onAppear {
-                            imageLoading = false // 가리기 취소
-                        }
-                })
+                image
+                    .resizable()
+                    .frame(width: 180, height: 100)
+                    .aspectRatio(contentMode: .fit)
+                    .cornerRadius(8)
+                    .onAppear {
+                        imageLoading = false // 가리기 취소
+                    }
                 
             } placeholder: {
                 Image("free-icon-gallery")
@@ -39,16 +37,18 @@ struct VclipCell: View {
             
             VStack(alignment: .leading) { // 영상관련
                 if imageLoading {
-                    Text("Loading...")
+                    Text("Loading..............................................................")
                         .font(.system(size: 15, weight: .bold))
+                        .fontWeight(.black)
+                        .foregroundColor(.primary)
                         .lineLimit(1)
                         .redacted(reason: .placeholder)
                 } else {
                     Text("\(document.title)")
                         .font(.system(size: 15, weight: .bold))
-                        .fontWeight(.bold)
-                        .bold()
-                        .lineLimit(1) // 한줄로 제한
+                        .fontWeight(.black)
+                        .foregroundColor(.primary)
+                        .lineLimit(1)
                 }
                 
                 Spacer()
@@ -56,11 +56,11 @@ struct VclipCell: View {
                     // 로딩 줄일때
                     if imageLoading {
                         Spacer()
-                        Text("Loading...")
+                        Text("Loading...........................")
                             .lineLimit(1)
                             .font(.system(size: 10, weight: .light))
                             .redacted(reason: .placeholder)
-                        Text("Loading...")
+                        Text("Loading...........")
                             .lineLimit(1)
                             .font(.system(size: 10, weight: .light))
                             .redacted(reason: .placeholder)
@@ -76,11 +76,6 @@ struct VclipCell: View {
                             .foregroundColor(.secondary)
                             .lineLimit(1)
                         
-                        NavigationLink(destination: WebView(urlToLoad: document.url), label: {
-                            // 제목
-                            Text("원본 보기")
-                                .font(.footnote)
-                        })
                     }
                     Spacer()
                 }

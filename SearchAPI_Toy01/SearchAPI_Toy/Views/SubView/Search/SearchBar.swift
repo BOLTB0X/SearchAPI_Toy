@@ -46,6 +46,8 @@ struct SearchBar: View {
                         self.inputText = ""
                     }) {
                         Image(systemName: "xmark.circle.fill")
+                            .resizable()
+                            .frame(width: 25, height: 20)
                             .foregroundColor(.blue)
                     }
                 } else {

@@ -10,6 +10,7 @@ import SwiftUI
 struct VclipSearch: View {
     @ObservedObject var vclipViewModel = VclipSearchViewModel()
     @State private var barClick: Bool = false
+    @State private var cellClick: Bool = false
     
     var body: some View {
         NavigationView {
@@ -34,17 +35,25 @@ struct VclipSearch: View {
                     }
                     Text("검색어를 입력해주세요")
                     Spacer()
-                
-                // MARK: - 검색 결과
+                    
+                    // MARK: - 검색 결과
                 } else if !barClick && vclipViewModel.isTry {
                     if !vclipViewModel.searchVclip.isEmpty {
                         ScrollView {
                             LazyVStack(alignment: .leading, spacing: 10) {
                                 ForEach(vclipViewModel.searchVclip, id: \.id) { document in
-                                    VclipCell(document: document)
-                                        .onAppear {
-                                            vclipViewModel.checkFetchMore(document: document)
-                                        }
+                                    Button(action: {
+                                        cellClick.toggle()
+                                    }) {
+                                        VclipCell(document: document)
+                                    }
+                                    
+                                    .onAppear {
+                                        vclipViewModel.checkFetchMore(document: document)
+                                    }
+                                    .sheet(isPresented: self.$cellClick) {
+                                        WebView(urlToLoad: document.url)
+                                    }
                                 }
                             }
                             .padding(5)

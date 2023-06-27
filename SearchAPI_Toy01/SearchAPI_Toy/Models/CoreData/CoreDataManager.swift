@@ -30,11 +30,24 @@ class CoreDataManager {
     func saveSearchHistory(query: String, date: Date) {
         let context = searchContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "SearchHistory", in: context)!
-        let searchHistory = NSManagedObject(entity: entity, insertInto: context)
-        searchHistory.setValue(query, forKeyPath: "query")
-        searchHistory.setValue(date, forKeyPath: "date")
+
+        // 동일한 쿼리가 있는지 확인
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "SearchHistory")
+        fetchRequest.predicate = NSPredicate(format: "query == %@", query)
 
         do {
+            let newSearch = try context.fetch(fetchRequest) as? [NSManagedObject]
+            
+            if let pastSearch = newSearch?.first {
+                // 기존 검색어를 삭제
+                context.delete(pastSearch)
+            }
+
+            // 새로운 검색 기록 생성
+            let searchHistory = NSManagedObject(entity: entity, insertInto: context)
+            searchHistory.setValue(query, forKeyPath: "query")
+            searchHistory.setValue(date, forKeyPath: "date")
+
             try context.save()
         } catch {
             print("실패: \(error)")

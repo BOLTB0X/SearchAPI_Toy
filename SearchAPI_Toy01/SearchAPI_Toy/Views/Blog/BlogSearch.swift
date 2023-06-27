@@ -10,6 +10,7 @@ import SwiftUI
 struct BlogSearch: View {
     @ObservedObject var blogViewModel = BlogSearchViewModel()
     @State private var barClick: Bool = false
+    @State private var cellCick: Bool = false // 셀 전용
     
     var body: some View {
         NavigationView {
@@ -41,10 +42,18 @@ struct BlogSearch: View {
                         ScrollView {
                             LazyVStack(alignment: .leading, spacing: 10) {
                                 ForEach(blogViewModel.searchBlogs, id: \.id) { document in
-                                    CardView(title: document.title, cate: document.blogname, imgURL: document.thumbnail, date: document.datetime)
-                                        .onAppear {
-                                            blogViewModel.checkFetchMore(document: document)
-                                        }
+                                    Button(action: {
+                                        cellCick.toggle()
+                                    }) {
+                                        
+                                        CardView(title: document.title, cate: document.blogname, imgURL: document.thumbnail, date: document.datetime)
+                                    }
+                                    .sheet(isPresented: self.$cellCick) {
+                                        WebView(urlToLoad: document.url)
+                                    }
+                                    .onAppear {
+                                        blogViewModel.checkFetchMore(document: document)
+                                    }
                                 }
                             }
                             .padding(5)

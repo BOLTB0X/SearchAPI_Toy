@@ -20,7 +20,7 @@ struct SearchPicker: View {
     
     let sortedArr = ["acc", "rec"] // 정렬 기준
     //let pagesArr = [1, 5, 10, 15] // 페이지 수
-    let sizeArr = [20, 25, 30, 35] // 보여질 문서 수
+    let sizeArr = [15, 20, 25, 30, 35] // 보여질 문서 수
     
     var body: some View {
         HStack(spacing: 15) {
@@ -38,19 +38,6 @@ struct SearchPicker: View {
             .onChange(of: selectedIdx1) { idx in // 바인딩에 넣어줌
                 sortType = sortedArr[idx] == "acc" ? "accuracy" : "recency"
             }
-            
-//            Picker("페이지", selection: $selectedIdx2) {
-//                ForEach(pagesArr.indices, id: \.self) { i in
-//                    Text("\(pagesArr[i])")
-//                        .foregroundColor(.black)
-//                }
-//            }
-//            .pickerStyle(.menu)
-//            .background(Color(.systemGray6))
-//            .cornerRadius(15)
-//            .onChange(of: selectedIdx2) { idx in
-//                pageType = pagesArr[idx]
-//            }
             
             Picker("크기", selection: $selectedIdx3) {
                 ForEach(sizeArr.indices, id: \.self) { i in

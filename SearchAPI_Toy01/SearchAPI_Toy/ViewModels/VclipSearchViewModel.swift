@@ -33,6 +33,9 @@ class VclipSearchViewModel: ObservableObject {
     
     // MAKR: - fetchVclipSearchData
     func fetchVclipSearchData(query: String) {
+        // start
+        isLoading = true
+        
         guard !endPage else {
             print("마지막 페이지")
             return
@@ -40,9 +43,6 @@ class VclipSearchViewModel: ObservableObject {
         
         searchParam.query = query // 검색어 업데이트
         checkQuery(query: searchParam.query) // 검색어가 그대로인지 확인
-
-        // start
-        isLoading = true
         isTry = true
         searchParam.page = self.currentPage
         

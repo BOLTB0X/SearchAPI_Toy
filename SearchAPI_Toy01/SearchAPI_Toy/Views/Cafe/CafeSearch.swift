@@ -10,6 +10,7 @@ import SwiftUI
 struct CafeSearch: View {
     @ObservedObject var cafeViewModel = CafeSearchViewModel()
     @State private var barClick: Bool = false
+    @State private var cellCick: Bool = false // 셀 전용
     
     var body: some View {
         NavigationView {
@@ -41,10 +42,17 @@ struct CafeSearch: View {
                         ScrollView {
                             LazyVStack(alignment: .leading, spacing: 10) {
                                 ForEach(cafeViewModel.searchCafes, id: \.id) { document in
-                                    CardView(title: document.title, cate: document.cafename, imgURL: document.thumbnail, date: document.datetime)
-                                        .onAppear {
-                                            cafeViewModel.checkFetchMore(document: document)
-                                        }
+                                    Button(action: {
+                                        cellCick.toggle()
+                                    }) {
+                                        CardView(title: document.title, cate: document.cafename, imgURL: document.thumbnail, date: document.datetime)
+                                    }
+                                    .sheet(isPresented: self.$cellCick) {
+                                        WebView(urlToLoad: document.url)
+                                    }
+                                    .onAppear {
+                                        cafeViewModel.checkFetchMore(document: document)
+                                    }
                                 }
                             }
                             .padding(5)

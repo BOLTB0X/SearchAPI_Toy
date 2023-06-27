@@ -40,12 +40,12 @@ struct CardView: View {
             HStack {
                 VStack(alignment: .leading) {
                     if loading {
-                        Text("Loading...")
+                        Text("Loading....................................................................")
                             .font(.headline)
                             .lineLimit(1)
                             .redacted(reason: .placeholder)
                         
-                        Text("Loading...")
+                        Text("Loading.......................")
                             .font(.system(size: 20, weight: .bold))
                             .lineLimit(1)
                             .redacted(reason: .placeholder)

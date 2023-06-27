@@ -47,10 +47,11 @@ struct SearchSub: View {
                                 Image(systemName: "x.circle")
                                     .resizable()
                                     .foregroundColor(.blue)
-                                    .frame(width: 15, height: 15)
+                                    .frame(width: 20, height: 20)
                             }
                             // 기존 DefaultButtonStyle으로 하면 이미지 버튼이 포함된 셀을 클릭하면 리스트셀 내 버튼을 클릭하지 않아도 클릭했다고 인식해버리므로 버튼 스타일 변경
-                            .buttonStyle(BorderlessButtonStyle())
+                            .buttonStyle(BorderlessButtonStyle()
+                            )
                         }
                     }
                 }
