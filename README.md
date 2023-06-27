@@ -11,38 +11,35 @@
 카카오의 Open API 중 [Daum 검색](https://developers.kakao.com/docs/latest/ko/daum-search/dev-guide)를 통한 Toy Project
 <br/>
 
-**_기능 하나 하나씩 추가하며 진행_**
+**01버전은 짜잘한 버그 수정**
 <br/>
 
-## TODO
-
-1. 애니메이션 효과 추가(loading, 검색창 애니메이션 효과)
-   <br/>
-
-2. 검색창 커스텀
-   <br/>
-
-## 기록
-
-[지난 기록들](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/resultHistory.md)
+~~02는 언젠거~~
 <br/>
 
-**6/21**
+## 01
+
+![메인](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/main.gif?raw=true)
 <br/>
 
-![런치스크린](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EB%9F%B0%EC%B9%98%EC%8A%A4%ED%81%AC%EB%A6%B0.gif?raw=true)
+## 각 검색페이지
+
+![web](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/web검색.gif?raw=true)![img](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/img검색.gif?raw=true)![vclip](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/vclip검색.gif?raw=true)
 <br/>
 
-![검색창2](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B2%80%EC%83%89view%20%EB%B3%80%EA%B2%BD2.gif?raw=true)
-<br/>
-~~시뮬레이터 녹화 기능이 있는지 지금 알았다~~
+![book](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/book검색.gif?raw=true)![cafe](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/cafe검색.gif?raw=true)![blog](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/blog검색.gif?raw=true)
 <br/>
 
-- 서치바 수정
-  <br/>
+## 기능
 
-- 일단 임시로 검색 기록 나타냄
-  <br/>
+1. 무한스크롤
+   ![무한스크롤](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/무한스크롤.gif?raw=true)
+
+2. WebView
+   ![1](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/webview1.gif?raw=true)![2](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/webview2.gif?raw=true)
+
+3. 검색 창
+   ![검색기록](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색기록.gif?raw=true)![검색조건](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색조건%20변경.gif?raw=true)![기록삭제](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색기록_삭제.gif?raw=true)
 
 ## 참고
 

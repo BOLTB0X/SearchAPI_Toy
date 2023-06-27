@@ -62,3 +62,6 @@ ScrollView {
 
 VStack에서 LazyVStack으로 해결
 <br/>
+
+VStack은 한번 에 1 ~ 10을 불러오면, LazyVStack은 화면에 보이는 것만 1, 2, 3, 4를 불러온다 생각하면 됌
+<br/>

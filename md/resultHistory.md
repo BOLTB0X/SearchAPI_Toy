@@ -118,4 +118,7 @@
 
 ![검색창2](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B2%80%EC%83%89view%20%EB%B3%80%EA%B2%BD2.gif?raw=true)
 <br/>
-~~시뮬레이터 녹화 기능이 있는지 지금 알았다~~
+
+## 6/26
+
+![cardView](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/카드뷰.gif?raw=true)
