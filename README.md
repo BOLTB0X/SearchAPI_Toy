@@ -8,16 +8,22 @@
 ~~조금씩 조금씩~~
 <br/>
 
-카카오의 Open API 중 [Daum 검색](https://developers.kakao.com/docs/latest/ko/daum-search/dev-guide)를 통한 Toy Project
-<br/>
-
-**01버전은 짜잘한 버그 수정**
-<br/>
-
-~~02는 언젠가~~
-<br/>
-
 ## 소개
+
+![ㅇㅇ](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/vclip%EA%B2%80%EC%83%89.gif?raw=true) ![카드뷰](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/%EC%B9%B4%EB%93%9C%EB%B7%B0.gif?raw=true)
+<br/>
+
+카카오의 Open API 통한 Toy Project, 검색 관련 모든 api와 파라미터를 사용
+<br/>
+
+**개발환경:** Xcode 14.2, iOS 15.0, SwiftUI, Combine, CoreData
+<br/>
+
+**개발언어:** Swift
+<br/>
+
+**api:** [Daum 검색](https://developers.kakao.com/docs/latest/ko/daum-search/dev-guide)
+<br/>
 
 ![로딩](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%A1%9C%EB%94%A9.gif?raw=true) ![메인](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/main.gif?raw=true)
 <br/>
@@ -25,21 +31,81 @@
 런치스크린 후 하단 탭바로 각 검색페이지 구분
 <br/>
 
-### 각 검색페이지
+<details>
+<summary>무한스크롤</summary>
 
-검색어 관련 각 검색페이지에 따른 결과를 리스트로 나타냄
+**이미지 로딩을 Async 처리, 로딩 중일 때 구분**
 <br/>
 
-1. **모든 검색 결과를 나타내는 리스트는 무한 스크롤로 적용**
+1. 웹문서
+   ![웹문서](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%20%EC%9B%B9.gif?raw=true)
    <br/>
 
-2. **검색 조건 적용 가능**
+2. 이미지
+   ![이미지](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/무한스크롤.gif?raw=true)
    <br/>
 
-3. **검색 결과 클릭시 액션시트뷰/네비게이션뷰/웹뷰 등 다양하게 처리**
+3. 동영상
+   ![동영상](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%EB%8F%99%EC%98%81%EC%83%81.gif?raw=true)
    <br/>
 
-#### 1. 웹문서 검색
+4. 책
+   ![책](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%EB%B6%81.gif?raw=true)
+   <br/>
+
+5. 카페
+   ![카페](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%EC%B9%B4%ED%8E%98.gif?raw=true)
+   <br/>
+
+6. 블로그
+   ![블로그](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%EB%B8%94%EB%A1%9C%EA%B7%B8.gif?raw=true)
+   <br/>
+
+<details>
+<summary>검색</summary>
+
+1. 검색 했던 검색어 기록
+   ![검색기록](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색기록.gif?raw=true)
+   <br/>
+
+2. 검색 조건 설정 가능
+   ![검색](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%20%EC%A0%81%EC%9A%A9_%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0%20%EC%A0%81%EC%9A%A9.gif?raw=true)
+   <br/>
+
+3. 검색어 기록 삭제 가능
+   ![기록삭제](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색기록_삭제.gif?raw=true)
+   <br/>
+
+4. 검색 게시물을 보던 중에 새롭게 검색 조건 설정 가능
+   ![검색조건](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색조건%20변경.gif?raw=true)
+   <br/>
+
+</details>
+
+<details>
+
+<summary>뷰 마다 게시물의 차이</summary>
+
+1. 이미지 -> popup 뷰 커스텀, 원본 링크로 이동(WebView)링크
+   ![1](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/img%EA%B2%80%EC%83%89.gif?raw=true)
+   <br/>
+
+2. 동영상 -> 원본 링크로 이동(WebView)
+   ![2](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/webview1.gif?raw=true)
+   <br/>
+
+3. 나머지 -> Card뷰 처리 게시물, 원본 링크로 이동(WebView)
+   ![3](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/cafe%EA%B2%80%EC%83%89.gif?raw=true)
+   <br/>
+
+   ![4](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/webview2.gif?raw=true)
+   <br/>
+
+</details>
+
+## 각 검색페이지 상세 설명
+
+### 1. 웹문서 검색
 
 ![web](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/web검색.gif?raw=true) ![웡](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%20%EC%9B%B9.gif?raw=true)
 <br/>
@@ -210,24 +276,6 @@ TODO
 <summary>카페/블로그 게시물 표현</summary>
 TODO
 </details>
-
-## 기능
-
-### 1. 무한스크롤
-
-![무한스크롤](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/무한스크롤.gif?raw=true)
-
-### 2. WebView
-
-![1](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/webview1.gif?raw=true)![2](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/webview2.gif?raw=true)
-
-### 3. 검색 창
-
-![검색기록](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색기록.gif?raw=true) ![검색조건](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색조건%20변경.gif?raw=true)
-<br/>
-
-![기록삭제](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색기록_삭제.gif?raw=true)
-<br/>
 
 ## 참고
 
