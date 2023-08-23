@@ -29,11 +29,22 @@ class CoreDataManager {
     // 검색 기록으로 coreData에 넣어주는 역할
     func saveSearchHistory(query: String, date: Date) {
         let context = searchContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "SearchHistory", in: context)!
-        let searchHistory = NSManagedObject(entity: entity, insertInto: context)
-        searchHistory.setValue(query, forKeyPath: "query")
-        searchHistory.setValue(date, forKeyPath: "date")
-
+        
+        // 기존에 저장된 검색 기록을 확인
+        let fetchRequest: NSFetchRequest<SearchHistory> = SearchHistory.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "query == %@", query)
+        
+        // 이미 검색한 기록이 있으면
+        if let OgSearch = try? context.fetch(fetchRequest).first {
+            OgSearch.date = date
+        } else {
+            // 없어서 추가
+            let entity = NSEntityDescription.entity(forEntityName: "SearchHistory", in: context)!
+            let newSearchHistory = NSManagedObject(entity: entity, insertInto: context) as! SearchHistory
+            newSearchHistory.query = query
+            newSearchHistory.date = date
+        }
+        
         do {
             try context.save()
         } catch {

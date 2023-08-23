@@ -23,7 +23,7 @@ class SearchHistoryViewModel: ObservableObject {
         
         do {
             let context = CoreDataManager.shared.searchContainer.viewContext
-            searchHistory = try context.fetch(fetchRequest) // 불러오기
+            searchHistory = try context.fetch(fetchRequest).sorted { $0.date! > $1.date! } // 불러오기 및 정렬
         } catch {
             print("불러오기 실패")
         }
