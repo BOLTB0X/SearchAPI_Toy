@@ -252,10 +252,10 @@ func FetchDataAtScroll() {
 
 <br/>
 
-![WebSearchModel.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Models/KakaoAPI/WebSearchModel.swift)
+[WebSearchModel.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Models/KakaoAPI/WebSearchModel.swift)
 <br/>
 
-![WebViewModel.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/ViewModels/WebSearchViewModel.swift)
+[WebViewModel.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/ViewModels/WebSearchViewModel.swift)
 <br/>
 
 </details>
@@ -263,7 +263,7 @@ func FetchDataAtScroll() {
 <details>
 <summary>게시물을 클릭시 원본 링크로 이동</summary>
 
-![웹 링크](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/%EC%9B%B9%EB%AC%B8%EC%84%9C%EC%97%90%EC%84%9C%EC%9B%B9%EB%B7%B0.gif?raw=true)
+[웹 링크](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/%EC%9B%B9%EB%AC%B8%EC%84%9C%EC%97%90%EC%84%9C%EC%9B%B9%EB%B7%B0.gif?raw=true)
 <br/>
 
 ```swift
@@ -293,10 +293,10 @@ struct WebCell: View {
 }
 ```
 
-![WebView.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Views/SubView/WebView.swift)
+[WebView.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Views/SubView/WebView.swift)
 <br/>
 
-![WebCeilView.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Views/Web/WebCell.swift)
+[WebCeilView.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Views/Web/WebCell.swift)
 <br/>
 
 <br/>
@@ -346,7 +346,7 @@ struct ImageCollection: View {
 }
 ```
 
-![ImageCollection.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Views/Image/ImageCollection.swift)
+[ImageCollection.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Views/Image/ImageCollection.swift)
 
 </details>
 
@@ -379,11 +379,11 @@ struct ImageCollection: View {
 
 <br/>
 
-![ImageSearch.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Views/Image/ImageSearch.swift)
+[ImageSearch.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Views/Image/ImageSearch.swift)
 
 </details>
 
-### 4. 동영상 검색
+### 3. 동영상 검색
 
 ![vclip](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/vclip검색.gif?raw=true)
 
@@ -484,7 +484,7 @@ struct VclipCell: View {
 <br/>
 </details>
 
-### 5. 책/카페/블로그 검색
+### 4. 책/카페/블로그 검색
 
 ![book](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/book검색.gif?raw=true)
 <br/>
@@ -495,11 +495,11 @@ struct VclipCell: View {
 <details>
 <summary> 카드 뷰</summary>
 
-![CardView.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Views/SubView/CardView.swift)
+[CardView.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Views/SubView/CardView.swift)
 
 </details>
 
-### 6. 검색 기록
+### 5. 검색 기록
 
 <details>
 <summary> 검색 필터</summary>
@@ -512,11 +512,6 @@ Picker 이용, API 가이드 문서를 보며 페이지 수 등을 설정
 
 ```swift
 //  NetworkManager.swift
-//  SearchAPI_Toy
-//
-//  Created by KyungHeon Lee on 2023/06/02.
-//
-
 import Foundation
 import Combine
 
@@ -593,7 +588,11 @@ enum NetworkManager {
 
 <br/>
 
-![SearchPicker.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Views/SubView/Search/SearchPicker.swift)
+[SearchPicker.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Views/SubView/Search/SearchPicker.swift)
+<br/>
+
+[Network.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy02/SearchAPI_Toy/Models/Network.swift)
+<br/>
 
 </details>
 
@@ -657,7 +656,7 @@ class CoreDataManager {
     // ..
 ```
 
-![CoreDataManager.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Models/CoreData/CoreDataManager.swift)
+[CoreDataManager.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Models/CoreData/CoreDataManager.swift)
 
 </details>
 
