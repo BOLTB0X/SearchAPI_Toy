@@ -14,7 +14,7 @@
 **01버전은 짜잘한 버그 수정**
 <br/>
 
-~~02는 언젠거~~
+~~02는 언젠가~~
 <br/>
 
 ## 01
@@ -35,21 +35,21 @@
 
 ## 기능
 
-1. 무한스크롤
-   <br/>
-   ![무한스크롤](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/무한스크롤.gif?raw=true)
+### 1. 무한스크롤
 
-2. WebView
-   <br/>
-   ![1](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/webview1.gif?raw=true)![2](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/webview2.gif?raw=true)
+![무한스크롤](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/무한스크롤.gif?raw=true)
 
-3. 검색 창
-   <br/>
-   ![검색기록](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색기록.gif?raw=true)
-   <br/>
-   ![검색조건](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색조건%20변경.gif?raw=true)
-   <br/>
-   ![기록삭제](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색기록_삭제.gif?raw=true)
+### 2. WebView
+
+![1](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/webview1.gif?raw=true)![2](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/webview2.gif?raw=true)
+
+### 3. 검색 창
+
+![검색기록](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색기록.gif?raw=true) ![검색조건](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색조건%20변경.gif?raw=true)
+<br/>
+
+![기록삭제](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색기록_삭제.gif?raw=true)
+<br/>
 
 ## 참고
 
