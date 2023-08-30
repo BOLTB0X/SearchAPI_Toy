@@ -1,6 +1,6 @@
 ⚠️ 진행 중
 
-# SearchAPI_Toy
+# 다음 검색앱(DAUMSearchAPI 이용))
 
 ![원기옥](https://media.tenor.com/E7fROB_zqFAAAAAC/%EC%9B%90%EA%B8%B0%EC%98%A5.gif)
 <br/>
@@ -11,6 +11,9 @@
 ## 소개
 
 ![ㅇㅇ](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/vclip%EA%B2%80%EC%83%89.gif?raw=true) ![카드뷰](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/%EC%B9%B4%EB%93%9C%EB%B7%B0.gif?raw=true)
+<br/>
+
+**포털사이트 DAUM의 검색 data 앱**
 <br/>
 
 카카오의 Open API 통한 Toy Project, 검색 관련 모든 api와 파라미터를 사용
