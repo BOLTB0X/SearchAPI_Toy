@@ -1,122 +1,85 @@
 ⚠️ 진행 중
 
-# 다음 검색앱(DAUMSearchAPI 이용))
+# 카카오 Daum Search Open API를 활용한 검색 프로젝트
 
 ![원기옥](https://media.tenor.com/E7fROB_zqFAAAAAC/%EC%9B%90%EA%B8%B0%EC%98%A5.gif)
-<br/>
 
 ~~조금씩 조금씩~~
 <br/>
 
 ## 소개
 
-![ㅇㅇ](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/vclip%EA%B2%80%EC%83%89.gif?raw=true) ![카드뷰](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/%EC%B9%B4%EB%93%9C%EB%B7%B0.gif?raw=true)
+| 로딩 화면                                                                                                          | 메인 화면                                                                            |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| ![로딩](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%A1%9C%EB%94%A9.gif?raw=true) | ![메인](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/main.gif?raw=true) |
+
+| 동영상 검색                                                                                                    | 카드뷰 UI                                                                                                     |
+| -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| ![동영상 검색](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/vclip%EA%B2%80%EC%83%89.gif?raw=true) | ![카드뷰](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/%EC%B9%B4%EB%93%9C%EB%B7%B0.gif?raw=true) |
+
 <br/>
 
-**포털사이트 DAUM의 검색 data 앱**
-<br/>
+본 프로젝트는 카카오의 Daum Search Open API를 활용하여 다양한 검색 기능을 구현한 Toy Project입니다.
 
-카카오의 Open API 통한 Toy Project, 검색 관련 모든 api와 파라미터를 사용
-<br/>
+검색 관련 모든 API와 파라미터를 활용하여 개발되었습니다.
 
-**개발환경:** Xcode 14.2, iOS 15.0, SwiftUI, Combine, CoreData
-<br/>
+## 🛠 개발 환경 및 기술 스택
 
-**개발언어:** Swift
-<br/>
+| 항목         | 내용                                                                               |
+| ------------ | ---------------------------------------------------------------------------------- |
+| 🖥 개발 환경  | Xcode 14.2, iOS 15.0                                                               |
+| 🚀 주요 기술 | SwiftUI, Combine, CoreData                                                         |
+| 📝 개발 언어 | Swift                                                                              |
+| REST API     | [Daum 검색 API](https://developers.kakao.com/docs/latest/ko/daum-search/dev-guide) |
 
-**api:** [Daum 검색](https://developers.kakao.com/docs/latest/ko/daum-search/dev-guide)
-<br/>
+## 주요 기능
 
-![로딩](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%A1%9C%EB%94%A9.gif?raw=true) ![메인](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/main.gif?raw=true)
-<br/>
-
-런치스크린 후 하단 탭바로 각 검색페이지 구분
-<br/>
+| 기능           | 설명                                                |
+| -------------- | --------------------------------------------------- |
+| 🔍 동영상 검색 | 비디오 검색 API를 이용하여 동영상 검색 및 결과 표시 |
+| 📚 책 검색     | 책 검색 API를 활용하여 다양한 책 정보 검색          |
+| 📰 뉴스 검색   | 뉴스 검색 API를 통해 최신 뉴스 검색 및 확인         |
+| 🖼️ 이미지 검색 | 이미지 검색 API를 활용한 이미지 검색 기능 제공      |
+| 🏷️ 카드뷰 UI   | 검색 결과를 카드뷰 형태로 시각적으로 표현           |
 
 <details>
 <summary>무한스크롤</summary>
 
 **이미지 로딩을 Async 처리, 로딩 중일 때 구분**
-<br/>
 
-1. 웹문서
-   <br/>
-   ![웹문서](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%20%EC%9B%B9.gif?raw=true)
-   <br/>
+| 웹문서                                                                                                                                                      | 이미지                                                                                       | 동영상                                                                                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![웹문서](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%20%EC%9B%B9.gif?raw=true) | ![이미지](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/무한스크롤.gif?raw=true) | ![동영상](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%EB%8F%99%EC%98%81%EC%83%81.gif?raw=true) |
 
-2. 이미지
-   <br/>
-   ![이미지](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/무한스크롤.gif?raw=true)
-   <br/>
-
-3. 동영상
-   <br/>
-   ![동영상](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%EB%8F%99%EC%98%81%EC%83%81.gif?raw=true)
-   <br/>
-
-4. 책
-   <br/>
-   ![책](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%EB%B6%81.gif?raw=true)
-   <br/>
-
-5. 카페
-   <br/>
-   ![카페](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%EC%B9%B4%ED%8E%98.gif?raw=true)
-   <br/>
-
-6. 블로그
-   <br/>
-   ![블로그](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%EB%B8%94%EB%A1%9C%EA%B7%B8.gif?raw=true)
-   <br/>
+| 책                                                                                                                                                   | 카페                                                                                                                                                            | 블로그                                                                                                                                                                     |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![책](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%EB%B6%81.gif?raw=true) | ![카페](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%EC%B9%B4%ED%8E%98.gif?raw=true) | ![블로그](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%EB%B8%94%EB%A1%9C%EA%B7%B8.gif?raw=true) |
 
 </details>
 
 <details>
 <summary>검색</summary>
 
-1. 검색 했던 검색어 기록
-   <br/>
-   ![검색기록](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색기록.gif?raw=true)
-   <br/>
+| 검색기록                                                                                     | 검색 조건 설정                                                                                                                                                                                                      |
+| -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![검색기록](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색기록.gif?raw=true) | ![검색](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%20%EC%A0%81%EC%9A%A9_%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0%20%EC%A0%81%EC%9A%A9.gif?raw=true) |
 
-2. 검색 조건 설정 가능
-   <br/>
-   ![검색](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%20%EC%A0%81%EC%9A%A9_%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0%20%EC%A0%81%EC%9A%A9.gif?raw=true)
-   <br/>
-
-3. 검색어 기록 삭제 가능
-   <br/>
-   ![기록삭제](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색기록_삭제.gif?raw=true)
-   <br/>
-
-4. 검색 게시물을 보던 중에 새롭게 검색 조건 설정 가능
-   <br/>
-   ![검색조건](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색조건%20변경.gif?raw=true)
-   <br/>
+| 검색 기록 삭제                                                                                    | 검색 중 조건 변경                                                                                   |
+| ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| ![기록삭제](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색기록_삭제.gif?raw=true) | ![검색조건](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/검색조건%20변경.gif?raw=true) |
 
 </details>
 
 <details>
 <summary>뷰 마다 게시물의 차이</summary>
 
-1. 이미지 -> popup 뷰 커스텀, 원본 링크로 이동(WebView)링크
-   <br/>
-   ![1](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/img%EA%B2%80%EC%83%89.gif?raw=true)
-   <br/>
+| 이미지                                                                                             | 동영상                                                                                |
+| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| ![1](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/img%EA%B2%80%EC%83%89.gif?raw=true) | ![2](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/webview1.gif?raw=true) |
 
-2. 동영상 -> 원본 링크로 이동(WebView)
-   <br/>
-   ![2](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/webview1.gif?raw=true)
-   <br/>
-
-3. 나머지 -> Card뷰 처리 게시물, 원본 링크로 이동(WebView)
-   <br/>
-   ![3](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/cafe%EA%B2%80%EC%83%89.gif?raw=true)
-   <br/>
-
-   ![4](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/webview2.gif?raw=true)
-   <br/>
+| Card 뷰                                                                                             | WebView                                                                               |
+| --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| ![3](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/cafe%EA%B2%80%EC%83%89.gif?raw=true) | ![4](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/webview2.gif?raw=true) |
 
 </details>
 
@@ -124,150 +87,133 @@
 
 ### 1. 웹문서 검색
 
-![web](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/web검색.gif?raw=true) ![웡](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%20%EC%9B%B9.gif?raw=true)
-<br/>
+| Web 검색 1                                                                           | Web 검색 2                                                                                                                                             |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ![3](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/web검색.gif?raw=true) | ![4](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/%EA%B8%B0%EB%A1%9D/%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4%20%EC%9B%B9.gif?raw=true) |
 
 <details>
-<summary>검색어를 입력 받으면 api호출을 통해 data를 받아와 무한스크롤로 구현</summary>
+<summary>API 및 무한 스크롤 Code 설명</summary>
 
-API로 받아올 모델 정의 및 API를 사용하도록 파싱
-<br/>
+1. API로 받아올 모델 정의 및 API를 사용하도록 파싱
 
-```swift
-// in WebSearchModel.swift
-// MARK: - WebResponse
-struct WebResponse: Codable {
-    let meta: WebMeta?
-    var documents: [WebDocument]
-}
+   ```swift
+   // in WebSearchModel.swift
+   // MARK: - WebResponse
+   struct WebResponse: Codable {
+       let meta: WebMeta?
+       var documents: [WebDocument]
+   }
 
-// MARK: - WebDocument
-struct WebDocument: Codable, Identifiable {
+   // MARK: - WebDocument
+   struct WebDocument: Codable, Identifiable {
     let id = UUID()
     var datetime, contents, title: String
     let url: String
-}
+   }
 
-// 생략
-// ..
-// ..
-// ..
+   // MARK: - WebSearchManger
+   // DataPublisher로 받아온 data를 WebSearchModel 형태로 디코딩 및 파싱용
+   final class WebSearchManger {
+       // 싱글톤 적용
+       static let shared: WebSearchManger = .init()
 
-// MARK: - WebSearchManger
-// DataPublisher로 받아온 data를 WebSearchModel 형태로 디코딩 및 파싱용
-final class WebSearchManger {
-    // 싱글톤 적용
-    static let shared: WebSearchManger = .init()
+       // MARK: - WebDocumentPublisher
+       func WebSearchPublisher(dataPublisher: AnyPublisher<Data, Error>) ->  AnyPublisher<WebResponse, Error> {
+           let responsePublisher = dataPublisher
+           // 디코딩
+               .decode(type: WebResponse.self, decoder: JSONDecoder())
+           // WebSearch 형태로 결과 쪼개기
+               .map { response in
+                   var streamedResponse = response
+                   streamedResponse.documents = response.documents.map { document in
+                       var streamedDocument = document
+                       streamedDocument.title = streamedDocument.title.stripHTMLTags()
+                       streamedDocument.contents = streamedDocument.contents.stripHTMLTags()
+                       streamedDocument.datetime = streamedDocument.datetime.fomatDateTime()!
+                       return streamedDocument // 테그 제거, 날짜 표기 변경 완료
+                   }
+                   return streamedResponse // html 테그 띤 Response를 반환
+               }
+               .eraseToAnyPublisher()
+           return responsePublisher
+       }
+   }
+   ```
 
-    // MARK: - WebDocumentPublisher
-    func WebSearchPublisher(dataPublisher: AnyPublisher<Data, Error>) ->  AnyPublisher<WebResponse, Error> {
-        let responsePublisher = dataPublisher
-        // 디코딩
-            .decode(type: WebResponse.self, decoder: JSONDecoder())
-        // WebSearch 형태로 결과 쪼개기
-            .map { response in
-                var streamedResponse = response
-                streamedResponse.documents = response.documents.map { document in
-                    var streamedDocument = document
-                    streamedDocument.title = streamedDocument.title.stripHTMLTags()
-                    streamedDocument.contents = streamedDocument.contents.stripHTMLTags()
-                    streamedDocument.datetime = streamedDocument.datetime.fomatDateTime()!
-                    return streamedDocument // 테그 제거, 날짜 표기 변경 완료
-                }
-                return streamedResponse // html 테그 띤 Response를 반환
-            }
-            .eraseToAnyPublisher()
-        return responsePublisher
-    }
-}
-```
+2. 무한스크롤
 
-<br/>
+   - 무한스크롤로 내리다 더 불러올지 뷰모델 내 메소드 `checkFetchMore`로 판단
 
-무한스크롤로 내리다 더 불러올지 뷰모델 내 메소드 checkFetchMore로 판단
-<br/>
+   - 현재 게시물이 마지막이면 더 불러와야 하므로 메소드 `FetchDataAtScroll` 호출
 
-현재 게시물이 마지막이면 더 불러와야 하므로 메소드 FetchDataAtScroll 호출
-<br/>
+   - 뷰에선 **Loding** 표시
+     <br/>
 
-뷰에선 **Loding** 표시
-<br/>
+   ```swift
+   // in WebSearchViewModel.swift
+   // MARK: - fetchWebSearchData
+   // 뷰모델에서 검색어에 관련된 WebSearchData를 가져오는 메소드
+   func fetchWebSearchData(query: String) {
+     // ...
+     // ...
 
-```swift
-// in WebSearchViewModel.swift
-// MARK: - fetchWebSearchData
-// 뷰모델에서 검색어에 관련된 WebSearchData를 가져오는 메소드
-func fetchWebSearchData(query: String) {
-  // 생략
-  // ..
-  // ..
+     DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+       guard let self = self else { return }
+         // 받아온 data를 WebSearch에 맞게 끔 디코딩 및 파싱
+         WebSearchManger.shared
+           .WebSearchPublisher(dataPublisher: dataPublisher)
+   //                .receive(on:
+      DispatchQueue.main) // 어차피
+         DispatchQueue.main.asyncAfter을 사용하므로
+           .sink(receiveCompletion: { [weak self] completion in
+               self?.webOnReceive(completion)
+           }, receiveValue: { [weak self] response in
+               self?.webOnReceive(response)
+           })
+           .store(in: &self.cancellables)
+       }
+   }
 
-  DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-    guard let self = self else { return }
-      // 받아온 data를 WebSearch에 맞게 끔 디코딩 및 파싱
-      WebSearchManger.shared
-        .WebSearchPublisher(dataPublisher: dataPublisher)
-//                .receive(on: DispatchQueue.main) // 어차피 DispatchQueue.main.asyncAfter을 사용하므로
-        .sink(receiveCompletion: { [weak self] completion in
-            self?.webOnReceive(completion)
-        }, receiveValue: { [weak self] response in
-            self?.webOnReceive(response)
-        })
-        .store(in: &self.cancellables)
-    }
-}
+   // MARK: - checkFetchMore
+   // data를 더 가져올지 판단하는 메소드
+   func checkFetchMore(document: WebDocument) {
+      // 비어있지 않고 현재 document가 마지막이면
+      if !searchWeb.isEmpty && document == searchWeb.last {
+         FetchDataAtScroll() // 호출
+         return
+       }
+       return
+   }
 
-// MARK: - checkFetchMore
-// data를 더 가져올지 판단하는 메소드
-func checkFetchMore(document: WebDocument) {
-  // 비어있지 않고 현재 document가 마지막이면
-  if !searchWeb.isEmpty && document == searchWeb.last {
-      FetchDataAtScroll() // 호출
-      return
-    }
-    return
-}
+   // ..
+   // ..
+   // MARK: - FetchDataAtScroll
+   // 스크롤로 데이터를 내릴대 호출
+   func FetchDataAtScroll() {
+     // ...
 
-// 생략
-// ..
-// ..
-// MARK: - FetchDataAtScroll
-// 스크롤로 데이터를 내릴대 호출
-func FetchDataAtScroll() {
-  // 생략
-  // ..
+     // 이어서 가져오기 때문
+     searchParam.page = self.currentPage + 1
 
-  // 이어서 가져오기 때문
-  searchParam.page = self.currentPage + 1
+     // ...
+     // ...
 
-  // 생략
-  // ...
-  // ...
-
-  DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-    guard let self = self else { return }
-          // fetchWebSearchData와 동일한 로직이므로
-          // 생략
-          // ...
-    }
-}
-```
-
-<br/>
+     DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+       guard let self = self else { return }
+             // fetchWebSearchData와 동일한 로직이므로
+             // 생략
+             // ...
+       }
+   }
+   ```
 
 [WebSearchModel.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Models/KakaoAPI/WebSearchModel.swift)
-<br/>
-
 [WebViewModel.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/ViewModels/WebSearchViewModel.swift)
-<br/>
 
 </details>
 
 <details>
-<summary>게시물을 클릭시 원본 링크로 이동</summary>
-
-[웹 링크](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/%EC%9B%B9%EB%AC%B8%EC%84%9C%EC%97%90%EC%84%9C%EC%9B%B9%EB%B7%B0.gif?raw=true)
-<br/>
+<summary>게시물을 클릭시 원본 링크로 이동 코드 설명</summary>
 
 ```swift
 //  in WebCeilView.swift
@@ -297,68 +243,61 @@ struct WebCell: View {
 ```
 
 [WebView.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Views/SubView/WebView.swift)
-<br/>
-
 [WebCeilView.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Views/Web/WebCell.swift)
-<br/>
-
-<br/>
 
 </details>
 
 ### 2. 이미지 검색
 
-![img](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/img검색.gif?raw=true)
+| 이미지 검색                                                                            |
+| -------------------------------------------------------------------------------------- |
+| ![img](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/img검색.gif?raw=true) |
+
 <br/>
 
 <details>
-<summary>이미지 게시물들 수평으로 표현</summary>
+<summary>이미지 게시물들 수평으로 표현 코드 설명</summary>
 
-1. ScrollView 감싼 후
-   <br/>
-2. LazyVGrid 이용
-   <br/>
+- `ScrollView` 감싼 후, `LazyVGrid` 이용
 
-```swift
-// in ImageCollectionView.swift
-import SwiftUI
+  ```swift
+  // in ImageCollectionView.swift
+  import SwiftUI
 
-struct ImageCollection: View {
-    // 생략
-    // ...
-    // ...
+  struct ImageCollection: View {
+      // ...
+      // ...
 
-    var body: some View {
-        // 스크롤 뷰 구성
-            ScrollView {
-                LazyVGrid(columns: gridItemLayout, spacing: 10) {
-                    ForEach(imgViewModel.searchImage, id: \.self) { document in
-                            .onAppear() {
-                                // 더 불러오는 지
-                                imgViewModel.checkFetchMore(document: document)
-                            }
-                            .onTapGesture {
-                                showPopup.toggle()
-                                imgViewModel.updateImageDetail(document: document) // 이미지 상세 업데이트
-                            }
-                    }
-                    .padding(5)
-                }
-            }
-    }
-}
-```
+      var body: some View {
+          // 스크롤 뷰 구성
+              ScrollView {
+                  LazyVGrid(columns: gridItemLayout, spacing: 10) {
+                  ForEach(imgViewModel.searchImage, id: \.self) { document in
+                              .onAppear() {
+                                  // 더 불러오는 지
+                                  imgViewModel.checkFetchMore(document: document)
+                               }
+                               .onTapGesture {
+                                  showPopup.toggle()
+                                  imgViewModel.updateImageDetail(document: document) // 이미지 상세 업데이트
+                               }
+                      }
+                      .padding(5)
+                  }
+               }
+       }
+  }
+  ```
 
 [ImageCollection.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Views/Image/ImageCollection.swift)
 
 </details>
 
 <details>
-<summary>이미지 게시물 클릭(actionView 커스텀)</summary>
+<summary>이미지 게시물 클릭(actionView 커스텀) 코드 설명</summary>
 
 ```swift
 // in ImageSearch.swift
-  // 생략
   // ...
   // ...
 
@@ -380,24 +319,24 @@ struct ImageCollection: View {
       }
 ```
 
-<br/>
-
 [ImageSearch.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Views/Image/ImageSearch.swift)
 
 </details>
 
 ### 3. 동영상 검색
 
-![vclip](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/vclip검색.gif?raw=true)
+| 이미지 검색                                                                                |
+| ------------------------------------------------------------------------------------------ |
+| ![vclip](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/vclip검색.gif?raw=true) |
+
+<br/>
 
 <details>
-<summary>동영상 게시물 표현</summary>
+<summary>동영상 게시물 표현 코드 설명</summary>
 
 리스트 방식은 다른 것과 동일
-<br/>
 
-AsyncImage와 imageLoading으로 이미지 로딩을 비동기로 나타냄
-<br/>
+`AsyncImage`와 `imageLoading` 으로 이미지 로딩을 비동기로 나타냄
 
 ```swift
 // in VclipCellView.swift
@@ -484,19 +423,44 @@ struct VclipCell: View {
 }
 ```
 
-<br/>
 </details>
 
 ### 4. 책/카페/블로그 검색
 
-![book](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/book검색.gif?raw=true)
-<br/>
-
-![cafe](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/cafe검색.gif?raw=true)![blog](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/blog검색.gif?raw=true)
-<br/>
+| 책 검색                                                                                  | 카페 검색                                                                                | 블로그 검색                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| ![book](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/book검색.gif?raw=true) | ![cafe](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/cafe검색.gif?raw=true) | ![blog](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/gif/01/blog검색.gif?raw=true) |
 
 <details>
 <summary> 카드 뷰</summary>
+
+`RoundedRectangle` 에 `stroke` 을 적용하고 `overlay`로 겹치기
+
+```swift
+// MARK: - 카드 뷰 (CardView)
+struct CardView: View {
+    let title: String  // 게시물 제목
+    let cate: String   // 게시물 카테고리
+    let imgURL: String // 게시물 이미지 URL
+    let date: String   // 게시물 날짜
+    let time: Int? = nil // (사용되지 않는 변수)
+
+    @State private var loading: Bool = true // 로딩 상태 변수
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            // 생략
+            // ....
+        }
+        .cornerRadius(10) // 카드 모서리 둥글게 처리
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.5), lineWidth: 1) // 테두리 적용
+        )
+        .padding(.horizontal) // 좌우 여백 추가
+    }
+}
+```
 
 [CardView.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Views/SubView/CardView.swift)
 
@@ -507,11 +471,7 @@ struct VclipCell: View {
 <details>
 <summary> 검색 필터</summary>
 
-Picker 이용, API 가이드 문서를 보며 페이지 수 등을 설정
-<br/>
-
-각 뷰모델에 api 요청을 할때 반영
-<br/>
+`Picker` 이용, API 가이드 문서를 보며 페이지 수 등을 설정
 
 ```swift
 //  NetworkManager.swift
@@ -537,7 +497,6 @@ enum NetworkManager {
         }
         return apiKey
     }
-
 
     // MARK: - RequestURL
     // 요청할 URL을 반환하는 메소드
@@ -589,13 +548,9 @@ enum NetworkManager {
     // ...
 ```
 
-<br/>
-
 [SearchPicker.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy01/SearchAPI_Toy/Views/SubView/Search/SearchPicker.swift)
-<br/>
 
 [Network.swift 코드 보기](https://github.com/BOLTB0X/SearchAPI_Toy/blob/main/SearchAPI_Toy02/SearchAPI_Toy/Models/Network.swift)
-<br/>
 
 </details>
 
@@ -603,10 +558,8 @@ enum NetworkManager {
 <summary> 검색어 기록 중복 방지</summary>
 
 동일한 검색을 여러번 하면 검색 기록 리스트에 많이 남게 됨
-<br/>
 
-이를 코어데이터로 넣어줄 때 필터링을 해주면 됌
-<br/>
+이를 코어데이터로 넣어줄 때 필터링 적용
 
 ```swift
 // in CoreDataManager.swift
@@ -623,7 +576,6 @@ class CoreDataManager {
     // 생략
     // ...
     // ...
-
 
     // MARK: - saveSearchHistory
     // 검색 기록으로 coreData에 넣어주는 역할
